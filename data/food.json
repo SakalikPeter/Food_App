@@ -1,0 +1,22 @@
+{
+  "food": [
+    {
+      "key": "0",
+      "value": "test1",
+      "category": "jedna",
+      "unit": "fero"
+    },
+    {
+      "key": "1",
+      "value": "test2",
+      "category": "jedna",
+      "unit": "fero"
+    },
+    {
+      "key": "2",
+      "value": "test3",
+      "category": "jedna",
+      "unit": "jano"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "recipe": [
+    {
+      "key": "0",
+      "value": "test",
+      "portions": 4,
+      "food": [
+        {
+          "id": "1",
+          "amount": 100
+        },
+        {
+          "id": "2",
+          "amount": 2
+        }
+      ],
+      "tags": ["0", "1", "2"],
+      "instruction": ""
+    },
+    {
+      "key": "1",
+      "value": "jano",
+      "portions": 4,
+      "food": [
+        {
+          "id": "1",
+          "amount": 100
+        },
+        {
+          "id": "2",
+          "amount": 2
+        }
+      ],
+      "tags": ["0", "3", "4"],
+      "instruction": ""
+    }
+  ]
+}

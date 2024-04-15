@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
+import HomeScreen from "./src/Screens/HomeScreen";
+import FoodListScreen from "./src/Screens/FoodListScreen";
+import FoodItemScreen from "./src/Screens/FoodItemScreen";
+import RecipeListScreen from "./src/Screens/RecipeListScreen";
+import RecipeItemScreen from "./src/Screens/RecipeItemScreen";
 
-export default function App() {
+const Drawer = createDrawerNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Pridaj Recept">
+        <Drawer.Screen name="Domov" component={HomeScreen} />
+        <Drawer.Screen name="Recepty" component={RecipeListScreen} />
+        <Drawer.Screen name="Potraviny" component={FoodListScreen} />
+        <Drawer.Screen name="Pridaj Potravinu" component={FoodItemScreen} />
+        <Drawer.Screen name="Pridaj Recept" component={RecipeItemScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

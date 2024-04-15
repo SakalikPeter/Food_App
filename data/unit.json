@@ -1,0 +1,9 @@
+{
+  "unit": [
+    { "key": "0", "value": "100 g" },
+    { "key": "1", "value": "100 ml" },
+    { "key": "2", "value": "1 ks" },
+    { "key": "3", "value": "1 cl" },
+    { "key": "4", "value": "1 pl" }
+  ]
+}
