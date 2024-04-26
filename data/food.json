@@ -1,22 +1,40 @@
 {
   "food": [
     {
-      "key": "0",
-      "value": "test1",
-      "category": "jedna",
-      "unit": "fero"
+      "key": "abc",
+      "value": "Jahoda",
+      "category": "ovocie",
+      "unit": "g",
+      "base": 100,
+      "kj": 200,
+      "kcal": 100,
+      "protein": 10,
+      "carbs": 10,
+      "fat": 10
     },
     {
       "key": "1",
       "value": "test2",
       "category": "jedna",
-      "unit": "fero"
+      "unit": "g",
+      "base": 100,
+      "kj": 200,
+      "kcal": 100,
+      "protein": 10,
+      "carbs": 10,
+      "fat": 10
     },
     {
       "key": "2",
       "value": "test3",
       "category": "jedna",
-      "unit": "jano"
+      "unit": "g",
+      "base": 100,
+      "kj": 200,
+      "kcal": 100,
+      "protein": 10,
+      "carbs": 10,
+      "fat": 10
     }
   ]
 }
