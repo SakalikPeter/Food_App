@@ -3,7 +3,7 @@
     {
       "key": "abc",
       "value": "Jahoda",
-      "category": "ovocie",
+      "category": "Veggie",
       "unit": "g",
       "base": 100,
       "kj": 200,
@@ -15,7 +15,7 @@
     {
       "key": "1",
       "value": "test2",
-      "category": "jedna",
+      "category": "Maso",
       "unit": "g",
       "base": 100,
       "kj": 200,
@@ -27,7 +27,7 @@
     {
       "key": "2",
       "value": "test3",
-      "category": "jedna",
+      "category": "Veggie",
       "unit": "g",
       "base": 100,
       "kj": 200,

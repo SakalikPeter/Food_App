@@ -1,74 +1,82 @@
 import React from "react";
-import { Text, View, Button } from "react-native";
-import LoadList from "../Components/ListView";
-import { SelectList } from "react-native-dropdown-select-list";
-import {
-  loadUniqueValues,
-  loadJsonData,
-  loadList,
-  // deleteItemByName,
-} from "../Components/DataHandler";
-import { MultipleSelectList } from "react-native-dropdown-select-list";
+import { View } from "react-native";
+import ValueList from "../Components/ValueList";
+import SingleSelector from "../Components/SingleSelector";
+import MultiSelector from "../Components/MultiSelector";
+import { loadList } from "../Components/DataHandler";
+import { Button } from "react-native-elements";
 
 function RecipeListScreen() {
-  const filename = "recipe";
-  const [values, setValues] = React.useState("");
+  const [value, setValue] = React.useState("");
   const [tags, setTags] = React.useState([]);
-  const [selectedValue, setSelectedValue] = React.useState("");
-  const [selectedTags, setSelectedTags] = React.useState([]);
-
-  const [items, setItems] = React.useState([]);
-  const [selectedItems, setSelectedItems] = React.useState([]);
-  const [itemToRemove, setItemToRemove] = React.useState(null);
-  const [itemToUpdate, setItemToUpdate] = React.useState(null);
+  const [foods, setFoods] = React.useState([]);
+  const [recipes, setRecipes] = React.useState([]);
 
   React.useEffect(() => {
-    loadJsonData(filename)
-      .then((data) => data[filename])
-      .then((data) => setItems(data))
-      .catch((error) => console.error(error));
-    loadUniqueValues(filename)
-      .then((data) => setValues(data))
-      .catch((error) => console.error(error));
-    loadList("tag")
-      .then((data) => setTags(data))
+    loadList("recipe")
+      .then((data) => setRecipes(data))
       .catch((error) => console.error(error));
   }, []);
-
-  const filteredItems = items.filter((item) => {
-    if (selectedValue && item.key !== selectedValue) return false;
-    if (selectedTags && !selectedTags.every((tag) => item.tags.includes(tag)))
-      return false;
-    // if (selectedUnit && item.unit !== selectedUnit) return false;
-    return true;
-  });
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <View>
-        <Text>Food List page</Text>
+        <View>
+          <SingleSelector
+            value="recipe"
+            setter={setValue}
+            lable="Recept"
+            notFoundText="Ziadny recept sa nenasiel"
+          />
+          <Button title="Zrus" onPress={() => setValue("")} />
+        </View>
+        <View>
+          <MultiSelector
+            value="tag"
+            setter={setTags}
+            label="Tagy"
+            notFoundText="Ziadny tag sa nenasiel"
+          />
+          <Button title="Zrus" onPress={() => setTags([])} />
+        </View>
+        <View>
+          <MultiSelector
+            value="food"
+            setter={setFoods}
+            label="Potraviny"
+            notFoundText="Ziadna potravina sa nenasla"
+          />
+          <Button title="Zrus" onPress={() => setFoods([])} />
+        </View>
       </View>
       <View>
-        <SelectList
-          setSelected={(val) => setSelectedValue(val)}
-          data={values}
-          save="key"
-          notFoundText="Ziadny recept sa nenasiel"
-        />
-        <MultipleSelectList
-          setSelected={(val) => setSelectedTags(val)}
-          data={tags}
-          save="key"
-          label="Tagy"
-          notFoundText="Ziadny tag sa nenasiel"
-        />
+        {recipes.length > 0 && (
+          <ValueList
+            filename="recipe"
+            items={recipes.filter((item) => {
+              if (value && item.value !== value) return false;
+              if (
+                tags.length > 0 &&
+                !tags.every((tag) => item.tags.includes(tag))
+              ) {
+                return false;
+              }
+              const recipeFoods = item.food.map((food) => food.value);
+              const selectedFoods = foods.map((food) => food.value);
+              if (
+                foods.length > 0 &&
+                !selectedFoods.every((food) => recipeFoods.includes(food))
+              ) {
+                return false;
+              }
+
+              return true;
+            })}
+          />
+        )}
       </View>
       <View>
-        <LoadList
-          items={filteredItems}
-          updater={setItemToUpdate}
-          remover={setItemToRemove}
-        />
+        <Button title="Pridat" />
       </View>
     </View>
   );

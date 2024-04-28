@@ -18,7 +18,7 @@ const FoodCard = (props) => {
   }
 
   return (
-    <Card key={item.key}>
+    <Card key={item.value}>
       <Card.Title>{item.value}</Card.Title>
       <Card.Divider />
       <View style={styles.user}>

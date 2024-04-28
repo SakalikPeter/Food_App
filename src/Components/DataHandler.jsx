@@ -42,29 +42,27 @@ const saveItem = async (filename, item) => {
   console.log(item);
 };
 
-// const deleteItemByName = async (filename, nameToDelete) => {
-//   try {
-//     const data = await loadJsonData(filename);
-//     const indexToDelete = data[filename].findIndex(
-//       (item) => item.name === nameToDelete
-//     );
+const deleteItemByValue = async (filename, value) => {
+  try {
+    const data = await loadList(filename);
+    const indexToDelete = data.findIndex((item) => item.value === value);
 
-//     if (indexToDelete === -1) {
-//       throw new Error(`Item with name '${nameToDelete}' not found`);
-//     }
+    if (indexToDelete === -1) {
+      throw new Error(`Item with name '${value}' not found`);
+    }
 
-//     // Remove the item from the array
-//     data[filename].splice(indexToDelete, 1);
+    // Remove the item from the array
+    data.splice(indexToDelete, 1);
 
-//     // Save modified data back to file
-//     saveJsonData(filename, data);
+    // Save modified data back to file
+    // saveJsonData(filename, data);
 
-//     console.log(`Item with name '${nameToDelete}' deleted successfully`);
-//   } catch (error) {
-//     console.error("Error deleting item:", error);
-//     throw error;
-//   }
-// };
+    console.log(`Item with name '${value}' deleted successfully`);
+  } catch (error) {
+    console.error("Error deleting item:", error);
+    throw error;
+  }
+};
 
 // const saveJsonData = (filename, data) => {
 //   const jsonData = JSON.stringify(data, null, 2);
@@ -78,4 +76,10 @@ const saveItem = async (filename, item) => {
 //     });
 // };
 
-export { loadJsonData, loadUniqueValues, saveItem, loadList };
+export {
+  loadJsonData,
+  loadUniqueValues,
+  saveItem,
+  loadList,
+  deleteItemByValue,
+};

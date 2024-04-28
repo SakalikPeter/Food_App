@@ -1,81 +1,77 @@
 import React from "react";
-import { Text, View, Button } from "react-native";
-import LoadList from "../Components/ListView";
-// import DropdownTextFilter from "../Components/DropdownTextFilter";
-import {
-  loadUniqueValues,
-  loadJsonData,
-  // deleteItemByName,
-} from "../Components/DataHandler";
+import { Text, View } from "react-native";
+import { Button } from "react-native-elements";
+import ValueList from "../Components/ValueList";
+import SingleSelector from "../Components/SingleSelector";
+import { loadList } from "../Components/DataHandler";
 
 function FoodListScreen() {
-  const filename = "food";
-
-  const [names, setNames] = React.useState("");
-  const [categories, setCategories] = React.useState("");
-  const [units, setUnits] = React.useState("");
   const [items, setItems] = React.useState([]);
-  const [selectedName, setSelectedName] = React.useState("");
-  const [selectedCategory, setSelectedCategory] = React.useState("");
-  const [selectedUnit, setSelectedUnit] = React.useState("");
-  const [itemToRemove, setItemToRemove] = React.useState(null);
-  const [itemToUpdate, setItemToUpdate] = React.useState(null);
+  const [value, setValue] = React.useState("");
+  const [category, setCategory] = React.useState("");
 
   React.useEffect(() => {
-    loadJsonData(filename)
-      .then((data) => data[filename])
-      .then((data) => setItems(data));
-    loadUniqueValues(filename, "name")
-      .then((data) => setNames(data))
-      .catch((error) => console.error(error));
-    loadUniqueValues(filename, "category")
-      .then((data) => setCategories(data))
-      .catch((error) => console.error(error));
-    loadUniqueValues(filename, "unit")
-      .then((data) => setUnits(data))
+    loadList("food")
+      .then((data) => setItems(data))
       .catch((error) => console.error(error));
   }, []);
 
-  // React.useEffect(() => {
-  //   if (itemToRemove) {
-  //     deleteItemByName("food", itemToRemove.name);
-  //   }
-  // }, [itemToRemove]);
-
-  const filteredItems = items.filter((item) => {
-    if (selectedName && item.name !== selectedName) return false;
-    if (selectedCategory && item.category !== selectedCategory) return false;
-    if (selectedUnit && item.unit !== selectedUnit) return false;
-    return true;
-  });
+  const handleAddFood = () => {};
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <View>
         <Text>Food List page</Text>
       </View>
-      {/* <View>
-        <DropdownTextFilter
-          items={names}
-          setter={setSelectedName}
-          text="Nazov"
-        />
-        <DropdownTextFilter
-          items={categories}
-          setter={setSelectedCategory}
-          text="Kategoria"
-        />
-        <DropdownTextFilter
-          items={units}
-          setter={setSelectedUnit}
-          text="Jednotka"
-        />
-      </View> */}
       <View>
-        <LoadList
-          items={filteredItems}
-          updater={setItemToUpdate}
-          remover={setItemToRemove}
+        <View>
+          <SingleSelector
+            value="food"
+            setter={setValue}
+            lable="Potravina"
+            notFoundText="Ziadna potravina sa nenasla"
+          />
+          <Button title="Zrus" onPress={() => setValue("")} />
+        </View>
+        <View>
+          <SingleSelector
+            value="category"
+            setter={setCategory}
+            lable="Kategoria"
+            notFoundText="Ziadna kategoria sa nenasla"
+          />
+          <Button title="Zrus" onPress={() => setCategory("")} />
+        </View>
+      </View>
+      <View>
+        {items.length > 0 && (
+          <ValueList
+            filename="food"
+            items={items.filter((item) => {
+              if (value && item.value !== value) return false;
+              if (category && item.category !== category) return false;
+              return true;
+            })}
+          />
+        )}
+      </View>
+      <View>
+        <Button
+          title="Pridat"
+          onPress={handleAddFood}
+          loading={false}
+          loadingProps={{ size: "small", color: "white" }}
+          buttonStyle={{
+            backgroundColor: "rgba(111, 202, 186, 1)",
+            borderRadius: 5,
+          }}
+          titleStyle={{ fontWeight: "bold", fontSize: 23 }}
+          containerStyle={{
+            marginHorizontal: 50,
+            height: 50,
+            width: 200,
+            marginVertical: 10,
+          }}
         />
       </View>
     </View>
