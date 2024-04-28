@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, Button } from "react-native";
 import LoadList from "../Components/ListView";
-import DropdownTextFilter from "../Components/DropdownTextFilter";
+// import DropdownTextFilter from "../Components/DropdownTextFilter";
 import {
   loadUniqueValues,
   loadJsonData,
@@ -54,7 +54,7 @@ function FoodListScreen() {
       <View>
         <Text>Food List page</Text>
       </View>
-      <View>
+      {/* <View>
         <DropdownTextFilter
           items={names}
           setter={setSelectedName}
@@ -70,7 +70,7 @@ function FoodListScreen() {
           setter={setSelectedUnit}
           text="Jednotka"
         />
-      </View>
+      </View> */}
       <View>
         <LoadList
           items={filteredItems}

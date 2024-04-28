@@ -4,13 +4,17 @@ import { Button, Input } from "react-native-elements";
 import MultiSelector from "../Components/MultiSelector";
 import FoodCardList from "../Components/FoodCardList";
 import { calculator } from "../Components/Calculator";
+import NumberInput from "../Components/NumberInput";
+import StringInput from "../Components/StringInput";
 
 function RecipeItemScreen() {
+  const [value, setValue] = React.useState("");
+  const [portions, setPortions] = React.useState("");
+  const [instructions, setInstructions] = React.useState("");
+
   const [tags, setTags] = React.useState([]);
   const [foods, setFoods] = React.useState([]);
-  const [name, setName] = React.useState("");
-  const [portions, setPortions] = React.useState(0);
-  const [instructions, setInstructions] = React.useState("");
+  const [isValid, setIsValid] = React.useState(true);
 
   const handleFoodsChange = (selectedFoods) => {
     // Remove foods from foods state that are not in selectedFoods
@@ -33,13 +37,12 @@ function RecipeItemScreen() {
     const updatedFoods = foods.map((food) =>
       food.key === updatedFood.key ? updatedFood : food
     );
-    console.log("Update: ", updatedFoods);
     setFoods(updatedFoods);
   };
 
   const handleSave = async () => {
     const recipe = {
-      value: name,
+      value: value,
       portions: portions,
       instructions: instructions,
       tags: tags,
@@ -55,42 +58,38 @@ function RecipeItemScreen() {
 
   return (
     <ScrollView>
-      <View>
-        <Input placeholder="Nazov" onChangeText={(value) => setName(value)} />
-      </View>
-      <View>
-        <Input
-          placeholder="Pocet Porcii"
-          onChangeText={(value) => setPortions(value)}
-        />
-      </View>
-      <View>
-        <Input
-          placeholder="Instrukcie"
-          onChangeText={(value) => setInstructions(value)}
-          inputStyle={{ minHeight: 200 }}
-        />
-      </View>
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <StringInput
+          placeholder="Nazov"
+          setValue={setValue}
+          isValid={setIsValid}
+        />
+        <NumberInput
+          placeholder="Pocet Porcii"
+          setValue={setPortions}
+          isValid={setIsValid}
+        />
+        <StringInput
+          placeholder="Instrukcie"
+          setValue={setInstructions}
+          isValid={setIsValid}
+        />
         <MultiSelector
           value="tag"
           setter={setTags}
           label="Tagy"
           notFoundText="Ziadny tag sa nenasiel"
         />
-        <View>
-          <MultiSelector
-            value="food"
-            setter={handleFoodsChange}
-            label="Potraviny"
-            notFoundText="Ziadna potravina sa nenasla"
-          />
-        </View>
-        <View>
-          {foods.length > 0 && (
-            <FoodCardList items={foods} updateItem={updateFood} />
-          )}
-        </View>
+        <MultiSelector
+          value="food"
+          setter={handleFoodsChange}
+          label="Potraviny"
+          notFoundText="Ziadna potravina sa nenasla"
+        />
+
+        {foods.length > 0 && (
+          <FoodCardList items={foods} updateItem={updateFood} />
+        )}
         <View>
           <Button title="Pridat" onPress={handleSave} />
         </View>

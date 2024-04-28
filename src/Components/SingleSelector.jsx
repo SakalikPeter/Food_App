@@ -1,11 +1,10 @@
 import React from "react";
 import { View } from "react-native";
-import { MultipleSelectList } from "react-native-dropdown-select-list";
+import { SelectList } from "react-native-dropdown-select-list";
 import { loadList } from "../Components/DataHandler";
 
-const MultiSelector = (props) => {
+const SingleSelector = (props) => {
   const [items, setItems] = React.useState([]);
-  const [filters, setFilters] = React.useState([]);
 
   React.useEffect(() => {
     loadList(props.value)
@@ -13,17 +12,12 @@ const MultiSelector = (props) => {
       .catch((error) => console.error(error));
   }, []);
 
-  React.useEffect(() => {
-    const filteredItems = items.filter((item) => filters.includes(item.key));
-    props.setter(filteredItems);
-  }, [filters]);
-
   return (
     <View>
-      <MultipleSelectList
-        setSelected={(val) => setFilters(val)}
+      <SelectList
+        setSelected={(val) => props.setter(val)}
         data={items}
-        save="key"
+        save="value"
         label={props.label}
         placeholder={props.label}
         searchPlaceholder={props.label}
@@ -33,4 +27,4 @@ const MultiSelector = (props) => {
   );
 };
 
-export default MultiSelector;
+export default SingleSelector;

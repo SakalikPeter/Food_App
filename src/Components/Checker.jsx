@@ -4,21 +4,19 @@ const notNumber = "Hodnota musi byt cislo.";
 
 const checkStringInput = (value) => {
   if (value === "") {
-    return { value: false, msg: emptyString };
-  } else if (typeof value !== "string") {
-    return { value: false, msg: notString };
+    return emptyString;
   } else {
-    return { value: true, msg: "" };
+    return "";
   }
 };
 
 const checkNumberInput = (value) => {
   if (value === "") {
-    return { value: false, msg: emptyString };
-  } else if (typeof value !== "number") {
-    return { value: false, msg: notNumber };
+    return emptyString;
+  } else if (!parseInt(value)) {
+    return notNumber;
   } else {
-    return { value: true, msg: "" };
+    return "";
   }
 };
 

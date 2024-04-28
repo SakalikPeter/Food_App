@@ -1,9 +1,11 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { Card, Input } from "react-native-elements";
+import { Card } from "react-native-elements";
+import NumberInput from "../Components/NumberInput";
 
 const FoodCard = (props) => {
   const [item, setItem] = React.useState(props.item);
+  const [isValid, setIsValid] = React.useState(true);
 
   React.useEffect(() => {
     setItem({ ...item, inputValue: "0" });
@@ -26,9 +28,10 @@ const FoodCard = (props) => {
         <Text style={styles.name}>Jednotka: {item.unit}</Text>
       </View>
       <View>
-        <Input
+        <NumberInput
           placeholder="Mnozstvo"
-          onChangeText={(value) => handleInputChange(value)}
+          setValue={handleInputChange}
+          isValid={setIsValid}
         />
       </View>
     </Card>
