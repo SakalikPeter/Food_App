@@ -3,12 +3,12 @@ import { StyleSheet, FlatList } from "react-native";
 import { ListItem } from "react-native-elements";
 import { deleteItemByValue } from "./DataHandler";
 
-const ValueList = (props) => {
-  const updateItem = () => {
-    // () => props.navigation.navigate("UserForm", user)
+const ValueList = ({ items, filename, navigation }) => {
+  const updateItem = (item) => {
+    navigation.navigate("Pridaj Potravinu", { item: item });
   };
   const deleteItem = async (value) => {
-    const deleted = await deleteItemByValue(props.filename, value);
+    const deleted = await deleteItemByValue(filename, value);
   };
 
   const getUserItem = ({ item }) => (
@@ -20,7 +20,7 @@ const ValueList = (props) => {
         name="edit"
         size={25}
         color="orange"
-        onPress={(item) => updateItem(item)}
+        onPress={() => updateItem(item)}
       />
       <ListItem.Chevron
         name="delete"
@@ -34,7 +34,7 @@ const ValueList = (props) => {
   return (
     <FlatList
       keyExtractor={(user) => user.key.toString()}
-      data={props.items}
+      data={items}
       renderItem={getUserItem}
     />
   );

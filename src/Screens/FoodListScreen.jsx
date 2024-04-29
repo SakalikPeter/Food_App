@@ -5,7 +5,7 @@ import ValueList from "../Components/ValueList";
 import SingleSelector from "../Components/SingleSelector";
 import { loadList } from "../Components/DataHandler";
 
-function FoodListScreen() {
+function FoodListScreen({ navigation }) {
   const [items, setItems] = React.useState([]);
   const [value, setValue] = React.useState("");
   const [category, setCategory] = React.useState("");
@@ -16,7 +16,21 @@ function FoodListScreen() {
       .catch((error) => console.error(error));
   }, []);
 
-  const handleAddFood = () => {};
+  const handleAddFood = () => {
+    navigation.navigate("Pridaj Potravinu", {
+      item: {
+        value: "",
+        category: "",
+        unit: "",
+        base: "",
+        kj: "",
+        kcal: "",
+        protein: "",
+        carbs: "",
+        fat: "",
+      },
+    });
+  };
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -47,6 +61,7 @@ function FoodListScreen() {
         {items.length > 0 && (
           <ValueList
             filename="food"
+            navigation={navigation}
             items={items.filter((item) => {
               if (value && item.value !== value) return false;
               if (category && item.category !== category) return false;

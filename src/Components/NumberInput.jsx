@@ -22,6 +22,7 @@ function NumberInput(props) {
   return (
     <Input
       placeholder={energy}
+      defaultValue={props.defaultValue}
       onChangeText={(value) => handleInputChange(value)}
       errorMessage={errMsg}
     />

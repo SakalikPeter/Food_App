@@ -1,3 +1,7 @@
 {
-  "category": ["Mliecny produkt", "Nealko", "Maso", "Veggie"]
+  "category": [
+    { "key": "0", "value": "Ovocie" },
+    { "key": "1", "value": "Zelenina" },
+    { "key": "2", "value": "Maso" }
+  ]
 }

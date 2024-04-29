@@ -1,48 +1,27 @@
 import React from "react";
 import { View, Button } from "react-native";
-import { Input, Text } from "react-native-elements";
 import NumberInput from "../Components/NumberInput";
 import StringInput from "../Components/StringInput";
 import SingleSelector from "../Components/SingleSelector";
 
-function FoodItemScreen(props) {
-  const [item, setItem] = React.useState({});
-  const [value, setValue] = React.useState("");
-  const [category, setCategory] = React.useState("");
-  const [unit, setUnit] = React.useState("");
-  const [unitAmount, setUnitAmount] = React.useState("");
-  const [energy, setEnergy] = React.useState("");
-  const [calory, setCalory] = React.useState("");
-  const [protein, setProtein] = React.useState("");
-  const [carb, setCarb] = React.useState("");
-  const [fat, setFat] = React.useState("");
+function FoodItemScreen({ route, navigation }) {
+  const [value, setValue] = React.useState(route.params.item.value);
+  const [category, setCategory] = React.useState(route.params.item.category);
+  const [unit, setUnit] = React.useState(route.params.item.unit);
+  const [unitAmount, setUnitAmount] = React.useState(route.params.item.base);
+  const [energy, setEnergy] = React.useState(route.params.item.kj);
+  const [calory, setCalory] = React.useState(route.params.item.kcal);
+  const [protein, setProtein] = React.useState(route.params.item.protein);
+  const [carb, setCarb] = React.useState(route.params.item.carbs);
+  const [fat, setFat] = React.useState(route.params.item.fat);
   const [isValid, setIsValid] = React.useState({});
-
-  React.useEffect(() => {
-    if (props.item) {
-    } else {
-      setItem({
-        name: "",
-        category: "",
-        unit: "",
-        kj: "",
-        kcal: "",
-        protein: "",
-        carbs: "",
-        fat: "",
-      });
-    }
-  }, []);
-
-  const handleChange = (key, value) => {
-    setItem({ ...item, [key]: value });
-  };
 
   const handleSubmit = () => {
     const food = {
       value: value,
       category: category,
       unit: unit,
+      unitAmount: unitAmount,
       energy: energy,
       calory: calory,
       protein: protein,
@@ -57,6 +36,7 @@ function FoodItemScreen(props) {
       <View>
         <StringInput
           placeholder="Nazov"
+          defaultValue={value}
           setValue={setValue}
           isValid={setIsValid}
         />
@@ -64,18 +44,21 @@ function FoodItemScreen(props) {
       <View>
         <SingleSelector
           value="category"
+          defValue={category}
           setter={setCategory}
           label="Kategoria"
           notFoundText="Ziadna kategoria sa nenasla"
         />
         <SingleSelector
           value="unit"
+          defValue={unit}
           setter={setUnit}
           label="Jednotka"
           notFoundText="Ziadna jednotka sa nenasla"
         />
         <NumberInput
           placeholder="Mnozstvo"
+          defaultValue={unitAmount}
           setValue={setUnitAmount}
           isValid={setIsValid}
         />
@@ -83,6 +66,7 @@ function FoodItemScreen(props) {
       <View>
         <NumberInput
           placeholder="Energia"
+          defaultValue={energy}
           setValue={setEnergy}
           isValid={setIsValid}
         />
@@ -90,6 +74,7 @@ function FoodItemScreen(props) {
       <View>
         <NumberInput
           placeholder="Kalorie"
+          defaultValue={calory}
           setValue={setCalory}
           isValid={setIsValid}
         />
@@ -97,6 +82,7 @@ function FoodItemScreen(props) {
       <View>
         <NumberInput
           placeholder="Bielkoviny"
+          defaultValue={protein}
           setValue={setProtein}
           isValid={setIsValid}
         />
@@ -104,6 +90,7 @@ function FoodItemScreen(props) {
       <View>
         <NumberInput
           placeholder="Sacharidy"
+          defaultValue={carb}
           setValue={setCarb}
           isValid={setIsValid}
         />
@@ -111,6 +98,7 @@ function FoodItemScreen(props) {
       <View>
         <NumberInput
           placeholder="Tuky"
+          defaultValue={fat}
           setValue={setFat}
           isValid={setIsValid}
         />
