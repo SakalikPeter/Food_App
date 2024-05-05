@@ -1,16 +1,8 @@
 import React from "react";
 import { StyleSheet, FlatList } from "react-native";
 import { ListItem } from "react-native-elements";
-import { deleteItemByValue } from "./DataHandler";
 
-const ValueList = ({ items, filename, navigation }) => {
-  const updateItem = (item) => {
-    navigation.navigate("Pridaj Potravinu", { item: item });
-  };
-  const deleteItem = async (value) => {
-    const deleted = await deleteItemByValue(filename, value);
-  };
-
+const ValueList = ({ items, updateItem, removeItem }) => {
   const getUserItem = ({ item }) => (
     <ListItem bottomDivider>
       <ListItem.Content>
@@ -26,7 +18,7 @@ const ValueList = ({ items, filename, navigation }) => {
         name="delete"
         size={25}
         color="red"
-        onPress={() => deleteItem(item.value)}
+        onPress={() => removeItem(item.key)}
       />
     </ListItem>
   );

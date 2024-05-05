@@ -1,34 +1,26 @@
-import { loadList } from "../Components/DataHandler";
-
-const calculator = async (recipeFoods) => {
-  let foods = [];
+const calculator = (recipeFoods, foods) => {
   let units = [];
+  let totalKJ = 0;
   let totalKcal = 0;
   let totalProtein = 0;
   let totalCarbs = 0;
-
-  try {
-    foods = await loadList("food");
-    units = await loadList("unit");
-  } catch (error) {
-    console.error(error);
-  }
+  let totalFat = 0;
 
   recipeFoods.forEach((item) => {
     // find food from catalog
     const food = foods.find((food) => food.key === item.key);
     if (food) {
-      const { kcal, protein, carbs } = food;
+      const { kj, kcal, protein, carbs, fat } = food;
       // find food's unit
       const unit = units.find((unit) => unit.value === food.unit);
-
-      totalKcal += (kcal / unit.base) * item.amount;
-      console.log(protein, unit.base, item.amount);
-      totalProtein += (protein / unit.base) * item.amount;
-      totalCarbs += (carbs / unit.base) * item.amount;
+      totalKJ += (kj / food.base) * item.amount;
+      totalKcal += (kcal / food.base) * item.amount;
+      totalProtein += (protein / food.base) * item.amount;
+      totalCarbs += (carbs / food.base) * item.amount;
+      totalFat += (fat / food.base) * item.amount;
     }
   });
-  return { totalKcal, totalProtein, totalCarbs };
+  return { totalKJ, totalKcal, totalProtein, totalCarbs, totalFat };
 };
 
 export { calculator };

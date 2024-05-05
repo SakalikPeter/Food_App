@@ -1,3 +1,5 @@
+// import RNFS from "react-native-fs";
+
 const loadJsonData = async (filename) => {
   try {
     const response = await fetch(`../data/${filename}.json`);
@@ -37,11 +39,6 @@ const loadUniqueValues = async (filename) => {
   }
 };
 
-const saveItem = async (filename, item) => {
-  console.log("Ukladam");
-  console.log(item);
-};
-
 const deleteItemByValue = async (filename, value) => {
   try {
     const data = await loadList(filename);
@@ -55,7 +52,7 @@ const deleteItemByValue = async (filename, value) => {
     data.splice(indexToDelete, 1);
 
     // Save modified data back to file
-    // saveJsonData(filename, data);
+    await saveJsonData(filename, { [filename]: data });
 
     console.log(`Item with name '${value}' deleted successfully`);
   } catch (error) {
@@ -64,22 +61,27 @@ const deleteItemByValue = async (filename, value) => {
   }
 };
 
-// const saveJsonData = (filename, data) => {
-//   const jsonData = JSON.stringify(data, null, 2);
+// import localStorage from "@react-native-async-storage/async-storage";
 
-//   RNFS.writeFile(`../data/food.json`, jsonData, "utf-8")
-//     .then((success) => {
-//       console.log("FILE WRITTEN");
-//     })
-//     .catch((err) => {
-//       console.log(err.message);
-//     });
+// const saveJsonData = async (filename, data) => {
+//   console.log(filename);
+//   console.log(data);
+//   try {
+//     await localStorage.setItem(
+//       `../data/${filename}.json`,
+//       JSON.stringify(data)
+//     );
+//     console.log(`Data saved to ${filename} successfully`);
+//   } catch (error) {
+//     console.error("Error saving data:", error);
+//     throw error;
+//   }
 // };
 
 export {
   loadJsonData,
   loadUniqueValues,
-  saveItem,
+  // saveJsonData,
   loadList,
   deleteItemByValue,
 };

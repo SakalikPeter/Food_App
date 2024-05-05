@@ -8,6 +8,7 @@ const FoodCard = (props) => {
   const [isValid, setIsValid] = React.useState(true);
 
   React.useEffect(() => {
+    console.log(props);
     setItem({ ...item, inputValue: "0" });
   }, []);
 
@@ -18,23 +19,26 @@ const FoodCard = (props) => {
   }
 
   return (
-    <Card key={item.value}>
-      <Card.Title>{item.value}</Card.Title>
-      <Card.Divider />
-      <View style={styles.user}>
-        <Text style={styles.name}>Kategoria: {item.category}</Text>
-      </View>
-      <View>
-        <Text style={styles.name}>Jednotka: {item.unit}</Text>
-      </View>
-      <View>
-        <NumberInput
-          placeholder="Mnozstvo"
-          setValue={handleInputChange}
-          isValid={setIsValid}
-        />
-      </View>
-    </Card>
+    <View>
+      <Card key={item.value}>
+        <Card.Title>{item.value}</Card.Title>
+        <Card.Divider />
+        <View style={styles.user}>
+          <Text style={styles.name}>Kategoria: {item.category}</Text>
+        </View>
+        <View>
+          <Text style={styles.name}>Jednotka: {item.unit}</Text>
+        </View>
+        <View>
+          <NumberInput
+            placeholder="Mnozstvo"
+            defaultValue={props.defaultValue}
+            setValue={handleInputChange}
+            isValid={setIsValid}
+          />
+        </View>
+      </Card>
+    </View>
   );
 };
 

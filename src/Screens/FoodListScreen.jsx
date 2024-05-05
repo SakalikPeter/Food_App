@@ -1,23 +1,31 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Modal, ScrollView } from "react-native";
 import { Button } from "react-native-elements";
 import ValueList from "../Components/ValueList";
 import SingleSelector from "../Components/SingleSelector";
-import { loadList } from "../Components/DataHandler";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFood } from "../../store/redux/food";
 
 function FoodListScreen({ navigation }) {
-  const [items, setItems] = React.useState([]);
+  const items = useSelector((state) => state.food.items);
+  const dispatch = useDispatch();
+
   const [value, setValue] = React.useState("");
   const [category, setCategory] = React.useState("");
+  const [filters, setFilters] = React.useState(false);
 
-  React.useEffect(() => {
-    loadList("food")
-      .then((data) => setItems(data))
-      .catch((error) => console.error(error));
-  }, []);
-
+  const updateItem = (item) => {
+    navigation.navigate("Potravina", { item: item });
+  };
+  const removeItem = (value) => {
+    dispatch(removeFood(value));
+    // TODO: remove Alert
+  };
+  const handleFilters = () => {
+    setFilters(!filters);
+  };
   const handleAddFood = () => {
-    navigation.navigate("Pridaj Potravinu", {
+    navigation.navigate("Potravina", {
       item: {
         value: "",
         category: "",
@@ -34,34 +42,42 @@ function FoodListScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Modal visible={filters} animationType="slide">
+        {/* <View>
+          <View>
+            <SingleSelector
+              value="food"
+              setter={setValue}
+              label="Potravina"
+              notFoundText="Ziadna potravina sa nenasla"
+            />
+            <Button title="Zrus" onPress={() => setValue("")} />
+          </View>
+          <View>
+            <SingleSelector
+              value="category"
+              setter={setCategory}
+              label="Kategoria"
+              notFoundText="Ziadna kategoria sa nenasla"
+            />
+            <Button title="Zrus" onPress={() => setCategory("")} />
+          </View>
+        </View> */}
+        <View>
+          <Button title="Filtre Zavriet" onPress={handleFilters} />
+        </View>
+      </Modal>
+      <View>
+        <Button title="Filtre" onPress={handleFilters} />
+      </View>
       <View>
         <Text>Food List page</Text>
       </View>
-      <View>
-        <View>
-          <SingleSelector
-            value="food"
-            setter={setValue}
-            lable="Potravina"
-            notFoundText="Ziadna potravina sa nenasla"
-          />
-          <Button title="Zrus" onPress={() => setValue("")} />
-        </View>
-        <View>
-          <SingleSelector
-            value="category"
-            setter={setCategory}
-            lable="Kategoria"
-            notFoundText="Ziadna kategoria sa nenasla"
-          />
-          <Button title="Zrus" onPress={() => setCategory("")} />
-        </View>
-      </View>
-      <View>
+      <ScrollView>
         {items.length > 0 && (
           <ValueList
-            filename="food"
-            navigation={navigation}
+            updateItem={updateItem}
+            removeItem={removeItem}
             items={items.filter((item) => {
               if (value && item.value !== value) return false;
               if (category && item.category !== category) return false;
@@ -69,7 +85,7 @@ function FoodListScreen({ navigation }) {
             })}
           />
         )}
-      </View>
+      </ScrollView>
       <View>
         <Button
           title="Pridat"
