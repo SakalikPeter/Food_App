@@ -1,4 +1,6 @@
-{
+import json
+
+food = {
   "food": [
     {
       "value": "Hus",
@@ -2539,3 +2541,17 @@
     }
   ]
 }
+
+
+
+
+for i, item in enumerate(food["food"]):
+    # print(item, i)
+    item["key"] = i
+    # print(item, i)
+    
+
+json_object = json.dumps(food, indent=4)
+
+with open("sample.json", "w") as of:
+    of.write(json_object)

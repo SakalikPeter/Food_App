@@ -16,11 +16,20 @@ const foodSlice = createSlice({
   },
 });
 
-export const selectFoodByKey = (key) =>
-  createSelector(
-    (state) => state.food.items,
-    (items) => items.some((item) => item.key === key)
-  );
+export const selectMaxKey = createSelector(
+  (state) => state.food.items, // Access items directly from the state
+  (items) => {
+    if (!items || items.length === 0) {
+      return 1; // Return 1 if items is empty or undefined
+    }
+    const maxKey =
+      items.reduce(
+        (max, item) => (item.key > max ? item.key : max),
+        -Infinity
+      ) + 1;
+    return maxKey;
+  }
+);
 
 export const { addFood, removeFood } = foodSlice.actions;
 export default foodSlice.reducer;

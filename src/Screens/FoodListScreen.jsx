@@ -27,15 +27,16 @@ function FoodListScreen({ navigation }) {
   const handleAddFood = () => {
     navigation.navigate("Potravina", {
       item: {
+        key: null,
         value: "",
         category: "",
         unit: "",
-        base: "",
-        kj: "",
-        kcal: "",
-        protein: "",
-        carbs: "",
-        fat: "",
+        base: 0,
+        kj: 0,
+        kcal: 0,
+        protein: 0,
+        carbs: 0,
+        fat: 0,
       },
     });
   };
@@ -43,7 +44,7 @@ function FoodListScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Modal visible={filters} animationType="slide">
-        {/* <View>
+        <View>
           <View>
             <SingleSelector
               value="food"
@@ -62,7 +63,7 @@ function FoodListScreen({ navigation }) {
             />
             <Button title="Zrus" onPress={() => setCategory("")} />
           </View>
-        </View> */}
+        </View>
         <View>
           <Button title="Filtre Zavriet" onPress={handleFilters} />
         </View>
@@ -73,19 +74,17 @@ function FoodListScreen({ navigation }) {
       <View>
         <Text>Food List page</Text>
       </View>
-      <ScrollView>
-        {items.length > 0 && (
-          <ValueList
-            updateItem={updateItem}
-            removeItem={removeItem}
-            items={items.filter((item) => {
-              if (value && item.value !== value) return false;
-              if (category && item.category !== category) return false;
-              return true;
-            })}
-          />
-        )}
-      </ScrollView>
+      {items.length > 0 && (
+        <ValueList
+          updateItem={updateItem}
+          removeItem={removeItem}
+          items={items.filter((item) => {
+            if (value && item.value !== value) return false;
+            if (category && item.category !== category) return false;
+            return true;
+          })}
+        />
+      )}
       <View>
         <Button
           title="Pridat"

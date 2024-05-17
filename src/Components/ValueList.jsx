@@ -1,33 +1,47 @@
 import React from "react";
-import { StyleSheet, FlatList } from "react-native";
-import { ListItem } from "react-native-elements";
+import {
+  StyleSheet,
+  FlatList,
+  Text,
+  View,
+  StatusBar,
+  TouchableOpacity,
+} from "react-native";
+
+const Item = ({ item, onPress, backgroundColor, textColor }) => (
+  <View style={styles.item}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.item, { backgroundColor, textColor }]}
+    >
+      <Text style={styles.title}>{item.value}</Text>
+      <Text>{item.category}</Text>
+      <Text>{item.unit + item.base}</Text>
+    </TouchableOpacity>
+  </View>
+);
 
 const ValueList = ({ items, updateItem, removeItem }) => {
-  const getUserItem = ({ item }) => (
-    <ListItem bottomDivider>
-      <ListItem.Content>
-        <ListItem.Title>{item.value}</ListItem.Title>
-      </ListItem.Content>
-      <ListItem.Chevron
-        name="edit"
-        size={25}
-        color="orange"
-        onPress={() => updateItem(item)}
-      />
-      <ListItem.Chevron
-        name="delete"
-        size={25}
-        color="red"
-        onPress={() => removeItem(item.key)}
-      />
-    </ListItem>
-  );
+  const [selectedId, setSelectedId] = React.useState();
 
+  const renderItem = ({ item }) => {
+    const backgroundColor = item.key === selectedId ? "#6e3b6e" : "#f9c2ff";
+    const color = item.key === selectedId ? "white" : "black";
+
+    return (
+      <Item
+        item={item}
+        onPress={() => updateItem(item)}
+        backgroundColor={backgroundColor}
+        textColor={color}
+      />
+    );
+  };
   return (
     <FlatList
       keyExtractor={(user) => user.key.toString()}
       data={items}
-      renderItem={getUserItem}
+      renderItem={renderItem}
     />
   );
 };
@@ -37,11 +51,14 @@ export default ValueList;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 50,
+    marginTop: StatusBar.currentHeight || 0,
   },
   item: {
     padding: 20,
-    fontSize: 15,
-    marginTop: 5,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
   },
 });

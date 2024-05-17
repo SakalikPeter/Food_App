@@ -2,28 +2,39 @@ import React from "react";
 import { Input } from "react-native-elements";
 import { checkStringInput } from "./Checker";
 
-function StringInput(props) {
-  const energy = props.placeholder;
+function StringInput({ label, defaultValue, itemKey, setItem, setValid }) {
   const [errMsg, setErrMsg] = React.useState("");
+  const [inputValue, setInputValue] = React.useState(defaultValue);
 
   React.useEffect(() => {
-    if (!errMsg) {
-      props.isValid(true);
+    handleInputChange(defaultValue);
+  }, []);
+
+  React.useEffect(() => {
+    if (errMsg === "") {
+      setValid(itemKey, true);
     } else {
-      props.isValid(false);
+      setValid(itemKey, false);
     }
   }, [errMsg]);
 
   const handleInputChange = (value) => {
-    props.setValue(value);
+    setItem(itemKey, value);
+    setInputValue(value);
     setErrMsg(checkStringInput(value));
+  };
+
+  const handleBlur = () => {
+    console.log(inputValue);
+    setErrMsg(checkStringInput(inputValue));
   };
 
   return (
     <Input
-      placeholder={energy}
-      defaultValue={props.defaultValue}
+      label={label}
+      defaultValue={defaultValue}
       onChangeText={(value) => handleInputChange(value)}
+      onBlur={handleBlur}
       errorMessage={errMsg}
     />
   );

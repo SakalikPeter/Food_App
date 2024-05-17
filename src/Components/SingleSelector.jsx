@@ -1,35 +1,59 @@
 import React from "react";
-import { View } from "react-native";
+import { TextInput, View } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
-import { loadList } from "../Components/DataHandler";
+import { useSelector } from "react-redux";
 
-const SingleSelector = (props) => {
-  const [items, setItems] = React.useState([]);
-  const [defValue, setDefValue] = React.useState({});
+const SingleSelector = ({
+  itemKey,
+  defValue,
+  setItem,
+  setValid,
+  label,
+  notFoundText,
+}) => {
+  const [defaultOption, setDefaultOption] = React.useState(null);
+  const [borderColor, setBorderColor] = React.useState(null);
+  let items = [];
+  if (itemKey === "unit") {
+    items = useSelector((state) => state.unit.items);
+  } else if (itemKey === "category") {
+    items = useSelector((state) => state.category.items);
+  }
 
   React.useEffect(() => {
-    loadList(props.value)
-      .then((data) => {
-        setItems(data);
-        if ("defValue" in props) {
-          setDefValue(data.filter((item) => item.value === props.defValue)[0]);
-        }
-      })
-      .catch((error) => console.error(error));
+    // handleInputChange(defValue);
+    if (defValue !== "") {
+      setDefaultOption(items.filter((item) => item.value === defValue)[0]);
+      setValid(itemKey, true);
+    } else {
+      setValid(itemKey, false);
+      setBorderColor("red");
+    }
   }, []);
+
+  const handleInputChange = (value) => {
+    setItem(itemKey, value);
+    setValid(itemKey, true);
+    setBorderColor(null);
+    // setErrMsg(checkStringInput(value));
+  };
 
   return (
     <View>
       <SelectList
-        setSelected={(val) => props.setter(val)}
-        defaultOption={defValue}
+        setSelected={(val) => handleInputChange(val)}
+        defaultOption={defaultOption}
         data={items}
         save="value"
-        label={props.label}
-        placeholder={props.label}
-        searchPlaceholder={props.label}
-        notFoundText={props.notFoundText}
+        label={label}
+        placeholder={label}
+        searchPlaceholder={label}
+        notFoundText={notFoundText}
+        boxStyles={{ borderColor: borderColor }}
       />
+      {borderColor && (
+        <TextInput style={{ color: borderColor }}>*Vyberte hodnotu</TextInput>
+      )}
     </View>
   );
 };

@@ -2,29 +2,36 @@ import React from "react";
 import { Input } from "react-native-elements";
 import { checkNumberInput } from "./Checker";
 
-function NumberInput(props) {
-  const energy = props.placeholder;
+function NumberInput({ label, defaultValue, itemKey, setItem, setValid }) {
   const [errMsg, setErrMsg] = React.useState("");
+  const [inputValue, setInputValue] = React.useState(defaultValue);
 
   React.useEffect(() => {
-    if (!errMsg) {
-      props.isValid(true);
+    if (errMsg === "") {
+      setValid(itemKey, true);
     } else {
-      props.isValid(false);
+      setValid(itemKey, false);
     }
   }, [errMsg]);
 
   const handleInputChange = (value) => {
-    props.setValue(value);
+    setItem(itemKey, value);
+    setInputValue(value);
     setErrMsg(checkNumberInput(value));
+  };
+
+  const handleBlur = () => {
+    setErrMsg(checkNumberInput(inputValue));
   };
 
   return (
     <Input
-      placeholder={energy}
-      defaultValue={props.defaultValue}
+      label={label}
+      defaultValue={defaultValue.toString()}
       onChangeText={(value) => handleInputChange(value)}
+      onBlur={handleBlur}
       errorMessage={errMsg}
+      keyboardType="decimal-pad"
     />
   );
 }

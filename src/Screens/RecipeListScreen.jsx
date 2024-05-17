@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Modal } from "react-native";
 import ValueList from "../Components/ValueList";
-import SingleSelector from "../Components/SingleSelector";
-import MultiSelector from "../Components/MultiSelector";
+
+import Selector from "../Components/Selector";
 import { Button } from "react-native-elements";
 import { useSelector, useDispatch } from "react-redux";
 import { removeRecipe } from "../../store/redux/recipe";
@@ -73,7 +73,16 @@ function RecipeListScreen({ navigation }) {
           <Button title="Filtre Zavriet" onPress={handleFilters} />
         </View>
       </Modal> */}
-      <View>
+
+      <Selector
+        items={items.map((item) => ({
+          value: item.key,
+          label: item.value,
+        }))}
+        values={[]}
+        multiple={false}
+      />
+      {/* <View>
         <Button title="Filtre" onPress={handleFilters} />
       </View>
       <View>
@@ -121,7 +130,7 @@ function RecipeListScreen({ navigation }) {
             marginVertical: 10,
           }}
         />
-      </View>
+      </View> */}
     </View>
   );
 }

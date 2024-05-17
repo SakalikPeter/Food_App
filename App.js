@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 
 function Root() {
   return (
-    <Drawer.Navigator initialRouteName="Recepty">
+    <Drawer.Navigator initialRouteName="Potraviny">
       <Drawer.Screen name="Domov" component={HomeScreen} />
       <Drawer.Screen name="Recepty" component={RecipeListScreen} />
       <Drawer.Screen name="Potraviny" component={FoodListScreen} />
@@ -27,9 +27,9 @@ function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator mode="card" screenOptions={{ cardStyle: { flex: 1 } }}>
+        <Stack.Navigator screenOptions={{ cardStyle: { flex: 1 } }}>
           <Stack.Screen
-            options={{ headerShown: false }}
+            options={{ headerShown: false, presentation: "card" }}
             name="Root"
             component={Root}
           />
