@@ -1,12 +1,16 @@
 import React from "react";
-import { View, Button, ScrollView } from "react-native";
+import { View, Button, ScrollView, Alert } from "react-native";
 import NumberInput from "../Components/NumberInput";
 import StringInput from "../Components/StringInput";
 import SingleSelector from "../Components/SingleSelector";
 import { useSelector, useDispatch } from "react-redux";
-import { addFood, selectMaxKey } from "../../store/redux/food";
+import { addFood, updateFood } from "../../store/redux/food";
 
 function FoodItemScreen({ route, navigation }) {
+  const maxKey = useSelector((state) => state.food.items.reduce(
+    (max, item) => (item.key > max ? item.key : max),
+    -Infinity
+  ) + 1);
   const dispatch = useDispatch();
   const item = {
     key: route.params.item.key,
@@ -21,7 +25,7 @@ function FoodItemScreen({ route, navigation }) {
     fat: route.params.item.fat,
   };
   const valid = {
-    value: item.value ? true : false,
+    value: item.value >= 0 ? true : false,
     category: item.category ? true : false,
     unit: item.unit ? true : false,
     base: true,
@@ -40,29 +44,22 @@ function FoodItemScreen({ route, navigation }) {
   };
 
   const handleSubmit = () => {
-    console.log(valid);
     console.log(Object.values(valid).every((value) => value === true));
 
     if (Object.values(valid).every((value) => value === true)) {
-      console.log("som tu");
-      if (item.key) {
+      if (item.key >= 0) {
+        dispatch(updateFood(item))
       } else {
-        // TODO check if exist
-        const maxKey = useSelector(selectMaxKey);
         setItem("key", maxKey);
         dispatch(addFood(item));
       }
       navigation.goBack();
     }
-    // if (itemExists) {
-    //   dispatch(removeFood(food));
-    //   dispatch(addFood(food));
-    //   // TODO: update alert
-    // } else {
-    //   // TODO: add key
-    //   dispatch(addFood(food));
-    //   // TODO: add alert
-    // }
+    else {
+      Alert.alert('Alert Title', 'My Alert Msg', [
+        {text: 'OK'},
+      ]);
+    }
   };
 
   return (

@@ -27,7 +27,7 @@ function FoodListScreen({ navigation }) {
   const handleAddFood = () => {
     navigation.navigate("Potravina", {
       item: {
-        key: null,
+        key: -1,
         value: "",
         category: "",
         unit: "",
