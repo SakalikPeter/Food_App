@@ -1,28 +1,49 @@
 import React from "react";
-import { Text, View, Modal, ScrollView } from "react-native";
-import { Button } from "react-native-elements";
+import { Pressable, View, Alert, StyleSheet } from "react-native";
+import { Icon } from "react-native-elements";
 import ValueList from "../Components/ValueList";
-import SingleSelector from "../Components/SingleSelector";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFood } from "../../store/redux/food";
+import FoodItemModal from "../Components/Modals/FoodItemModal/FoodItemModal";
+import BaseSearchBar from "../Components/SearchBars/BaseSearchBar/BaseSearchBar";
 
 function FoodListScreen({ navigation }) {
   const items = useSelector((state) => state.food.items);
   const dispatch = useDispatch();
 
   const [value, setValue] = React.useState("");
-  const [category, setCategory] = React.useState("");
-  const [filters, setFilters] = React.useState(false);
+  const [item, setItem] = React.useState(null);
+  const [itemVisible, setItemVisible] = React.useState(false);
 
   const updateItem = (item) => {
+    hideItem();
     navigation.navigate("Potravina", { item: item });
   };
-  const removeItem = (value) => {
-    dispatch(removeFood(value));
-    // TODO: remove Alert
+  const showItem = (item) => {
+    setItemVisible(true);
+    setItem(item);
   };
-  const handleFilters = () => {
-    setFilters(!filters);
+  const hideItem = () => {
+    console.log(item);
+    setItemVisible(false);
+    setItem(null);
+    setValue("");
+  };
+  const removeItem = (item) => {
+    Alert.alert("Alert Title", `${item.value}`, [
+      {
+        text: "Zrusit",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      {
+        text: "ANO",
+        onPress: () => {
+          dispatch(removeFood(item.key));
+          hideItem();
+        },
+      },
+    ]);
   };
   const handleAddFood = () => {
     navigation.navigate("Potravina", {
@@ -42,70 +63,70 @@ function FoodListScreen({ navigation }) {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Modal visible={filters} animationType="slide">
-        <View>
-          <View>
-            <SingleSelector
-              value="food"
-              setter={setValue}
-              label="Potravina"
-              notFoundText="Ziadna potravina sa nenasla"
-            />
-            <Button title="Zrus" onPress={() => setValue("")} />
-          </View>
-          <View>
-            <SingleSelector
-              value="category"
-              setter={setCategory}
-              label="Kategoria"
-              notFoundText="Ziadna kategoria sa nenasla"
-            />
-            <Button title="Zrus" onPress={() => setCategory("")} />
-          </View>
-        </View>
-        <View>
-          <Button title="Filtre Zavriet" onPress={handleFilters} />
-        </View>
-      </Modal>
+    <View style={styles.container}>
       <View>
-        <Button title="Filtre" onPress={handleFilters} />
+        {itemVisible && (
+          <FoodItemModal
+            food={item}
+            hideFood={hideItem}
+            removeFood={removeItem}
+            updateFood={updateItem}
+          />
+        )}
       </View>
       <View>
-        <Text>Food List page</Text>
+        <BaseSearchBar value={value} setValue={setValue} />
       </View>
-      {items.length > 0 && (
-        <ValueList
-          updateItem={updateItem}
-          removeItem={removeItem}
-          items={items.filter((item) => {
-            if (value && item.value !== value) return false;
-            if (category && item.category !== category) return false;
-            return true;
-          })}
-        />
-      )}
-      <View>
-        <Button
-          title="Pridat"
-          onPress={handleAddFood}
-          loading={false}
-          loadingProps={{ size: "small", color: "white" }}
-          buttonStyle={{
-            backgroundColor: "rgba(111, 202, 186, 1)",
-            borderRadius: 5,
-          }}
-          titleStyle={{ fontWeight: "bold", fontSize: 23 }}
-          containerStyle={{
-            marginHorizontal: 50,
-            height: 50,
-            width: 200,
-            marginVertical: 10,
-          }}
-        />
+      <View style={styles.listContainer}>
+        {items.length > 0 && (
+          <ValueList
+            showItem={showItem}
+            updateItem={updateItem}
+            removeItem={removeItem}
+            items={items.filter((item) => {
+              const a = item.value.toLowerCase();
+              const b = value.toLowerCase();
+              if (value && !a.includes(b)) return false;
+              // if (category && item.category !== category) return false;
+              return true;
+            })}
+          />
+        )}
+      </View>
+      <View style={styles.addButtonContainer}>
+        <Pressable
+          style={[styles.button, styles.buttonAdd]}
+          onPress={() => handleAddFood()}
+        >
+          <Icon name="add" />
+        </Pressable>
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  listContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  addButtonContainer: {
+    alignItems: "center",
+  },
+
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonAdd: {
+    backgroundColor: "#2196F3",
+  },
+});
 
 export default FoodListScreen;

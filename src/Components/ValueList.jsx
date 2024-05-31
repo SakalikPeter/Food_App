@@ -6,6 +6,7 @@ import {
   View,
   StatusBar,
   TouchableOpacity,
+  Modal,
 } from "react-native";
 
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
@@ -21,7 +22,7 @@ const Item = ({ item, onPress, backgroundColor, textColor }) => (
   </View>
 );
 
-const ValueList = ({ items, updateItem, removeItem }) => {
+const ValueList = ({ items, showItem, updateItem, removeItem }) => {
   const [selectedId, setSelectedId] = React.useState();
 
   const renderItem = ({ item }) => {
@@ -31,7 +32,7 @@ const ValueList = ({ items, updateItem, removeItem }) => {
     return (
       <Item
         item={item}
-        onPress={() => updateItem(item)}
+        onPress={() => showItem(item)}
         backgroundColor={backgroundColor}
         textColor={color}
       />

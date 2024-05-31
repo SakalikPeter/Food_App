@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, View } from "react-native";
+import { TextInput, View, } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { useSelector } from "react-redux";
 
@@ -24,16 +24,19 @@ const SingleSelector = ({
     // handleInputChange(defValue);
     if (defValue !== "") {
       setDefaultOption(items.filter((item) => item.value === defValue)[0]);
-      setValid(itemKey, true);
+      if (setValid)
+        {setValid(itemKey, true);}
     } else {
+      if (setValid){
       setValid(itemKey, false);
-      setBorderColor("red");
+      setBorderColor("red");}
     }
   }, []);
 
   const handleInputChange = (value) => {
     setItem(itemKey, value);
-    setValid(itemKey, true);
+    if (setValid){
+    setValid(itemKey, true);}
     setBorderColor(null);
     // setErrMsg(checkStringInput(value));
   };
