@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Modal } from "react-native";
+import { View, Modal, StyleSheet, Pressable } from "react-native";
+import { Icon } from "react-native-elements";
 import ValueList from "../Components/ValueList";
-
-import Selector from "../Components/Selector";
-import { Button } from "react-native-elements";
 import { useSelector, useDispatch } from "react-redux";
 import { removeRecipe } from "../../store/redux/recipe";
+import BaseSearchBar from "../Components/SearchBars/BaseSearchBar/BaseSearchBar";
+import RecipeItemModal from "../Components/Modals/RecipeItemModal/RecipeItemModal";
 
 function RecipeListScreen({ navigation }) {
   const [value, setValue] = React.useState("");
@@ -15,16 +15,44 @@ function RecipeListScreen({ navigation }) {
   const items = useSelector((state) => state.recipe.items);
   const dispatch = useDispatch();
 
-  const updateItem = (item) => {
+  const [item, setItem] = React.useState(null);
+  const [itemVisible, setItemVisible] = React.useState(false);
+
+  const showItem = (item) => {
+    setItemVisible(true);
+    setItem(item);
+  };
+  const hideItem = () => {
+    console.log(item);
+    setItemVisible(false);
+    setItem(null);
+    setValue("");
+  };
+  const updateItem = () => {
+    hideItem();
+    // console.log("item", item)
     navigation.navigate("Recept", { item: item });
   };
-  const removeItem = (value) => {
-    dispatch(removeRecipe(value));
-    // TODO: remove Alert
+  const removeItem = () => {
+    Alert.alert("Alert Title", `${item.value}`, [
+      {
+        text: "Zrusit",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      {
+        text: "ANO",
+        onPress: () => {
+          dispatch(removeRecipe(item.key));
+          hideItem();
+        },
+      },
+    ]);
   };
   const handleAddRecipe = () => {
     navigation.navigate("Recept", {
       item: {
+        key: -1,
         value: "",
         portions: "",
         instructions: "",
@@ -33,65 +61,32 @@ function RecipeListScreen({ navigation }) {
       },
     });
   };
-  const handleFilters = () => {
-    setFilters(!filters);
-  };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      {/* <Modal visible={filters} animationType="slide">
-        <View>
-          <View>
-            <SingleSelector
-              value="recipe"
-              setter={setValue}
-              label="Recept"
-              notFoundText="Ziadny recept sa nenasiel"
-            />
-            <Button title="Zrus" onPress={() => setValue("")} />
-          </View>
-          <View>
-            <MultiSelector
-              value="tag"
-              setter={setTags}
-              label="Tagy"
-              notFoundText="Ziadny tag sa nenasiel"
-            />
-            <Button title="Zrus" onPress={() => setTags([])} />
-          </View>
-          <View>
-            <MultiSelector
-              value="food"
-              setter={setFoods}
-              label="Potraviny"
-              notFoundText="Ziadna potravina sa nenasla"
-            />
-            <Button title="Zrus" onPress={() => setFoods([])} />
-          </View>
-        </View>
-        <View>
-          <Button title="Filtre Zavriet" onPress={handleFilters} />
-        </View>
-      </Modal> */}
-
-      <Selector
-        items={items.map((item) => ({
-          value: item.key,
-          label: item.value,
-        }))}
-        values={[]}
-        multiple={false}
-      />
-      {/* <View>
-        <Button title="Filtre" onPress={handleFilters} />
+    <View style={styles.container}>
+      <View>
+        {itemVisible && (
+          <RecipeItemModal
+            recipe={item}
+            hideRecipe={hideItem}
+            removeRecipe={removeItem}
+            updateRecipe={updateItem}
+          />
+        )}
       </View>
       <View>
+        <BaseSearchBar value={value} setValue={setValue} />
+      </View>
+      <View style={styles.listContainer}>
         {items.length > 0 && (
           <ValueList
+            showItem={showItem}
             updateItem={updateItem}
             removeItem={removeItem}
             items={items.filter((item) => {
-              if (value && item.value !== value) return false;
+              const a = item.value.toLowerCase();
+              const b = value.toLowerCase();
+              if (value && !a.includes(b)) return false;
               if (
                 tags.length > 0 &&
                 !tags.every((tag) => item.tags.includes(tag))
@@ -112,27 +107,39 @@ function RecipeListScreen({ navigation }) {
           />
         )}
       </View>
-      <View>
-        <Button
-          title="Pridat"
-          onPress={handleAddRecipe}
-          loading={false}
-          loadingProps={{ size: "small", color: "white" }}
-          buttonStyle={{
-            backgroundColor: "rgba(111, 202, 186, 1)",
-            borderRadius: 5,
-          }}
-          titleStyle={{ fontWeight: "bold", fontSize: 23 }}
-          containerStyle={{
-            marginHorizontal: 50,
-            height: 50,
-            width: 200,
-            marginVertical: 10,
-          }}
-        />
-      </View> */}
+      <View style={styles.addButtonContainer}>
+        <Pressable
+          style={[styles.button, styles.buttonAdd]}
+          onPress={() => handleAddRecipe()}
+        >
+          <Icon name="add" />
+        </Pressable>
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  listContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  addButtonContainer: {
+    alignItems: "center",
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonAdd: {
+    backgroundColor: "#2196F3",
+  },
+});
 
 export default RecipeListScreen;

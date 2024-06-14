@@ -1,4 +1,5 @@
 const calculator = (recipeFoods, foods) => {
+  console.log("calculator: ", recipeFoods)
   let units = [];
   let totalKJ = 0;
   let totalKcal = 0;
@@ -8,7 +9,7 @@ const calculator = (recipeFoods, foods) => {
 
   recipeFoods.forEach((item) => {
     // find food from catalog
-    const food = foods.find((food) => food.key === item.key);
+    const food = foods.find((food) => food.value + " (" + food.category + ")" === item.value);
     if (food) {
       const { kj, kcal, protein, carbs, fat } = food;
       // find food's unit

@@ -1,29 +1,34 @@
 import React from "react";
 import { View } from "react-native";
-import { MultipleSelectList } from "react-native-dropdown-select-list";
-import { useSelector, useDispatch } from "react-redux";
-import { removeRecipe } from "../../store/redux/recipe";
+import { useSelector } from "react-redux";
+import { MultipleSelectList } from "@pncodebreaker/react-native-dropdown-select-list";
 
-const MultiSelector = (props) => {
-  const [filters, setFilters] = React.useState([]);
+const MultiSelector = ({
+  itemKey,
+  items,
+  defValue,
+  setItem,
+  setValid,
+  label,
+  notFoundText,
+}) => {
+  const [selectedItems, setSelectedItems] = React.useState(defValue)
 
   React.useEffect(() => {
-    const filteredItems = props.items.filter((item) =>
-      filters.includes(item.key)
-    );
-    props.setter(filteredItems);
-  }, [filters]);
+    setItem(itemKey, selectedItems)
+  }, [selectedItems])
 
   return (
     <View>
       <MultipleSelectList
-        setSelected={(val) => setFilters(val)}
-        data={props.items}
-        save="key"
-        label={props.label}
-        placeholder={props.label}
-        searchPlaceholder={props.label}
-        notFoundText={props.notFoundText}
+        setSelected={(val) => setSelectedItems(val)}
+        data={items}
+        save="value"
+        label={label}
+        placeholder={label}
+        searchPlaceholder={label}
+        notFoundText={notFoundText}
+        defaultOption={defValue}
       />
     </View>
   );

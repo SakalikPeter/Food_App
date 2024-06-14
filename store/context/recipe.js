@@ -5,15 +5,12 @@ recipeItems = [
     portions: 4,
     food: [
       {
-        value: "Jahoda",
+        value: "Jahody (Su\u0161en\u00e9 ovocie)",
         amount: 100,
-      },
-      {
-        value: "test2",
-        amount: 2,
+        valid: true
       },
     ],
-    tags: ["ranajky", "obed", "vecera"],
+    tags: ["Ranajky", "Obed", "Vecera"],
     instruction: "",
   },
   {

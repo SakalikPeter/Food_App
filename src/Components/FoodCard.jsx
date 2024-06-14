@@ -3,19 +3,14 @@ import { Text, View, StyleSheet } from "react-native";
 import { Card } from "react-native-elements";
 import NumberInput from "../Components/NumberInput";
 
-const FoodCard = (props) => {
-  const [item, setItem] = React.useState(props.item);
-  const [isValid, setIsValid] = React.useState(true);
-
-  React.useEffect(() => {
-    console.log(props);
-    setItem({ ...item, inputValue: "0" });
-  }, []);
-
-  function handleInputChange(value) {
-    const updatedItem = { ...item, inputValue: value };
-    setItem(updatedItem);
-    props.updateItem(updatedItem);
+const FoodCard = ({item, setCard}) => {
+  const setValid = (key, newValue) => {
+    // item = {...item, valid: newValue}
+    // setCard(item)
+  }
+  const setValue = (key, newValue) => {
+    item = {...item, amount: newValue}
+    setCard(item)
   }
 
   return (
@@ -23,18 +18,19 @@ const FoodCard = (props) => {
       <Card key={item.value}>
         <Card.Title>{item.value}</Card.Title>
         <Card.Divider />
-        <View style={styles.user}>
+        {/* <View style={styles.user}>
           <Text style={styles.name}>Kategoria: {item.category}</Text>
         </View>
         <View>
           <Text style={styles.name}>Jednotka: {item.unit}</Text>
-        </View>
+        </View> */}
         <View>
           <NumberInput
-            placeholder="Mnozstvo"
-            defaultValue={props.defaultValue}
-            setValue={handleInputChange}
-            isValid={setIsValid}
+            label="Mnozstvo"
+            defaultValue={item.amount}
+            itemKey="food"
+            setItem={setValue}
+            setValid={setValid}
           />
         </View>
       </Card>

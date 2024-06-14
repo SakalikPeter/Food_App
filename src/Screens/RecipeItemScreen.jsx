@@ -11,23 +11,69 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addRecipe,
   removeRecipe,
-  selectRecipeByKey,
+  updateRecipe,
 } from "../../store/redux/recipe";
 
 function RecipeItemScreen({ route, navigation }) {
-  const key = route.params.item.key || 100;
-  const [value, setValue] = React.useState(route.params.item.value);
-  const [portions, setPortions] = React.useState(route.params.item.portions);
-  const [instructions, setInstructions] = React.useState(
-    route.params.item.instructions
+  // recipe item
+  const item = {
+    key: route.params.item.key,
+    value: route.params.item.value,
+    portions: route.params.item.portions,
+    instructions: route.params.item.instructions,
+    tags: route.params.item.tags,
+  };
+  // recipe valid
+  const valid = {
+    value: item.value ? true : false,
+    portions: item.portions ? true : false,
+    instructions: true,
+    tags: true,
+  };
+  // recipe foods
+  const [recipeFoods, setRecipeFoods] = React.useState(route.params.item.food);
+  // all foods
+  const foods = useSelector((state) => state.food.items);
+  // all foods for selector
+  const foods2 = foods.map((food) => {
+    return { key: food.key, value: food.value + " (" + food.category + ")" };
+  });
+  // all tags
+  const tags = useSelector((state) => state.tag.items);
+  // nutrition
+  const [nutrition, setNutrition] = React.useState({
+    totalKcal: 0,
+    totalProtein: 0,
+    totalCarbs: 0,
+    totalFat: 0,
+  });
+  // maxkey value
+  const maxKey = useSelector(
+    (state) =>
+      state.food.items.reduce(
+        (max, item) => (item.key > max ? item.key : max),
+        -Infinity
+      ) + 1
   );
-  const [tags, setTags] = React.useState(route.params.item.tags);
-  const [foods, setFoods] = React.useState(route.params.item.food);
-  const [nutrition, setNutrition] = React.useState({});
-  const [isValid, setIsValid] = React.useState(true);
-  const itemExists = useSelector(selectRecipeByKey(key));
-  const foodList = useSelector((state) => state.food.items);
+  // dispatch
   const dispatch = useDispatch();
+
+  const setItem = (key, newValue) => {
+    if (key === "food") {
+      foodList = recipeFoods.map((f) => f.value);
+      selFood = recipeFoods.filter((f) => newValue.includes(f.value));
+      newfood = newValue.filter((f) => !foodList.includes(f));
+      newfood = newfood.map((f) => {
+        return { amount: 0, value: f, valid: true };
+      });
+      setRecipeFoods(selFood.concat(newfood));
+    } else {
+      item[key] = newValue;
+    }
+  };
+  const setValid = (key, newValue) => {
+    valid[key] = newValue;
+  };
 
   const handleFoodsChange = (selectedFoods) => {
     // Remove foods from foods state that are not in selectedFoods
@@ -46,82 +92,75 @@ function RecipeItemScreen({ route, navigation }) {
     setFoods(updatedFoods);
   };
 
-  const updateFood = (updatedFood) => {
-    const updatedFoods = foods.map((food) =>
-      food.key === updatedFood.key ? updatedFood : food
-    );
-    setFoods(updatedFoods);
-  };
-
-  const handleSave = async () => {
-    const recipe = {
-      key: key,
-      value: value,
-      portions: portions,
-      instructions: instructions,
-      tags: tags,
-      food: foods.map((item) => ({
-        key: item.key,
-        amount: parseFloat(item.inputValue),
-      })),
-    };
-    console.log("recipe: ", recipe);
-    const totalNutrition = await calculator(recipe.food, foodList);
+  const handleSave = () => {
+    const totalNutrition = calculator(recipeFoods, foods);
     setNutrition(totalNutrition);
     console.log("total: ", totalNutrition);
 
-    // if (itemExists) {
-    //   dispatch(removeRecipe(recipe.key));
-    //   dispatch(addRecipe(recipe));
-    //   // TODO: update alert
-    // } else {
-    //   // TODO: add key
-    //   dispatch(addRecipe(recipe));
-    //   // TODO: add alert
-    // }
+    item["food"] = recipeFoods
 
-    // navigation.goBack();
+    if (Object.values(valid).every((value) => value === true)) {
+      if (item.key >= 0) {
+        dispatch(updateRecipe(item));
+      } 
+      else {
+        setItem("key", maxKey);
+        dispatch(addRecipe(item));
+      }
+      navigation.goBack();
+    } else {
+      Alert.alert('Alert Title', 'My Alert Msg', [
+        {text: 'OK'},
+      ]);      
+    }
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <ScrollView style={{ flex: 1 }}>
         <View>
           <StringInput
-            placeholder="Nazov"
-            defaultValue={value}
-            setValue={setValue}
-            isValid={setIsValid}
+            label="Nazov"
+            defaultValue={item.value}
+            itemKey="value"
+            setItem={setItem}
+            setValid={setValid}
           />
           <NumberInput
-            placeholder="Pocet Porcii"
-            defaultValue={portions}
-            setValue={setPortions}
-            isValid={setIsValid}
+            label="Porcie"
+            defaultValue={item.portions}
+            itemKey="portions"
+            setItem={setItem}
+            setValid={setValid}
           />
           <StringInput
-            placeholder="Instrukcie"
-            defaultValue={instructions}
-            setValue={setInstructions}
-            isValid={setIsValid}
+            label="Instrukcie"
+            defaultValue={item.instructions}
+            itemKey="instructions"
+            setItem={setItem}
+            setValid={setValid}
           />
-          {/* <MultiSelector
-            value="tag"
-            setter={setTags}
-            label="Tagy"
-            notFoundText="Ziadny tag sa nenasiel"
-          /> */}
           <MultiSelector
-            value="food"
-            items={foodList}
-            setter={handleFoodsChange}
+            itemKey="food"
+            items={foods2}
+            defValue={recipeFoods.map((food) => food.value)}
+            setItem={setItem}
+            setValid={setValid}
             label="Potraviny"
             notFoundText="Ziadna potravina sa nenasla"
           />
+          <MultiSelector
+            itemKey="tag"
+            items={tags}
+            defValue={item.tags}
+            setItem={setItem}
+            setValid={setValid}
+            label="Tagy"
+            notFoundText="Ziadny tag sa nenasiel"
+          />
         </View>
         <View>
-          {foods.length > 0 && (
-            <FoodCardList items={foods} updateItem={updateFood} />
+          {recipeFoods.length > 0 && (
+            <FoodCardList items={recipeFoods} setRecipeFood={setRecipeFoods} />
           )}
         </View>
         <View>
@@ -134,7 +173,6 @@ function RecipeItemScreen({ route, navigation }) {
           <Button title="Pridat" onPress={handleSave} />
         </View>
       </ScrollView>
-    </View>
   );
 }
 

@@ -3,6 +3,7 @@ import foodReducer from "./food";
 import recipeReducer from "./recipe";
 import unitReducer from "./unit";
 import categoryReducer from "./category";
+import tagReducer from "./tag"
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     recipe: recipeReducer,
     unit: unitReducer,
     category: categoryReducer,
+    tag: tagReducer,
   },
 });
