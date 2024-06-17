@@ -7,43 +7,31 @@ const SingleSelector = ({
   itemKey,
   defValue,
   setItem,
-  setValid,
   label,
   notFoundText,
 }) => {
-  const [defaultOption, setDefaultOption] = React.useState(null);
   const [borderColor, setBorderColor] = React.useState(null);
   let items = [];
+  let defaultOption;
   if (itemKey === "unit") {
     items = useSelector((state) => state.unit.items);
   } else if (itemKey === "category") {
     items = useSelector((state) => state.category.items);
   }
-
-  React.useEffect(() => {
-    // handleInputChange(defValue);
-    if (defValue !== "") {
-      setDefaultOption(items.filter((item) => item.value === defValue)[0]);
-      if (setValid) {
-        setValid(itemKey, true);
-      }
-    } else {
-      if (setValid) {
-        setValid(itemKey, false);
-        setBorderColor("red");
-      }
-    }
-  }, []);
+  if (defValue)
+    defaultOption = items.filter((item) => item.value === defValue)[0];
+  else defaultOption = null;
 
   const handleInputChange = (value) => {
-    setItem(itemKey, value);
-    if (setValid) {
-      setValid(itemKey, true);
+    // Check if the value is a string and does not contain only numbers
+    // init selectlist return key of default
+    if (!/^\d+$/.test(String(value))) {
+      setItem(itemKey, value);
     }
     setBorderColor(null);
-    // setErrMsg(checkStringInput(value));
   };
 
+  console.log(defValue);
   return (
     <View>
       <SelectList

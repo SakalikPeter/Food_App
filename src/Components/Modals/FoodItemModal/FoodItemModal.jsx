@@ -1,8 +1,36 @@
 import React from "react";
-import { Text, View, Modal, StyleSheet, Pressable } from "react-native";
+import { Text, View, Modal, StyleSheet, Pressable, Alert } from "react-native";
 import { Icon } from "react-native-elements";
+import { useDispatch } from "react-redux";
+import { removeFood } from "../../../../store/redux/food";
 
-const FoodItemModal = ({ food, hideFood, removeFood, updateFood }) => {
+const FoodItemModal = ({ food, hideFood, navigation }) => {
+  const dispatch = useDispatch();
+
+  const handleUpdateFood = () => {
+    hideFood();
+    navigation.navigate("Potravina", { item: food });
+  };
+  const handleRemoveFood = () => {
+    Alert.alert(
+      "Potravina bude vymazana",
+      `Nazov: ${food.value}\nKategoria: ${food.category}\nJednotka: ${food.unit}`,
+      [
+        {
+          text: "Zrusit",
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            dispatch(removeFood(food));
+            hideFood();
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <View style={styles.centeredView}>
       <Modal animationType="slide" transparent={true}>
@@ -30,13 +58,13 @@ const FoodItemModal = ({ food, hideFood, removeFood, updateFood }) => {
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => updateFood()}
+              onPress={() => handleUpdateFood()}
             >
               <Icon name="edit" />
             </Pressable>
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => removeFood()}
+              onPress={() => handleRemoveFood()}
             >
               <Icon name="delete" />
             </Pressable>
@@ -71,8 +99,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  closeButtonView: {
-  },
+  closeButtonView: {},
   button: {
     borderRadius: 20,
     padding: 10,

@@ -22,7 +22,7 @@ const Item = ({ item, onPress, backgroundColor, textColor }) => (
   </View>
 );
 
-const ValueList = ({ items, showItem, updateItem, removeItem }) => {
+const ValueList = ({ items, showItem }) => {
   const [selectedId, setSelectedId] = React.useState();
 
   const renderItem = ({ item }) => {
