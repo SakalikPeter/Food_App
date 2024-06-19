@@ -50,16 +50,7 @@ function RecipeListScreen({ navigation }) {
     ]);
   };
   const handleAddRecipe = () => {
-    navigation.navigate("Recept", {
-      item: {
-        key: -1,
-        value: "",
-        portions: "",
-        instructions: "",
-        food: [],
-        tags: [],
-      },
-    });
+    navigation.navigate("Recept", {});
   };
 
   return (
@@ -93,7 +84,7 @@ function RecipeListScreen({ navigation }) {
               ) {
                 return false;
               }
-              const recipeFoods = item.food.map((food) => food.value);
+              const recipeFoods = item.foods.map((food) => food.value);
               const selectedFoods = foods.map((food) => food.value);
               if (
                 foods.length > 0 &&

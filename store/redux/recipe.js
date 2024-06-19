@@ -8,6 +8,10 @@ const recipeSlice = createSlice({
   },
   reducers: {
     addRecipe: (state, action) => {
+      action.payload.key = state.items.reduce(
+        (max, item) => (item.key > max ? item.key : max),
+        -Infinity
+      ) + 1;
       state.items.push(action.payload);
     },
     removeRecipe: (state, action) => {

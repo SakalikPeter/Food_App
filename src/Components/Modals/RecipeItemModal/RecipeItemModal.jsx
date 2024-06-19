@@ -3,7 +3,6 @@ import { Text, View, Modal, StyleSheet, Pressable } from "react-native";
 import { Icon } from "react-native-elements";
 
 const RecipeItemModal = ({ recipe, hideRecipe, removeRecipe, updateRecipe }) => {
-
   return (
     <View style={styles.centeredView}>
       <Modal animationType="slide" transparent={true}>
@@ -20,7 +19,29 @@ const RecipeItemModal = ({ recipe, hideRecipe, removeRecipe, updateRecipe }) => 
             <View>
               <Text style={styles.modalText}>Nazov: {recipe.value}</Text>
             </View>
-
+            <View>
+              <Text style={styles.modalText}>Pocet porcii: {recipe.portions}</Text>
+            </View>
+            <View>
+              <Text style={styles.modalText}>Tags:</Text>
+              <View style={styles.tagsContainer}>
+                {recipe.tags.map((tag, index) => (
+                  <Text key={index} style={styles.tag}>
+                    {tag}
+                  </Text>
+                ))}
+              </View>
+            </View>
+            <View>
+              <Text style={styles.modalText}>Foods:</Text>
+              <View style={styles.foodsContainer}>
+                {recipe.foods.map((food, index) => (
+                  <Text key={index} style={styles.food}>
+                    {food.value} - {food.quantity} {food.unit}
+                  </Text>
+                ))}
+              </View>
+            </View>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => updateRecipe()}
@@ -64,8 +85,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  closeButtonView: {
-  },
+  closeButtonView: {},
   button: {
     borderRadius: 20,
     padding: 10,
@@ -84,6 +104,28 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
+    textAlign: "center",
+  },
+  tagsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
+  tag: {
+    backgroundColor: "#e0e0e0",
+    borderRadius: 10,
+    padding: 5,
+    margin: 5,
+    textAlign: "center",
+  },
+  foodsContainer: {
+    marginTop: 15,
+  },
+  food: {
+    backgroundColor: "#f0f0f0",
+    borderRadius: 5,
+    padding: 5,
+    marginVertical: 2,
     textAlign: "center",
   },
 });

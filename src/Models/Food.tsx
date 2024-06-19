@@ -1,5 +1,5 @@
-
 // Food.ts
+
 export interface FoodParams {
   key: number;
   value: string;
@@ -25,21 +25,17 @@ export class Food {
   carbs: number;
   fat: number;
 
-  valueAndCategory: string;
-
   public constructor(params?: FoodParams) {
-    this.key = params.key ?? -1;
-    this.value = params.value ?? "";
-    this.category = params.category ?? "";
-    this.unit = params.unit ?? "";
-    this.base = params.base ?? 0;
-    this.kj = params.kj ?? 0;
-    this.kcal = params.kcal ?? 0;
-    this.protein = params.protein ?? 0;
-    this.carbs = params.carbs ?? 0;
-    this.fat = params.fat ?? 0;
-
-    this.valueAndCategory = `${this.value} (${this.category})`;
+    this.key = params?.key ?? -1;
+    this.value = params?.value ?? "";
+    this.category = params?.category ?? "";
+    this.unit = params?.unit ?? "";
+    this.base = params?.base ?? 0;
+    this.kj = params?.kj ?? 0;
+    this.kcal = params?.kcal ?? 0;
+    this.protein = params?.protein ?? 0;
+    this.carbs = params?.carbs ?? 0;
+    this.fat = params?.fat ?? 0;
   }
 
   toParams(): FoodParams {

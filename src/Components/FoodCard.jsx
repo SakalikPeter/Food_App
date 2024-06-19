@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { Card } from "react-native-elements";
-import NumberInput from "../Components/NumberInput";
+import { Card, Input } from "react-native-elements";
+import { checkNumberInput } from "./Checker";
 
 const FoodCard = ({item, setCard}) => {
   const setValid = (key, newValue) => {
@@ -9,7 +9,7 @@ const FoodCard = ({item, setCard}) => {
     // setCard(item)
   }
   const setValue = (key, newValue) => {
-    item = {...item, amount: newValue}
+    item = {...item, quantity: newValue}
     setCard(item)
   }
 
@@ -25,12 +25,12 @@ const FoodCard = ({item, setCard}) => {
           <Text style={styles.name}>Jednotka: {item.unit}</Text>
         </View> */}
         <View>
-          <NumberInput
+          <Input
             label="Mnozstvo"
-            defaultValue={item.amount}
-            itemKey="food"
-            setItem={setValue}
-            setValid={setValid}
+            defaultValue={String(item.quantity)}
+            onChangeText={(value) => setValue("food", value)}
+            errorMessage={checkNumberInput(item.quantity)}
+            keyboardType="numeric"
           />
         </View>
       </Card>

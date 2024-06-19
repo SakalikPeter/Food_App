@@ -3,32 +3,22 @@ recipeItems = [
     key: 0,
     value: "test",
     portions: 4,
-    food: [
+    instruction: "",
+    foods: [
       {
         value: "Jahody (Su\u0161en\u00e9 ovocie)",
-        amount: 100,
-        valid: true
+        quantity: 100,
+        unit: "g"
       },
     ],
     tags: ["Ranajky", "Obed", "Vecera"],
-    instruction: "",
-  },
-  {
-    key: 1,
-    value: "jano",
-    portions: 4,
-    food: [
-      {
-        value: "test2",
-        amount: 100,
-      },
-      {
-        value: "test3",
-        amount: 2,
-      },
-    ],
-    tags: ["ranajky", "vecera", "pomazanka"],
-    instruction: "",
+    nutritions: {
+      kj: 100,
+      kcal: 251.2,
+      protein: 1.7,
+      carbs: 54,
+      fat: 0,
+    },
   },
 ];
 
