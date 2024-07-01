@@ -1,8 +1,36 @@
 import React from "react";
 import { Text, View, Modal, StyleSheet, Pressable } from "react-native";
 import { Icon } from "react-native-elements";
+import { useDispatch } from "react-redux";
+import { removeRecipe } from "../../../../store/redux/recipe";
 
-const RecipeItemModal = ({ recipe, hideRecipe, removeRecipe, updateRecipe }) => {
+const RecipeItemModal = ({ recipe, hideRecipe, navigation }) => {
+  const dispatch = useDispatch();
+
+  const handleUpdateRecipe = () => {
+    hideItem();
+    navigation.navigate("Recept", { item: recipe });
+  };
+  const handleRemoveRecipe = () => {
+    Alert.alert(
+      "Recept bude vymazany",
+      `Nazov: ${food.value}`,
+      [
+        {
+          text: "Zrusit",
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            dispatch(removeRecipe(recipe));
+            hideRecipe();
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <View style={styles.centeredView}>
       <Modal animationType="slide" transparent={true}>
@@ -44,13 +72,13 @@ const RecipeItemModal = ({ recipe, hideRecipe, removeRecipe, updateRecipe }) => 
             </View>
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => updateRecipe()}
+              onPress={() => handleUpdateRecipe()}
             >
               <Icon name="edit" />
             </Pressable>
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => removeRecipe()}
+              onPress={() => handleRemoveRecipe()}
             >
               <Icon name="delete" />
             </Pressable>

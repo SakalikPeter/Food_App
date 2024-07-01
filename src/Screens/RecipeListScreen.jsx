@@ -3,9 +3,9 @@ import { View, Modal, StyleSheet, Pressable } from "react-native";
 import { Icon } from "react-native-elements";
 import ValueList from "../Components/ValueList";
 import { useSelector, useDispatch } from "react-redux";
-import { removeRecipe } from "../../store/redux/recipe";
 import BaseSearchBar from "../Components/SearchBars/BaseSearchBar/BaseSearchBar";
 import RecipeItemModal from "../Components/Modals/RecipeItemModal/RecipeItemModal";
+import RecipeFilter from "../Components/Filters/RecipeFilter/RecipeFilter";
 
 function RecipeListScreen({ navigation }) {
   const [value, setValue] = React.useState("");
@@ -13,7 +13,8 @@ function RecipeListScreen({ navigation }) {
   const [foods, setFoods] = React.useState([]);
   const [filters, setFilters] = React.useState(false);
   const items = useSelector((state) => state.recipe.items);
-  const dispatch = useDispatch();
+  const [filteredItems, setFilteredItems] = React.useState([])
+
 
   const [item, setItem] = React.useState(null);
   const [itemVisible, setItemVisible] = React.useState(false);
@@ -28,27 +29,6 @@ function RecipeListScreen({ navigation }) {
     setItem(null);
     setValue("");
   };
-  const updateItem = () => {
-    hideItem();
-    // console.log("item", item)
-    navigation.navigate("Recept", { item: item });
-  };
-  const removeItem = () => {
-    Alert.alert("Alert Title", `${item.value}`, [
-      {
-        text: "Zrusit",
-        onPress: () => console.log("Cancel Pressed"),
-        style: "cancel",
-      },
-      {
-        text: "ANO",
-        onPress: () => {
-          dispatch(removeRecipe(item.key));
-          hideItem();
-        },
-      },
-    ]);
-  };
   const handleAddRecipe = () => {
     navigation.navigate("Recept", {});
   };
@@ -60,20 +40,17 @@ function RecipeListScreen({ navigation }) {
           <RecipeItemModal
             recipe={item}
             hideRecipe={hideItem}
-            removeRecipe={removeItem}
-            updateRecipe={updateItem}
+            navigation={navigation}
           />
         )}
       </View>
       <View>
-        <BaseSearchBar value={value} setValue={setValue} />
+        <RecipeFilter foods={items} setFilteredFoods={setFilteredItems}/>
       </View>
       <View style={styles.listContainer}>
         {items.length > 0 && (
           <ValueList
             showItem={showItem}
-            updateItem={updateItem}
-            removeItem={removeItem}
             items={items.filter((item) => {
               const a = item.value.toLowerCase();
               const b = value.toLowerCase();

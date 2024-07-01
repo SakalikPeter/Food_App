@@ -5,9 +5,11 @@ import ValueList from "../Components/ValueList";
 import { useSelector } from "react-redux";
 import FoodItemModal from "../Components/Modals/FoodItemModal/FoodItemModal";
 import BaseSearchBar from "../Components/SearchBars/BaseSearchBar/BaseSearchBar";
+import FoodFilter from "../Components/Filters/FoodFilter/FoodFilter";
 
 function FoodListScreen({ navigation }) {
   const items = useSelector((state) => state.food.items);
+  const [filteredItems, setFilteredItems] = React.useState([])
   const [value, setValue] = React.useState("");
   const [item, setItem] = React.useState(null);
   const [itemVisible, setItemVisible] = React.useState(false);
@@ -37,19 +39,14 @@ function FoodListScreen({ navigation }) {
         )}
       </View>
       <View>
-        <BaseSearchBar value={value} setValue={setValue} />
+        {/* <BaseSearchBar value={value} setValue={setValue} /> */}
+        <FoodFilter foods={items} setFilteredFoods={setFilteredItems}/>
       </View>
       <View style={styles.listContainer}>
         {items.length > 0 && (
           <ValueList
             showItem={showItem}
-            items={items.filter((item) => {
-              const a = item.value.toLowerCase();
-              const b = value.toLowerCase();
-              if (value && !a.includes(b)) return false;
-              // if (category && item.category !== category) return false;
-              return true;
-            })}
+            items={filteredItems}
           />
         )}
       </View>

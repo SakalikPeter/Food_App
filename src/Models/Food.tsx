@@ -38,6 +38,10 @@ export class Food {
     this.fat = params?.fat ?? 0;
   }
 
+  getValueAndCategory(): string {
+    return this.value + " (" + this.category + ")"
+  }
+
   toParams(): FoodParams {
     return {
       key: this.key,

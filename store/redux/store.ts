@@ -5,6 +5,7 @@ import recipeReducer from "./recipe";
 import unitReducer from "./unit";
 import categoryReducer from "./category";
 import tagReducer from "./tag";
+import menuReducer from "./menu"
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     unit: unitReducer,
     category: categoryReducer,
     tag: tagReducer,
+    menu: menuReducer,
   },
 });
 
