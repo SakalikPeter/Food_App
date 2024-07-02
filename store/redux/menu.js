@@ -17,5 +17,11 @@ const selectMenuItemByDate = (date) =>
     (items) => items.filter(item => item.date === date)[0]
   );
 
-export { selectMenuItemByDate };
+const selectMenuItemByDates = (dates) => 
+  createSelector(
+    [selectMenuItems],
+    (items) => items.filter(item => dates.includes(item.date))
+  );
+
+export { selectMenuItemByDate, selectMenuItemByDates };
 export default menuSlice.reducer;

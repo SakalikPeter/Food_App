@@ -7,6 +7,7 @@ import FoodListScreen from "./src/Screens/FoodListScreen";
 import FoodItemScreen from "./src/Screens/FoodItemScreen";
 import RecipeListScreen from "./src/Screens/RecipeListScreen";
 import RecipeItemScreen from "./src/Screens/RecipeItemScreen";
+import ShoppingListScreen from "./src/Screens/ShoppingListScreen";
 import { Provider } from "react-redux";
 import { store } from "./store/redux/store";
 
@@ -15,8 +16,9 @@ const Stack = createStackNavigator();
 
 function Root() {
   return (
-    <Drawer.Navigator initialRouteName="Potraviny">
+    <Drawer.Navigator initialRouteName="Nakupny Zoznam">
       <Drawer.Screen name="Domov" component={HomeScreen} />
+      <Drawer.Screen name="Nakupny Zoznam" component={ShoppingListScreen} />
       <Drawer.Screen name="Recepty" component={RecipeListScreen} />
       <Drawer.Screen name="Potraviny" component={FoodListScreen} />
     </Drawer.Navigator>
