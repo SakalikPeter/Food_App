@@ -82,6 +82,17 @@ const HomeScreen: React.FC = () => {
     updateMenuAndNutritions(updatedMenu);
   };
 
+  const handleRecipeInput = (item: SelectedItems) => {
+    const updatedRecipe = menu.recipes.map((book) => {
+      if (book.key === item.key) {
+        return { ...book, quantity: item.quantity };
+      }
+      return book;
+    });
+    const updatedMenu = new Menu(menu.date, menu.foods, updatedRecipe);
+    updateMenuAndNutritions(updatedMenu);
+  };
+
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
@@ -98,14 +109,15 @@ const HomeScreen: React.FC = () => {
           )}
         </View>
         <View style={styles.selector}>
-          {/* {recipes.length > 0 && (
+          {recipes.length > 0 && (
             <Selector
               items={recipes.map((f) => itemSelector(f))}
               checkedItems={menu.recipes}
               setCheckedItems={handleRecipesChange}
+              setInput={handleRecipeInput}
               title="Recepty"
             />
-          )} */}
+          )}
         </View>
       </View>
       <View>
