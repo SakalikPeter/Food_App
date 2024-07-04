@@ -7,7 +7,12 @@ menuItems = [
             quantity: 100
         }
       ],
-      recipes: []
+      recipes: [
+        {
+          key: 0,
+          quantity: 2
+        }
+      ]
     },
 ];
   
