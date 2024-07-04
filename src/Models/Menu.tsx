@@ -1,21 +1,13 @@
 import { Food } from "./Food";
 import { Recipe } from "./Recipe";
 import { RecipeNutritions } from "./RecipeNutritions";
+import { SelectedItem } from "./SelectedItem";
 
-export class SelectedItems {
-  key: number;
-  quantity: number
-
-  constructor(key: number, quantity: number) {
-    this.key = key;
-    this.quantity = quantity
-  }
-}
 
 export class Menu {
   date: string;
-  foods?: SelectedItems[];
-  recipes?: SelectedItems[];
+  foods?: SelectedItem[];
+  recipes?: SelectedItem[];
   nutritions: RecipeNutritions;
 
   constructor(date: string, foods?, recipes?) {
