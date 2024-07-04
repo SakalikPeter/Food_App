@@ -72,11 +72,15 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>{title}</Text>
-        <Icon
-          name={collapsed ? 'expand-more' : 'expand-less'}
-          type='material'
-          onPress={toggleCollapse}
-        />
+        <View style={styles.iconContainer}>
+    <Icon
+      name={collapsed ? 'expand-more' : 'expand-less'}
+      type='material'
+      color="#70d7c7"
+      onPress={toggleCollapse}
+      style={styles.icon}
+    />
+  </View>
       </View>
       {!collapsed && (
         <View>
@@ -95,7 +99,7 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
           </View>
         </View>
       )}
-      <View><Divider/></View>
+      <Divider style={styles.divider} />
       <View style={styles.chipsContainer}>
         {chips.map((c) => ( <Chip key={c.key} title={c.value} containerStyle={styles.chip}/>))}
       </View>
@@ -105,8 +109,7 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     borderRadius: 8,
     elevation: 3,
     shadowColor: '#000',
@@ -114,6 +117,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 2,
     marginBottom: 16,
+    paddingHorizontal: 16,
+    paddingTop: 16,
   },
   input: {
     // flex: 1,
@@ -128,10 +133,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingVertical: 2
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
+    color: '#333333',
+  },
+  iconContainer: {
+    marginLeft: 'auto',
+    paddingRight: 10,
+  },
+  icon: {
+    fontSize: 24,
+    paddingRight: 10,
+  },
+  divider: {
+    marginVertical: 16,
+    backgroundColor: '#e0e0e0',
   },
   content: {
     marginTop: 16,
@@ -164,7 +183,7 @@ const styles = StyleSheet.create({
   chipsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',  // Enable wrapping
-    marginTop: 15,
+    marginBottom: 16,
   },
   chip: {
     marginVertical: 5,
