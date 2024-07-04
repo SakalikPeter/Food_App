@@ -6,4 +6,4 @@ export class SelectedItem {
       this.key = key;
       this.quantity = quantity
     }
-  }
+}

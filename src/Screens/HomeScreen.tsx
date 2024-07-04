@@ -10,7 +10,7 @@ import Selector from "../Components/Selector/Selector";
 import { selectMenuItemByDate } from "../../store/redux/menu";
 import { useSelector } from "react-redux";
 import { Button } from "react-native-elements";
-import { SelectedItems } from "../Models/Menu";
+import { SelectedItem } from "../Models/SelectedItem";
 import { RecipeNutritions } from "../Models/RecipeNutritions";
 
 // Define the selector function
@@ -46,15 +46,17 @@ const HomeScreen: React.FC = () => {
   };
 
   const handleRecipesChange = (key: string) => {
+    
     let mFood = menu.recipes;
     let menuFoods = menu.recipes.map((f) => f.key);
     if (menuFoods.includes(Number(key))) {
       mFood = menu.recipes.filter((f) => f.key != Number(key));
     } else {
-      let obj = new SelectedItems(Number(key), 0);
+      let obj = new SelectedItem(Number(key), 0);
       mFood = [...mFood, obj];
     }
     const updatedMenu = new Menu(menu.date, menu.foods, mFood);
+    console.log("Handle: ", key)
     updateMenuAndNutritions(updatedMenu);
   };
 
@@ -64,14 +66,14 @@ const HomeScreen: React.FC = () => {
     if (menuFoods.includes(Number(key))) {
       mFood = menu.foods.filter((f) => f.key != Number(key));
     } else {
-      let obj = new SelectedItems(Number(key), 0);
+      let obj = new SelectedItem(Number(key), 0);
       mFood = [...mFood, obj];
     }
     const updatedMenu = new Menu(menu.date, mFood, menu.recipes);
     updateMenuAndNutritions(updatedMenu);
   };
 
-  const handleFoodInput = (item: SelectedItems) => {
+  const handleFoodInput = (item: SelectedItem) => {
     const updatedFood = menu.foods.map((book) => {
       if (book.key === item.key) {
         return { ...book, quantity: item.quantity };
@@ -82,7 +84,7 @@ const HomeScreen: React.FC = () => {
     updateMenuAndNutritions(updatedMenu);
   };
 
-  const handleRecipeInput = (item: SelectedItems) => {
+  const handleRecipeInput = (item: SelectedItem) => {
     const updatedRecipe = menu.recipes.map((book) => {
       if (book.key === item.key) {
         return { ...book, quantity: item.quantity };

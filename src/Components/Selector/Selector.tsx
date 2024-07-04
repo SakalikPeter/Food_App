@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, SafeAreaView, StyleSheet, VirtualizedList } from 'react-native';
 import { CheckBox, Chip, Divider, Icon, Input } from 'react-native-elements';
 import BaseSearchBar from '../SearchBars/BaseSearchBar/BaseSearchBar';
-import { SelectedItems } from '../../Models/Menu';
+import { SelectedItem } from '../../Models/SelectedItem';
 
 type Item = {
   key: string;
@@ -12,9 +12,9 @@ type Item = {
 
 type Props = {
   items?: Item[];
-  checkedItems?: SelectedItems[];
+  checkedItems?: SelectedItem[];
   setCheckedItems: (key: string)=>void
-  setInput: (item: SelectedItems) => void
+  setInput: (item: SelectedItem) => void
   title: string;
 };
 
@@ -22,7 +22,7 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
   const [collapsed, setCollapsed] = useState(true);
   const [value, setValue] = useState<string>("");
   const checkedKeys = checkedItems.map((ch) => ch.key)
-  console.log(checkedKeys)
+  console.log("checked: ", checkedKeys)
   const chips = items.filter((i) => checkedKeys.includes(Number(i.key)))
 
   const toggleCollapse = () => {
@@ -42,7 +42,7 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
   };
   
   const handleInputChange = (key: number, quantity: number) => {
-    setInput(new SelectedItems(key, quantity))
+    setInput(new SelectedItem(key, quantity))
   };
 
   const renderItem = ({ item }: { item: Item }) => (
