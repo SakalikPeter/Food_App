@@ -11,32 +11,52 @@ import { Recipe } from "../Models/Recipe";
 const ShoppingListScreen: React.FC = () => {
   const [dates, setDates] = useState<string[]>([]);
   const selectedMenuItems = useAppSelector(selectMenuItemByDates(dates));
+  const [foodQuantities, setFoodQuantities] = useState([]);
+  const [selectedFoods, setSelectedFoods] = useState([]);
   const foods: Food[] = useAppSelector((state: RootState) => state.food.items);
   const recipes: Recipe[] = useAppSelector((state: RootState) => state.recipe.items);
   const [menus, setMenus] = useState<Menu[]>([]);
 
   useEffect(() => {
     if (dates.length > 0) {
-        console.log(selectedMenuItems)
-        const newMenus = selectedMenuItems.map((i) => {const menu = new Menu(i.date, i.foods, i.recipes); menu.calculatRecipeNutritions(recipes, foods); return menu})
+      console.log(selectedMenuItems);
 
+      const newMenus = selectedMenuItems.map((i) => {
+        const menu = new Menu(i.date, i.foods, i.recipes);
+        menu.calculateRecipeNutritions(recipes, foods);
+        return menu;
+      });
+
+      const allFoodQuantities = newMenus.flatMap((menu) => menu.getFoodsQuantity(foods, recipes));
+      const combinedFoodQuantities = combineFoodQuantities(allFoodQuantities);
+      console.log(combinedFoodQuantities)
+
+      setFoodQuantities(combinedFoodQuantities);
+      setSelectedFoods(combinedFoodQuantities.map(item => item.foodItem));
       setMenus(newMenus);
     }
   }, [dates]);
 
+  const combineFoodQuantities = (foodQuantities) => {
+    const foodMap = new Map();
+
+    foodQuantities.forEach((item) => {
+      if (foodMap.has(item.key)) {
+        foodMap.get(item.key).quantity += item.quantity;
+      } else {
+        foodMap.set(item.key, item);
+      }
+    });
+
+    return Array.from(foodMap.values());
+  };
+
   return (
     <ScrollView style={styles.container}>
       <CalendarMultipleDays setDates={setDates} />
-      {menus.length > 0 && menus.map((menu, index) => (
+      {foodQuantities.length > 0 && foodQuantities.map((food, index) => (
         <View key={index} style={styles.menuContainer}>
-          <Text style={styles.menuDate}>{menu.date}</Text>
-          <View>
-            <Text>KJ: {menu.nutritions.kj}</Text>
-            <Text>KCal: {menu.nutritions.kcal}</Text>
-            <Text>Proteins: {menu.nutritions.protein}</Text>
-            <Text>Carbs: {menu.nutritions.carbs}</Text>
-            <Text>Fats: {menu.nutritions.fat}</Text>
-          </View>
+          <Text style={styles.menuDate}>{food.foodItem.value} {food.foodItem.category} {food.quantity} {food.foodItem.unit}</Text>
         </View>
       ))}
     </ScrollView>

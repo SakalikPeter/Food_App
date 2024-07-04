@@ -1,13 +1,13 @@
 import { RecipeNutritions } from "./RecipeNutritions";
-import { RecipeFood } from "./RecipeFood";
 import { Food } from "./Food";
+import { SelectedItem } from "./SelectedItem";
 
 export interface RecipeParams {
   key: number;
   value: string;
   portions: number;
   instruction: string;
-  foods: Partial<RecipeFood[]>;
+  foods: Partial<SelectedItem[]>;
   tags: string[];
   nutritions: Partial<RecipeNutritions>;
 }
@@ -17,7 +17,7 @@ export class Recipe {
   value: string;
   portions: number;
   instruction: string;
-  foods: RecipeFood[];
+  foods: SelectedItem[];
   tags: string[];
   nutritions: RecipeNutritions;
 
@@ -55,7 +55,7 @@ export class Recipe {
 
     this.foods.forEach((recipeFood) => {
       const foodItem = foods.find(
-        (food) => `${food.value} (${food.category})` === recipeFood.value
+        (food) => food.key === recipeFood.key
       );
       if (foodItem) {
         this.nutritions.kj += (foodItem.kj / foodItem.base) * recipeFood.quantity;
