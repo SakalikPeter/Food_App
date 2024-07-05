@@ -40,7 +40,7 @@ const HomeScreen: React.FC = () => {
   }, [date, selectedMenu]);
 
   const updateMenuAndNutritions = (updatedMenu: Menu) => {
-    updatedMenu.calculatRecipeNutritions(recipes, foods);
+    updatedMenu.calculateRecipeNutritions(recipes, foods);
     setMenu(updatedMenu);
     setNutritions(updatedMenu.nutritions);
   };
@@ -76,18 +76,20 @@ const HomeScreen: React.FC = () => {
   const handleFoodInput = (item: SelectedItem) => {
     const updatedFood = menu.foods.map((book) => {
       if (book.key === item.key) {
-        return { ...book, quantity: item.quantity };
+        // Ensure that the updated item is a SelectedItem object
+        return new SelectedItem(book.key, item.quantity);
       }
       return book;
     });
     const updatedMenu = new Menu(menu.date, updatedFood, menu.recipes);
     updateMenuAndNutritions(updatedMenu);
   };
+  
 
   const handleRecipeInput = (item: SelectedItem) => {
     const updatedRecipe = menu.recipes.map((book) => {
       if (book.key === item.key) {
-        return { ...book, quantity: item.quantity };
+        return new SelectedItem(book.key, item.quantity);
       }
       return book;
     });
@@ -96,10 +98,9 @@ const HomeScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.screen}>
       <View style={styles.container}>
         <Calendar date={date} setDate={setDate} />
-        <View style={styles.selector}>
+        <View >
           {foods.length > 0 && (
             <Selector
               items={foods.map((f) => itemSelector(f))}
@@ -110,7 +111,7 @@ const HomeScreen: React.FC = () => {
             />
           )}
         </View>
-        <View style={styles.selector}>
+        <View >
           {recipes.length > 0 && (
             <Selector
               items={recipes.map((f) => itemSelector(f))}
@@ -122,31 +123,25 @@ const HomeScreen: React.FC = () => {
           )}
         </View>
       </View>
-      <View>
-        <Text>KJ: {nutritions.kj}</Text>
-        <Text>KCal: {nutritions.kcal}</Text>
-        <Text>Bielkoviny: {nutritions.protein}</Text>
-        <Text>Sacharidy: {nutritions.carbs}</Text>
-        <Text>Tuky: {nutritions.fat}</Text>
-      </View>
-      <ScrollView>
-        <Button title={"Ulozit"} />
-      </ScrollView>
-    </View>
+      // {/* <View>
+      //   <Text>KJ: {nutritions.kj}</Text>
+      //   <Text>KCal: {nutritions.kcal}</Text>
+      //   <Text>Bielkoviny: {nutritions.protein}</Text>
+      //   <Text>Sacharidy: {nutritions.carbs}</Text>
+      //   <Text>Tuky: {nutritions.fat}</Text>
+      // </View>
+      // <ScrollView>
+      //   <Button title={"Ulozit"} />
+      // </ScrollView> */}
   );
 };
 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
   container: {
-    padding: 10,
-  },
-  selector: {
-    marginBottom: 20,
+    flex: 1,
+    backgroundColor: "#D9D9D9",
+    padding: 16,
   },
 });

@@ -13,17 +13,16 @@ type Item = {
 type Props = {
   items?: Item[];
   checkedItems?: SelectedItem[];
-  setCheckedItems: (key: string)=>void
-  setInput: (item: SelectedItem) => void
+  setCheckedItems: (key: string) => void;
+  setInput: (item: SelectedItem) => void;
   title: string;
 };
 
 const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedItems, setInput, title }) => {
   const [collapsed, setCollapsed] = useState(true);
-  const [value, setValue] = useState<string>("");
-  const checkedKeys = checkedItems.map((ch) => ch.key)
-  console.log("checked: ", checkedKeys)
-  const chips = items.filter((i) => checkedKeys.includes(Number(i.key)))
+  const [value, setValue] = useState<string>('');
+  const checkedKeys = checkedItems.map((ch) => ch.key);
+  const chips = items.filter((i) => checkedKeys.includes(Number(i.key)));
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);
@@ -32,58 +31,71 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
   const getItem = (data: Item[], index: number) => ({
     key: data[index].key,
     value: data[index].value,
-    unit: data[index].unit
+    unit: data[index].unit,
   });
 
   const getItemCount = (data: Item[]) => data.length;
 
   const toggleCheckbox = (key: string) => {
-    setCheckedItems(key)
-  };
-  
-  const handleInputChange = (key: number, quantity: number) => {
-    setInput(new SelectedItem(key, quantity))
+    setCheckedItems(key);
   };
 
-  const renderItem = ({ item }: { item: Item }) => (
-    <View style={styles.itemContainer}>
-      <View style={styles.checkboxContainer}>
-        <CheckBox
-          checked={checkedKeys.includes(Number(item.key))}
-          onPress={() => toggleCheckbox(item.key)}
-        />
+  const handleInputChange = (key: number, quantity: number) => {
+    const selectedItem = checkedItems.find((item) => item.key === key);
+    if (selectedItem) {
+      const updatedItem = new SelectedItem(key, quantity);
+      setInput(updatedItem);
+    }
+  };
+
+  const renderItem = ({ item }: { item: Item }) => {
+    const isChecked = checkedKeys.includes(Number(item.key));
+    const selectedItem = checkedItems.find((f) => f.key === Number(item.key));
+    const inputValue = selectedItem ? String(selectedItem.quantity) : '';
+
+    return (
+      <View style={styles.itemContainer}>
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            checked={isChecked}
+            onPress={() => toggleCheckbox(item.key)}
+            iconType="material-community"
+            checkedIcon="checkbox-marked"
+            uncheckedIcon="checkbox-blank-outline"
+            checkedColor="#009688"
+          />
+        </View>
+        <Text style={styles.itemValue}>{item.value}</Text>
+        <View style={styles.inputContainer}>
+          <Input
+            disabled={!isChecked}
+            style={styles.input}
+            value={inputValue}
+            onChangeText={(text) => handleInputChange(Number(item.key), Number(text))}
+            keyboardType="numeric"
+          />
+        </View>
+        <Text style={{ fontSize: 16, marginLeft: 4 }}>{item.unit}</Text>
       </View>
-      <Text style={styles.itemValue}>{item.value}</Text>
-      <View style={styles.inputContainer}>
-        <Input
-          disabled={!checkedKeys.includes(Number(item.key))}
-          style={styles.input}
-          value={checkedKeys.includes(Number(item.key))? String(checkedItems.filter((f) => f.key === Number(item.key))[0].quantity) : ''}
-          onChangeText={(text) => handleInputChange(Number(item.key), Number(text))}
-          editable={!!checkedItems[item.key]}
-        />
-      
-      </View>
-      <Text style={{ fontSize: 16, marginLeft: 4 }}>{item.unit}</Text>
-    </View>
-  );
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.iconContainer}>
-    <Icon
-      name={collapsed ? 'expand-more' : 'expand-less'}
-      type='material'
-      color="#70d7c7"
-      onPress={toggleCollapse}
-      style={styles.icon}
-    />
-  </View>
+          <Icon
+            name={collapsed ? 'expand-more' : 'expand-less'}
+            type="material"
+            color="#70d7c7"
+            onPress={toggleCollapse}
+            style={styles.icon}
+          />
+        </View>
       </View>
       {!collapsed && (
-        <View>
+        <View style={styles.selectorWrapper}>
           <View>
             <BaseSearchBar value={value} setter={setValue} />
           </View>
@@ -101,7 +113,9 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
       )}
       <Divider style={styles.divider} />
       <View style={styles.chipsContainer}>
-        {chips.map((c) => ( <Chip key={c.key} title={c.value} containerStyle={styles.chip}/>))}
+        {chips.map((c) => (
+          <Chip key={c.key} title={c.value} containerStyle={styles.chip} />
+        ))}
       </View>
     </SafeAreaView>
   );
@@ -120,20 +134,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
   },
-  input: {
-    // flex: 1,
-    // height: 40,
-    // borderColor: 'gray',
-    // borderWidth: 1,
-    // borderRadius: 4,
-    // padding: 8,
-    // marginLeft: 10,
-  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 2
+    paddingVertical: 2,
   },
   title: {
     fontSize: 24,
@@ -148,15 +153,21 @@ const styles = StyleSheet.create({
     fontSize: 24,
     paddingRight: 10,
   },
+  selectorWrapper: {
+    marginTop: 16,
+  },
   divider: {
     marginVertical: 16,
     backgroundColor: '#e0e0e0',
+  },
+  input: {
+    flex: 1,
   },
   content: {
     marginTop: 16,
   },
   list: {
-    maxHeight: 200,  // Adjust based on your needs
+    maxHeight: 200,
     marginTop: 16,
   },
   itemContainer: {
@@ -172,7 +183,7 @@ const styles = StyleSheet.create({
   },
   itemValue: {
     color: '#555',
-    flex: 1, // Take up the remaining space
+    flex: 1,
   },
   checkboxContainer: {
     marginRight: 10,
@@ -182,12 +193,12 @@ const styles = StyleSheet.create({
   },
   chipsContainer: {
     flexDirection: 'row',
-    flexWrap: 'wrap',  // Enable wrapping
+    flexWrap: 'wrap',
     marginBottom: 16,
   },
   chip: {
     marginVertical: 5,
-    marginRight: 5, // Add margin to prevent chips from sticking together
+    marginRight: 5,
   },
 });
 

@@ -2,7 +2,7 @@ foodItems = [
   {
     value: "Hus",
     category: "Hydina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1584,
     kcal: 278,
@@ -14,7 +14,7 @@ foodItems = [
   {
     value: "Ka\u010dica",
     category: "Hydina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1227,
     kcal: 292,
@@ -26,7 +26,7 @@ foodItems = [
   {
     value: "Kuracie prsia",
     category: "Hydina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 470,
     kcal: 116,
@@ -38,7 +38,7 @@ foodItems = [
   {
     value: "Kuracie stehno",
     category: "Hydina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 489,
     kcal: 116,
@@ -50,7 +50,7 @@ foodItems = [
   {
     value: "Kuracie vypr\u00e1\u017e.",
     category: "Hydina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1202,
     kcal: 286,
@@ -62,7 +62,7 @@ foodItems = [
   {
     value: "Kuracie dusen\u00e9",
     category: "Hydina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 631,
     kcal: 150,
@@ -74,7 +74,7 @@ foodItems = [
   {
     value: "Mor\u010dacie prsia",
     category: "Hydina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 471,
     kcal: 112,
@@ -86,7 +86,7 @@ foodItems = [
   {
     value: "Mor\u010dacie stehno",
     category: "Hydina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 492,
     kcal: 117,
@@ -98,7 +98,7 @@ foodItems = [
   {
     value: "P\u00e1rky hydinov\u00e9",
     category: "Hydina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1017,
     kcal: 242,
@@ -110,7 +110,7 @@ foodItems = [
   {
     value: "Brav\u010dov\u00fd b\u00f4\u010dik",
     category: "Brav\u010dov\u00e9 m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1532,
     kcal: 365,
@@ -122,7 +122,7 @@ foodItems = [
   {
     value: "Brav\u010dov\u00e9 koleno",
     category: "Brav\u010dov\u00e9 m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1339,
     kcal: 320,
@@ -134,7 +134,7 @@ foodItems = [
   {
     value: "Brav\u010dov\u00e1 krkovi\u010dka",
     category: "Brav\u010dov\u00e9 m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1289,
     kcal: 308,
@@ -146,7 +146,7 @@ foodItems = [
   {
     value: "Brav\u010dov\u00e9 pliecko",
     category: "Brav\u010dov\u00e9 m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1001,
     kcal: 239,
@@ -158,7 +158,7 @@ foodItems = [
   {
     value: "Brav\u010dov\u00e9 stehno",
     category: "Brav\u010dov\u00e9 m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 921,
     kcal: 390,
@@ -170,7 +170,7 @@ foodItems = [
   {
     value: "Brav\u010dov\u00e9 p\u00e1rky",
     category: "Brav\u010dov\u00e9 m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1467,
     kcal: 350,
@@ -182,7 +182,7 @@ foodItems = [
   {
     value: "Brav\u010dov\u00e1 slanina",
     category: "Brav\u010dov\u00e9 m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 342,
     kcal: 823,
@@ -194,7 +194,7 @@ foodItems = [
   {
     value: "Brav\u010dov\u00e1 \u0161unka",
     category: "Brav\u010dov\u00e9 m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1089,
     kcal: 260,
@@ -206,7 +206,7 @@ foodItems = [
   {
     value: "Hov\u00e4dzie stehno",
     category: "Hov\u00e4dzie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 766,
     kcal: 183,
@@ -218,7 +218,7 @@ foodItems = [
   {
     value: "Hov\u00e4dzie pliecko",
     category: "Hov\u00e4dzie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 783,
     kcal: 187,
@@ -230,7 +230,7 @@ foodItems = [
   {
     value: "Hov\u00e4dzia ro\u0161tenka",
     category: "Hov\u00e4dzie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 909,
     kcal: 217,
@@ -242,7 +242,7 @@ foodItems = [
   {
     value: "Hov\u00e4dzia svie\u010dkov\u00e1",
     category: "Hov\u00e4dzie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 687,
     kcal: 164,
@@ -254,7 +254,7 @@ foodItems = [
   {
     value: "Kapor",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 520,
     kcal: 124,
@@ -266,7 +266,7 @@ foodItems = [
   {
     value: "Krab",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 220,
     kcal: 53,
@@ -278,7 +278,7 @@ foodItems = [
   {
     value: "Krevety",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1120,
     kcal: 267,
@@ -290,7 +290,7 @@ foodItems = [
   {
     value: "Losos",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 680,
     kcal: 162,
@@ -302,7 +302,7 @@ foodItems = [
   {
     value: "Makrela",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 855,
     kcal: 204,
@@ -314,7 +314,7 @@ foodItems = [
   {
     value: "Pstruh",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 710,
     kcal: 169,
@@ -326,7 +326,7 @@ foodItems = [
   {
     value: "Sardinky v oleji",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1130,
     kcal: 270,
@@ -338,7 +338,7 @@ foodItems = [
   {
     value: "Sardinky v om\u00e1\u010dke",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 740,
     kcal: 188,
@@ -350,7 +350,7 @@ foodItems = [
   {
     value: "Sle\u010f",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 924,
     kcal: 220,
@@ -362,7 +362,7 @@ foodItems = [
   {
     value: "Treska alja\u0161sk\u00e1",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 490,
     kcal: 117,
@@ -374,7 +374,7 @@ foodItems = [
   {
     value: "Treska \u0161al\u00e1t",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 920,
     kcal: 219,
@@ -386,7 +386,7 @@ foodItems = [
   {
     value: "Tuniak",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 620,
     kcal: 148,
@@ -398,7 +398,7 @@ foodItems = [
   {
     value: "Tuniak v oleji",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 940,
     kcal: 224,
@@ -410,7 +410,7 @@ foodItems = [
   {
     value: "Tuniak vo vlastnej \u0161\u0165ave",
     category: "Rybacie m\u00e4so",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 630,
     kcal: 150,
@@ -422,7 +422,7 @@ foodItems = [
   {
     value: "Sal\u00e1ma Vyso\u010dina",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1923,
     kcal: 459,
@@ -434,7 +434,7 @@ foodItems = [
   {
     value: "Sal\u00e1ma Debrec\u00ednska",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 878,
     kcal: 209,
@@ -446,7 +446,7 @@ foodItems = [
   {
     value: "Sal\u00e1ma Mor\u010dacia",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 693,
     kcal: 169,
@@ -458,7 +458,7 @@ foodItems = [
   {
     value: "Sal\u00e1ma kabanos",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 858,
     kcal: 209,
@@ -470,7 +470,7 @@ foodItems = [
   {
     value: "Sal\u00e1ma Hydinov\u00e1",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1528,
     kcal: 373,
@@ -482,7 +482,7 @@ foodItems = [
   {
     value: "\u0160unka kuracia",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 652,
     kcal: 156,
@@ -494,7 +494,7 @@ foodItems = [
   {
     value: "\u0160unka mor\u010dacia",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 541,
     kcal: 129,
@@ -506,7 +506,7 @@ foodItems = [
   {
     value: "\u0160unka Hydinov\u00e1",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 928,
     kcal: 226,
@@ -518,7 +518,7 @@ foodItems = [
   {
     value: "\u0160unka dusen\u00e1",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 655,
     kcal: 156,
@@ -530,7 +530,7 @@ foodItems = [
   {
     value: "Klob\u00e1sa Ostravsk\u00e1",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1299,
     kcal: 317,
@@ -542,7 +542,7 @@ foodItems = [
   {
     value: "Klob\u00e1sa Moravsk\u00e1",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 875,
     kcal: 213,
@@ -554,7 +554,7 @@ foodItems = [
   {
     value: "Kabanos",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1247,
     kcal: 297,
@@ -566,7 +566,7 @@ foodItems = [
   {
     value: "Slanina",
     category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 3406,
     kcal: 811,
@@ -578,7 +578,7 @@ foodItems = [
   {
     value: "Bakla\u017e\u00e1n",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 105,
     kcal: 25.6,
@@ -590,7 +590,7 @@ foodItems = [
   {
     value: "Brokolica",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 135,
     kcal: 32.9,
@@ -602,7 +602,7 @@ foodItems = [
   {
     value: "Cesnak",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 670,
     kcal: 163.4,
@@ -614,7 +614,7 @@ foodItems = [
   {
     value: "Cibu\u013ea",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 170,
     kcal: 41.4,
@@ -626,7 +626,7 @@ foodItems = [
   {
     value: "Cibu\u013ea \u010derven\u00e1",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 161,
     kcal: 39.2,
@@ -638,7 +638,7 @@ foodItems = [
   {
     value: "Cukina",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 75,
     kcal: 18.3,
@@ -650,7 +650,7 @@ foodItems = [
   {
     value: "\u010cerven\u00e1 repa",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 182,
     kcal: 44.4,
@@ -662,7 +662,7 @@ foodItems = [
   {
     value: "\u010c\u00ednska kapusta",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 52,
     kcal: 12.7,
@@ -674,7 +674,7 @@ foodItems = [
   {
     value: "Fefer\u00f3nky",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 74,
     kcal: 18,
@@ -686,7 +686,7 @@ foodItems = [
   {
     value: "Hl\u00e1vkov\u00e1 kapusta",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 160,
     kcal: 39,
@@ -698,7 +698,7 @@ foodItems = [
   {
     value: "Hr\u00e1\u0161ok",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 365,
     kcal: 87,
@@ -710,7 +710,7 @@ foodItems = [
   {
     value: "Chren",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 95,
     kcal: 23.1,
@@ -722,7 +722,7 @@ foodItems = [
   {
     value: "Kaler\u00e1b",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 109,
     kcal: 26,
@@ -734,7 +734,7 @@ foodItems = [
   {
     value: "Karfiol",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 120,
     kcal: 29,
@@ -746,7 +746,7 @@ foodItems = [
   {
     value: "K\u00e1pia",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 158,
     kcal: 38.5,
@@ -758,7 +758,7 @@ foodItems = [
   {
     value: "Mrkva",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 175,
     kcal: 42.7,
@@ -770,7 +770,7 @@ foodItems = [
   {
     value: "Olivy",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 610,
     kcal: 148.7,
@@ -782,7 +782,7 @@ foodItems = [
   {
     value: "Paprika biela, zelen\u00e1",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 52,
     kcal: 12.7,
@@ -794,7 +794,7 @@ foodItems = [
   {
     value: "Paprika \u017elt\u00e1",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 115,
     kcal: 28,
@@ -806,7 +806,7 @@ foodItems = [
   {
     value: "Paradajky",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 93,
     kcal: 22.7,
@@ -818,7 +818,7 @@ foodItems = [
   {
     value: "Patiz\u00f3n",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 222,
     kcal: 54.1,
@@ -830,7 +830,7 @@ foodItems = [
   {
     value: "Petr\u017elen",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 230,
     kcal: 56.1,
@@ -842,7 +842,7 @@ foodItems = [
   {
     value: "Po\u013en\u00e1 uhorka",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 67,
     kcal: 16.3,
@@ -854,7 +854,7 @@ foodItems = [
   {
     value: "P\u00f3r",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 160,
     kcal: 38,
@@ -866,7 +866,7 @@ foodItems = [
   {
     value: "Re\u010fkovka",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 110,
     kcal: 26.8,
@@ -878,7 +878,7 @@ foodItems = [
   {
     value: "\u0160al\u00e1tov\u00e1 uhorka",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 66,
     kcal: 16.1,
@@ -890,7 +890,7 @@ foodItems = [
   {
     value: "\u0160pen\u00e1t",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 109,
     kcal: 26,
@@ -902,7 +902,7 @@ foodItems = [
   {
     value: "\u0160parg\u013ea",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 80,
     kcal: 19,
@@ -914,7 +914,7 @@ foodItems = [
   {
     value: "Zeler",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 207,
     kcal: 50.5,
@@ -926,7 +926,7 @@ foodItems = [
   {
     value: "Zemiaky",
     category: "Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 328,
     kcal: 80,
@@ -938,7 +938,7 @@ foodItems = [
   {
     value: "Biela kapusta",
     category: "Zav\u00e1ran\u00e1 Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 87,
     kcal: 21.2,
@@ -950,7 +950,7 @@ foodItems = [
   {
     value: "\u010calam\u00e1da",
     category: "Zav\u00e1ran\u00e1 Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 130,
     kcal: 31.7,
@@ -962,7 +962,7 @@ foodItems = [
   {
     value: "\u010cerven\u00e1 repa",
     category: "Zav\u00e1ran\u00e1 Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 135,
     kcal: 32.9,
@@ -974,7 +974,7 @@ foodItems = [
   {
     value: "Hr\u00e1\u0161ok",
     category: "Zav\u00e1ran\u00e1 Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 299,
     kcal: 72.9,
@@ -986,7 +986,7 @@ foodItems = [
   {
     value: "Kukurica",
     category: "Zav\u00e1ran\u00e1 Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 505,
     kcal: 123.1,
@@ -998,7 +998,7 @@ foodItems = [
   {
     value: "Kysl\u00e1 kapusta",
     category: "Zav\u00e1ran\u00e1 Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 70,
     kcal: 17,
@@ -1010,7 +1010,7 @@ foodItems = [
   {
     value: "Le\u010do",
     category: "Zav\u00e1ran\u00e1 Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 120,
     kcal: 29.2,
@@ -1022,7 +1022,7 @@ foodItems = [
   {
     value: "Mrkva",
     category: "Zav\u00e1ran\u00e1 Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 111,
     kcal: 27,
@@ -1034,7 +1034,7 @@ foodItems = [
   {
     value: "Paradajkov\u00fd pretlak",
     category: "Zav\u00e1ran\u00e1 Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 124,
     kcal: 30.2,
@@ -1046,7 +1046,7 @@ foodItems = [
   {
     value: "Uhorky",
     category: "Zav\u00e1ran\u00e1 Zelenina",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 120,
     kcal: 29.2,
@@ -1058,7 +1058,7 @@ foodItems = [
   {
     value: "Anan\u00e1s",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 192,
     kcal: 47,
@@ -1070,7 +1070,7 @@ foodItems = [
   {
     value: "Avok\u00e1do",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 328,
     kcal: 80,
@@ -1082,7 +1082,7 @@ foodItems = [
   {
     value: "Ban\u00e1n",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 206.6,
     kcal: 49.3,
@@ -1094,7 +1094,7 @@ foodItems = [
   {
     value: "Brosky\u0148a",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 196.8,
     kcal: 48,
@@ -1106,7 +1106,7 @@ foodItems = [
   {
     value: "Citr\u00f3n",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 123,
     kcal: 30,
@@ -1118,7 +1118,7 @@ foodItems = [
   {
     value: "\u010cere\u0161ne",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 270,
     kcal: 64,
@@ -1130,7 +1130,7 @@ foodItems = [
   {
     value: "Figy",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 319.8,
     kcal: 78,
@@ -1142,7 +1142,7 @@ foodItems = [
   {
     value: "Gran\u00e1tov\u00e9 jablko",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 237.8,
     kcal: 58,
@@ -1154,7 +1154,7 @@ foodItems = [
   {
     value: "Grep",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 160,
     kcal: 39,
@@ -1166,7 +1166,7 @@ foodItems = [
   {
     value: "Hrozno biele",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 291.1,
     kcal: 71,
@@ -1178,7 +1178,7 @@ foodItems = [
   {
     value: "Hrozno modr\u00e9",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 300,
     kcal: 72,
@@ -1190,7 +1190,7 @@ foodItems = [
   {
     value: "Hru\u0161ka",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 270.6,
     kcal: 66,
@@ -1202,7 +1202,7 @@ foodItems = [
   {
     value: "Jablko",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 254.2,
     kcal: 62,
@@ -1214,7 +1214,7 @@ foodItems = [
   {
     value: "Jahody",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 150,
     kcal: 36,
@@ -1226,7 +1226,7 @@ foodItems = [
   {
     value: "Kivi",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 205,
     kcal: 50,
@@ -1238,7 +1238,7 @@ foodItems = [
   {
     value: "Maliny",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 229.6,
     kcal: 56,
@@ -1250,7 +1250,7 @@ foodItems = [
   {
     value: "Mandarinka",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 176.3,
     kcal: 43,
@@ -1262,7 +1262,7 @@ foodItems = [
   {
     value: "Mango",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 254.2,
     kcal: 62,
@@ -1274,7 +1274,7 @@ foodItems = [
   {
     value: "Marhule",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 237.8,
     kcal: 58,
@@ -1286,7 +1286,7 @@ foodItems = [
   {
     value: "Mel\u00f3n \u010derven\u00fd",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 150,
     kcal: 36.5,
@@ -1298,7 +1298,7 @@ foodItems = [
   {
     value: "Mel\u00f3n \u017elt\u00fd",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 150,
     kcal: 36.5,
@@ -1310,7 +1310,7 @@ foodItems = [
   {
     value: "Nektarinky",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 143.5,
     kcal: 35,
@@ -1322,7 +1322,7 @@ foodItems = [
   {
     value: "Pap\u00e1ja",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 176.3,
     kcal: 43,
@@ -1334,7 +1334,7 @@ foodItems = [
   {
     value: "Pomaran\u010d",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 226,
     kcal: 55.2,
@@ -1346,7 +1346,7 @@ foodItems = [
   {
     value: "Pomelo",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 168.1,
     kcal: 41,
@@ -1358,7 +1358,7 @@ foodItems = [
   {
     value: "Slivky",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 220,
     kcal: 53.6,
@@ -1370,7 +1370,7 @@ foodItems = [
   {
     value: "Vi\u0161ne",
     category: "Ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 221.4,
     kcal: 54,
@@ -1382,7 +1382,7 @@ foodItems = [
   {
     value: "Anan\u00e1s",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1200,
     kcal: 292.6,
@@ -1394,7 +1394,7 @@ foodItems = [
   {
     value: "Ban\u00e1n",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1350,
     kcal: 329.2,
@@ -1406,7 +1406,7 @@ foodItems = [
   {
     value: "Brusnice",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1020,
     kcal: 248.7,
@@ -1418,7 +1418,7 @@ foodItems = [
   {
     value: "\u010eatle",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1160,
     kcal: 282.9,
@@ -1430,7 +1430,7 @@ foodItems = [
   {
     value: "Figy",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1030,
     kcal: 251.2,
@@ -1442,7 +1442,7 @@ foodItems = [
   {
     value: "Hrozienka",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1280,
     kcal: 312.1,
@@ -1454,7 +1454,7 @@ foodItems = [
   {
     value: "Jablk\u00e1",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1250,
     kcal: 304.8,
@@ -1466,7 +1466,7 @@ foodItems = [
   {
     value: "Jahody",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1030,
     kcal: 251.2,
@@ -1478,7 +1478,7 @@ foodItems = [
   {
     value: "Marhule",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1000,
     kcal: 243.9,
@@ -1490,7 +1490,7 @@ foodItems = [
   {
     value: "Slivky",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1130,
     kcal: 275.6,
@@ -1502,7 +1502,7 @@ foodItems = [
   {
     value: "Vi\u0161ne",
     category: "Su\u0161en\u00e9 ovocie",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1250,
     kcal: 304.8,
@@ -1514,7 +1514,7 @@ foodItems = [
   {
     value: "Mlieko n\u00edzkotu\u010dn\u00e9",
     category: "Mlieko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kj: 160,
     kcal: 38,
@@ -1526,7 +1526,7 @@ foodItems = [
   {
     value: "Mlieko polotu\u010dn\u00e9",
     category: "Mlieko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kj: 194,
     kcal: 46,
@@ -1538,7 +1538,7 @@ foodItems = [
   {
     value: "Mlieko plnotu\u010dn\u00e9",
     category: "Mlieko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kj: 267,
     kcal: 64,
@@ -1550,7 +1550,7 @@ foodItems = [
   {
     value: "Acidofiln\u00e9 mlieko",
     category: "Mlieko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kj: 272,
     kcal: 65,
@@ -1562,7 +1562,7 @@ foodItems = [
   {
     value: "Kozie mlieko",
     category: "Mlieko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kj: 254,
     kcal: 60,
@@ -1574,7 +1574,7 @@ foodItems = [
   {
     value: "Ov\u010die mlieko",
     category: "Mlieko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kj: 452,
     kcal: 108,
@@ -1586,7 +1586,7 @@ foodItems = [
   {
     value: "Jogurt biely",
     category: "Jogurty",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 402,
     kcal: 96,
@@ -1598,7 +1598,7 @@ foodItems = [
   {
     value: "Jogurt ovocn\u00fd",
     category: "Jogurty",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 600,
     kcal: 143,
@@ -1610,7 +1610,7 @@ foodItems = [
   {
     value: "Jogurt \u010dokol\u00e1dov\u00fd",
     category: "Jogurty",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 490,
     kcal: 117,
@@ -1622,7 +1622,7 @@ foodItems = [
   {
     value: "Jogurt n\u00edzkotu\u010dn\u00fd",
     category: "Jogurty",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 238,
     kcal: 56,
@@ -1634,7 +1634,7 @@ foodItems = [
   {
     value: "Syr Eidam 20%",
     category: "Syry",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 967,
     kcal: 231,
@@ -1646,7 +1646,7 @@ foodItems = [
   {
     value: "Syr Eidam 30%",
     category: "Syry",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1108,
     kcal: 264,
@@ -1658,7 +1658,7 @@ foodItems = [
   {
     value: "Syr Eidam 40%",
     category: "Syry",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1293,
     kcal: 308,
@@ -1670,7 +1670,7 @@ foodItems = [
   {
     value: "Syr Eidam 45%",
     category: "Syry",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1700,
     kcal: 406,
@@ -1682,7 +1682,7 @@ foodItems = [
   {
     value: "Bryndza",
     category: "Syry",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1137,
     kcal: 271,
@@ -1694,7 +1694,7 @@ foodItems = [
   {
     value: "Hermel\u00edn",
     category: "Syry",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1118,
     kcal: 266,
@@ -1706,7 +1706,7 @@ foodItems = [
   {
     value: "Syr taven\u00fd",
     category: "Syry",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1237,
     kcal: 295,
@@ -1718,7 +1718,7 @@ foodItems = [
   {
     value: "Syr ov\u010d\u00ed",
     category: "Syry",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1412,
     kcal: 336,
@@ -1730,7 +1730,7 @@ foodItems = [
   {
     value: "Parmez\u00e1n",
     category: "Syry",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1695,
     kcal: 404,
@@ -1742,7 +1742,7 @@ foodItems = [
   {
     value: "Syrokr\u00e9m",
     category: "Syry",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 676,
     kcal: 162,
@@ -1754,7 +1754,7 @@ foodItems = [
   {
     value: "Tvaroh Plnotu\u010dn\u00fd",
     category: "Tvaroh",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 674,
     kcal: 161,
@@ -1766,7 +1766,7 @@ foodItems = [
   {
     value: "Tvaroh polotu\u010dn\u00fd",
     category: "Tvaroh",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 460,
     kcal: 109,
@@ -1778,7 +1778,7 @@ foodItems = [
   {
     value: "Tvaroh ochuten\u00fd",
     category: "Tvaroh",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 590,
     kcal: 141,
@@ -1790,7 +1790,7 @@ foodItems = [
   {
     value: "Smotanov\u00e1 n\u00e1tierka",
     category: "Maslo, n\u00e1tierky",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 1310,
     kcal: 317,
@@ -1802,7 +1802,7 @@ foodItems = [
   {
     value: "Maslo",
     category: "Maslo, n\u00e1tierky",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 3072,
     kcal: 747,
@@ -1814,7 +1814,7 @@ foodItems = [
   {
     value: "Smotana na varenie 10%",
     category: "Smotana",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 498,
     kcal: 119,
@@ -1826,7 +1826,7 @@ foodItems = [
   {
     value: "Smotana na \u0161\u013eahanie 33%",
     category: "Smotana",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kj: 300,
     kcal: 1257,
@@ -1838,7 +1838,7 @@ foodItems = [
   {
     value: "Bageta",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 290,
     kj: 1215,
@@ -1850,7 +1850,7 @@ foodItems = [
   {
     value: "Chlieb biely",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 233,
     kj: 980,
@@ -1862,7 +1862,7 @@ foodItems = [
   {
     value: "Chlieb celozrnn\u00fd",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 220,
     kj: 920,
@@ -1874,7 +1874,7 @@ foodItems = [
   {
     value: "Chlieb celoz.ra\u017en\u00fd",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 183,
     kj: 766,
@@ -1886,7 +1886,7 @@ foodItems = [
   {
     value: "Chlieb km\u00ednov\u00fd",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 247,
     kj: 1340,
@@ -1898,7 +1898,7 @@ foodItems = [
   {
     value: "Chlieb rascov\u00fd",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 235,
     kj: 990,
@@ -1910,7 +1910,7 @@ foodItems = [
   {
     value: "Chlieb ra\u017en\u00fd",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 201,
     kj: 850,
@@ -1922,7 +1922,7 @@ foodItems = [
   {
     value: "Chlieb toustov\u00fd",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 269,
     kj: 1127,
@@ -1934,7 +1934,7 @@ foodItems = [
   {
     value: "Chlieb zemiakov\u00fd",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 233,
     kj: 980,
@@ -1946,7 +1946,7 @@ foodItems = [
   {
     value: "Knackebrot",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 282,
     kj: 1180,
@@ -1958,7 +1958,7 @@ foodItems = [
   {
     value: "Ro\u017eok biely",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 286,
     kj: 1200,
@@ -1970,7 +1970,7 @@ foodItems = [
   {
     value: "Ro\u017eok grahamov\u00fd",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 290,
     kj: 1220,
@@ -1982,7 +1982,7 @@ foodItems = [
   {
     value: "Str\u00fahanka",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 380,
     kj: 1560,
@@ -1994,7 +1994,7 @@ foodItems = [
   {
     value: "\u017dem\u013ea biela",
     category: "Pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 290,
     kj: 1200,
@@ -2006,7 +2006,7 @@ foodItems = [
   {
     value: "B\u00e1bovka",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 400,
     kj: 1640,
@@ -2018,7 +2018,7 @@ foodItems = [
   {
     value: "Buchty",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 410,
     kj: 1690,
@@ -2030,7 +2030,7 @@ foodItems = [
   {
     value: "Croissant",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 430,
     kj: 1780,
@@ -2042,7 +2042,7 @@ foodItems = [
   {
     value: "Kaiserka",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 487,
     kj: 1202,
@@ -2054,7 +2054,7 @@ foodItems = [
   {
     value: "Kol\u00e1\u010d kysnut\u00fd",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 390,
     kj: 1600,
@@ -2066,7 +2066,7 @@ foodItems = [
   {
     value: "Kol\u00e1\u010d makov\u00fd",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 367,
     kj: 1537,
@@ -2078,7 +2078,7 @@ foodItems = [
   {
     value: "Kol\u00e1\u010d tvarohov\u00fd",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 323,
     kj: 1353,
@@ -2090,7 +2090,7 @@ foodItems = [
   {
     value: "Pi\u0161k\u00f3ty",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 370,
     kj: 1510,
@@ -2102,7 +2102,7 @@ foodItems = [
   {
     value: "\u0160i\u0161ka",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 327,
     kj: 1558,
@@ -2114,7 +2114,7 @@ foodItems = [
   {
     value: "Viano\u010dka",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 360,
     kj: 1470,
@@ -2126,7 +2126,7 @@ foodItems = [
   {
     value: "Z\u00e1vin",
     category: "Sladk\u00e9 pe\u010divo",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 400,
     kj: 1630,
@@ -2138,7 +2138,7 @@ foodItems = [
   {
     value: "Citr\u00f3nov\u00e1 \u0161\u0165ava",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 47,
     kj: 194,
@@ -2150,7 +2150,7 @@ foodItems = [
   {
     value: "Coca cola",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 41,
     kj: 169,
@@ -2162,7 +2162,7 @@ foodItems = [
   {
     value: "Coca Cola zero",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 0.09,
     kj: 0.03,
@@ -2174,7 +2174,7 @@ foodItems = [
   {
     value: "\u010caj nesladen\u00fd",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 1,
     kj: 4,
@@ -2186,7 +2186,7 @@ foodItems = [
   {
     value: "Fanta",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 35,
     kj: 158,
@@ -2198,7 +2198,7 @@ foodItems = [
   {
     value: "Han\u00e1cka kyselka",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 16,
     kj: 65,
@@ -2210,7 +2210,7 @@ foodItems = [
   {
     value: "K\u00e1va",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 12.19,
     kj: 51,
@@ -2222,7 +2222,7 @@ foodItems = [
   {
     value: "Kofola Original",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 33,
     kj: 140,
@@ -2234,7 +2234,7 @@ foodItems = [
   {
     value: "Mattoni pomaran\u010d",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 21,
     kj: 85,
@@ -2246,7 +2246,7 @@ foodItems = [
   {
     value: "Pepsi",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 48,
     kj: 197,
@@ -2258,7 +2258,7 @@ foodItems = [
   {
     value: "Pivo nealko",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 19,
     kj: 80,
@@ -2270,7 +2270,7 @@ foodItems = [
   {
     value: "Red Bull",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 18,
     kj: 74.8,
@@ -2282,7 +2282,7 @@ foodItems = [
   {
     value: "Sirup ovocn\u00fd",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 278,
     kj: 1167,
@@ -2294,7 +2294,7 @@ foodItems = [
   {
     value: "Sprite",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 38,
     kj: 159,
@@ -2306,7 +2306,7 @@ foodItems = [
   {
     value: "Tonic",
     category: "Nealko",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 54,
     kj: 225,
@@ -2318,7 +2318,7 @@ foodItems = [
   {
     value: "Amaretto",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 271,
     kj: 1135,
@@ -2330,7 +2330,7 @@ foodItems = [
   {
     value: "Becherovka",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 278,
     kj: 1164,
@@ -2342,7 +2342,7 @@ foodItems = [
   {
     value: "Bur\u010diak",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 102,
     kj: 427,
@@ -2354,7 +2354,7 @@ foodItems = [
   {
     value: "Gin 45%",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 254,
     kj: 1042,
@@ -2366,7 +2366,7 @@ foodItems = [
   {
     value: "Mojito",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 69,
     kj: 289,
@@ -2378,7 +2378,7 @@ foodItems = [
   {
     value: "Pivo svetl\u00e9 10\u00b0",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 32,
     kj: 134,
@@ -2390,7 +2390,7 @@ foodItems = [
   {
     value: "Pivo svetl\u00e9 12\u00b0",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 34,
     kj: 144,
@@ -2402,7 +2402,7 @@ foodItems = [
   {
     value: "Pivo tmav\u00e9 10\u00b0",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 51,
     kj: 215,
@@ -2414,7 +2414,7 @@ foodItems = [
   {
     value: "Radler",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 113,
     kj: 27,
@@ -2426,7 +2426,7 @@ foodItems = [
   {
     value: "Rum",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 223,
     kj: 936,
@@ -2438,7 +2438,7 @@ foodItems = [
   {
     value: "Sekt",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 83,
     kj: 347,
@@ -2450,7 +2450,7 @@ foodItems = [
   {
     value: "Slivovica 40\u00b0",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 226,
     kj: 949,
@@ -2462,7 +2462,7 @@ foodItems = [
   {
     value: "Vaje\u010dn\u00fd ko\u0148ak",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 333,
     kj: 1403,
@@ -2474,7 +2474,7 @@ foodItems = [
   {
     value: "Vermut",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 134,
     kj: 561,
@@ -2486,7 +2486,7 @@ foodItems = [
   {
     value: "V\u00edno biele",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 55,
     kj: 231,
@@ -2498,7 +2498,7 @@ foodItems = [
   {
     value: "V\u00edno \u010derven\u00e9",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 67,
     kj: 281,
@@ -2510,7 +2510,7 @@ foodItems = [
   {
     value: "Vodka",
     category: "Alkohol",
-    unit: "ML",
+    unit: "ml",
     base: 100,
     kcal: 227,
     kj: 953,
@@ -2522,7 +2522,7 @@ foodItems = [
   {
     value: "\u010cokol\u00e1da hork\u00e1",
     category: "Sladkosti",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 528,
     kj: 2217.6,
@@ -2534,7 +2534,7 @@ foodItems = [
   {
     value: "\u010cokol\u00e1da mlie\u010dna",
     category: "Sladkosti",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 532,
     kj: 2234.4,
@@ -2546,7 +2546,7 @@ foodItems = [
   {
     value: "\u010cokol\u00e1da na varenie",
     category: "Sladkosti",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 530,
     kj: 2226,
@@ -2558,7 +2558,7 @@ foodItems = [
   {
     value: "Nutella",
     category: "Sladkosti",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 550,
     kj: 2310,
@@ -2570,7 +2570,7 @@ foodItems = [
   {
     value: "Pi\u0161k\u00f3ty",
     category: "Sladkosti",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 380,
     kj: 1596,
@@ -2582,7 +2582,7 @@ foodItems = [
   {
     value: "vajce",
     category: "Vajcia",
-    unit: "Kus",
+    unit: "ks",
     base: 1,
     kcal: 84,
     kj: 350,
@@ -2594,7 +2594,7 @@ foodItems = [
   {
     value: "bielok",
     category: "Vajcia",
-    unit: "Kus",
+    unit: "ks",
     base: 1,
     kcal: 17,
     kj: 70,
@@ -2606,7 +2606,7 @@ foodItems = [
   {
     value: "\u017e\u013atok",
     category: "Vajcia",
-    unit: "Kus",
+    unit: "ks",
     base: 1,
     kcal: 69,
     kj: 290,
@@ -2618,7 +2618,7 @@ foodItems = [
   {
     value: "ovsen\u00e9 vlo\u010diek",
     category: "Obilniny",
-    unit: "Gramy",
+    unit: "g",
     base: 100,
     kcal: 334,
     kj: 1400,

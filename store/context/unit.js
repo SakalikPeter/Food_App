@@ -1,11 +1,15 @@
 unitItems = [
   {
     key: 0,
-    value: "Gramy",
+    value: "g",
   },
   {
     key: 1,
-    value: "ML",
+    value: "ml",
+  },
+  {
+    key: 2,
+    value: "ks",
   },
 ];
 

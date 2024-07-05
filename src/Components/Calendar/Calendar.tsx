@@ -21,14 +21,14 @@ const Calendar: React.FC<CalendarProps> = ({ date, setDate }) => {
       <View style={styles.header}>
         <Text style={styles.title}>Kalendar</Text>
         <View style={styles.iconContainer}>
-    <Icon
-      name={collapsed ? 'expand-more' : 'expand-less'}
-      type='material'
-      color="#70d7c7"
-      onPress={toggleCollapse}
-      style={styles.icon}
-    />
-  </View>
+          <Icon
+            name={collapsed ? 'expand-more' : 'expand-less'}
+            type='material'
+            color="#70d7c7"
+            onPress={toggleCollapse}
+            style={styles.icon}
+          />
+        </View>
       </View>
       {!collapsed && (
         <View style={styles.calendarWrapper}>

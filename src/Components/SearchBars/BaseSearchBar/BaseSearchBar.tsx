@@ -9,7 +9,7 @@ const BaseSearchBar = ({value, setter}) => {
   return (
    <View>
     <Searchbar
-      placeholder="Search"
+      placeholder="Hladaj..."
       onChangeText={onChangeSearch}
       value={value}
     />
