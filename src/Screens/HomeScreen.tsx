@@ -14,10 +14,16 @@ import { SelectedItem } from "../Models/SelectedItem";
 import { RecipeNutritions } from "../Models/RecipeNutritions";
 
 // Define the selector function
-const itemSelector = (item) => ({
+const itemSelectorFood = (item) => ({
+  key: item.key,
+  value: item.value + " (" + item.category + ")",
+  unit: item.unit,
+});
+
+const itemSelectorRecipe = (item) => ({
   key: item.key,
   value: item.value,
-  unit: item.unit,
+  unit: "porcie",
 });
 
 const HomeScreen: React.FC = () => {
@@ -103,7 +109,7 @@ const HomeScreen: React.FC = () => {
         <View >
           {foods.length > 0 && (
             <Selector
-              items={foods.map((f) => itemSelector(f))}
+              items={foods.map((f) => itemSelectorFood(f))}
               checkedItems={menu.foods}
               setCheckedItems={handleFoodsChange}
               setInput={handleFoodInput}
@@ -114,7 +120,7 @@ const HomeScreen: React.FC = () => {
         <View >
           {recipes.length > 0 && (
             <Selector
-              items={recipes.map((f) => itemSelector(f))}
+              items={recipes.map((f) => itemSelectorRecipe(f))}
               checkedItems={menu.recipes}
               setCheckedItems={handleRecipesChange}
               setInput={handleRecipeInput}

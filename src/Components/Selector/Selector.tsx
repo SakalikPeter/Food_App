@@ -75,7 +75,7 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
             keyboardType="numeric"
           />
         </View>
-        <Text style={{ fontSize: 16, marginLeft: 4 }}>{item.unit}</Text>
+        <Text style={styles.unitText}>{item.unit}</Text>
       </View>
     );
   };
@@ -122,6 +122,7 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
 };
 
 const styles = StyleSheet.create({
+  // global
   container: {
     backgroundColor: '#ffffff',
     borderRadius: 8,
@@ -134,17 +135,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
   },
+  // global -> header
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 2,
   },
+  // global -> title
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#333333',
   },
+  // global -> icon
   iconContainer: {
     marginLeft: 'auto',
     paddingRight: 10,
@@ -153,44 +157,47 @@ const styles = StyleSheet.create({
     fontSize: 24,
     paddingRight: 10,
   },
+  // global -> content wrapper
   selectorWrapper: {
     marginTop: 16,
   },
+  // global -> divider
   divider: {
     marginVertical: 16,
     backgroundColor: '#e0e0e0',
   },
-  input: {
-    flex: 1,
-  },
-  content: {
-    marginTop: 16,
-  },
+  // list
   list: {
-    maxHeight: 200,
+    maxHeight: 250,
     marginTop: 16,
   },
+  // list - item wrapper
   itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  itemKey: {
-    fontWeight: 'bold',
-    marginHorizontal: 10,
-  },
-  itemValue: {
-    color: '#555',
-    flex: 1,
+    // padding: 1,
+    // borderBottomWidth: 1,
+    // borderBottomColor: '#ccc',
   },
   checkboxContainer: {
     marginRight: 10,
+    flex: 0.2,
+  },
+  itemValue: {
+    color: '#555',
+    flex: 0.8,
   },
   inputContainer: {
-    flex: 0.75,
+    flex: 0.25,
   },
+  input: {
+    // flex: 1,
+  },
+  unitText: {
+    color: '#555',
+    flex: 0.2,
+  },
+  // chips
   chipsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
