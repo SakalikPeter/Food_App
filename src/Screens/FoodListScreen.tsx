@@ -15,6 +15,10 @@ function FoodListScreen({ navigation }) {
   const [item, setItem] = React.useState(null);
   const [itemVisible, setItemVisible] = React.useState(false);
 
+  React.useEffect(() => {
+    setFilteredfoods(foods);
+  }, [foods]);
+
   const hideItem = () => {
     setItemVisible(false);
     setItem(null);
@@ -40,7 +44,6 @@ function FoodListScreen({ navigation }) {
         )}
       </View>
       <View>
-        {/* <BaseSearchBar value={value} setValue={setValue} /> */}
         <FoodFilter foods={foods} setFilteredFoods={setFilteredfoods}/>
       </View>
       <FoodList items={filteredFoods} setSelectedItem={showItem}/>
