@@ -6,18 +6,19 @@ import { useSelector } from "react-redux";
 import FoodItemModal from "../Components/Modals/FoodItemModal/FoodItemModal";
 import BaseSearchBar from "../Components/SearchBars/BaseSearchBar/BaseSearchBar";
 import FoodFilter from "../Components/Filters/FoodFilter/FoodFilter";
+import FoodList from "../Components/FoodList/FoodList";
+import { Food } from "../Models/Food";
+import { useAppSelector } from "../../store/redux/hooks";
+import { RootState } from "../../store/redux/store";
+import category from "../../store/redux/category";
 
 function FoodListScreen({ navigation }) {
-  const items = useSelector((state) => state.food.items);
+  const foods: Food[] = useAppSelector((state: RootState) => state.food.items);
   const [filteredItems, setFilteredItems] = React.useState([])
   const [value, setValue] = React.useState("");
   const [item, setItem] = React.useState(null);
   const [itemVisible, setItemVisible] = React.useState(false);
 
-  const showItem = (item) => {
-    setItemVisible(true);
-    setItem(item);
-  };
   const hideItem = () => {
     setItemVisible(false);
     setItem(null);
@@ -26,6 +27,10 @@ function FoodListScreen({ navigation }) {
   const handleAddFood = () => {
     navigation.navigate("Potravina", {});
   };
+  const showItem = (key: Number) => {
+    setItemVisible(true);
+    setItem(foods.find((food) => food.key === key));
+  }
 
   return (
     <View style={styles.container}>
@@ -40,16 +45,9 @@ function FoodListScreen({ navigation }) {
       </View>
       <View>
         {/* <BaseSearchBar value={value} setValue={setValue} /> */}
-        <FoodFilter foods={items} setFilteredFoods={setFilteredItems}/>
+        {/*<FoodFilter foods={items} setFilteredFoods={setFilteredItems}/> */}
       </View>
-      <View style={styles.listContainer}>
-        {items.length > 0 && (
-          <ValueList
-            showItem={showItem}
-            items={filteredItems}
-          />
-        )}
-      </View>
+      <FoodList items={foods} setSelectedItem={showItem}/>
       <View style={styles.addButtonContainer}>
         <Pressable
           style={[styles.button, styles.buttonAdd]}

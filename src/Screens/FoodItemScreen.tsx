@@ -23,7 +23,6 @@ function FoodItemScreen({ route, navigation }) {
   };
 
   const handleSubmit = () => {
-    console.log("Submit",  food)
     if (food.isValid()) {
       let title: string = "";
 
