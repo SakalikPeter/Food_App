@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import SingleSelector from "../../SingleSelector";
-import { FoodFilterCls, FoodFilterParams } from "../../../Models/FoodFilter";
+import { FoodFilterCls } from "../../../Models/FoodFilter";
 import BaseSearchBar from "../../SearchBars/BaseSearchBar/BaseSearchBar";
 import { Food } from "../../../Models/Food";
+import Selector from "../../Selector/SingleSelector/SingleSelector";
+import { Category } from "../../../Models/Category";
+import { useAppSelector } from "../../../../store/redux/hooks";
+import { RootState } from "../../../../store/redux/store";
 
 interface FoodFilterProps {
   foods: Food[]; // Adjust type as per your actual data structure
@@ -12,13 +15,10 @@ interface FoodFilterProps {
 
 const FoodFilter: React.FC<FoodFilterProps> = ({ foods, setFilteredFoods }) => {
   const [foodFilter, setFoodFilter] = useState<FoodFilterCls>(new FoodFilterCls());
+  const categories: Category[] = useAppSelector((state: RootState) => state.category.items);
 
-  const handleInputChange = (field: keyof FoodFilterParams, value: string) => {
-    if (field === "category") {
-      foodFilter.setCategory(value);
-    } else if (field === "unit") {
-      foodFilter.setUnit(value);
-    }
+  const handleCategoryChange = (value: string[]) => {
+    foodFilter.setCategory(value[0]);
     applyFilters();
   };
 
@@ -34,14 +34,8 @@ const FoodFilter: React.FC<FoodFilterProps> = ({ foods, setFilteredFoods }) => {
 
   return (
     <View>
-      {/* <BaseSearchBar value={foodFilter.value} setValue={handleSearchChange} /> */}
-      <SingleSelector
-        itemKey="category"
-        defValue={null}
-        setItem={handleInputChange}
-        label="Kategoria"
-        notFoundText="Ziadna kategoria sa nenasla"
-      />
+      <BaseSearchBar value={foodFilter.value} setter={handleSearchChange} />
+      <Selector items={categories} checkedValue={[foodFilter.category]} setCheckedItems={handleCategoryChange} title="Kategoria" /> 
     </View>
   );
 };

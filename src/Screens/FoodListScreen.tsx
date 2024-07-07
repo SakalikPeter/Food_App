@@ -1,20 +1,16 @@
 import React from "react";
 import { Pressable, View, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
-import ValueList from "../Components/ValueList";
-import { useSelector } from "react-redux";
 import FoodItemModal from "../Components/Modals/FoodItemModal/FoodItemModal";
-import BaseSearchBar from "../Components/SearchBars/BaseSearchBar/BaseSearchBar";
 import FoodFilter from "../Components/Filters/FoodFilter/FoodFilter";
 import FoodList from "../Components/FoodList/FoodList";
 import { Food } from "../Models/Food";
 import { useAppSelector } from "../../store/redux/hooks";
 import { RootState } from "../../store/redux/store";
-import category from "../../store/redux/category";
 
 function FoodListScreen({ navigation }) {
   const foods: Food[] = useAppSelector((state: RootState) => state.food.items);
-  const [filteredItems, setFilteredItems] = React.useState([])
+  const [filteredFoods, setFilteredfoods] = React.useState(foods)
   const [value, setValue] = React.useState("");
   const [item, setItem] = React.useState(null);
   const [itemVisible, setItemVisible] = React.useState(false);
@@ -45,9 +41,9 @@ function FoodListScreen({ navigation }) {
       </View>
       <View>
         {/* <BaseSearchBar value={value} setValue={setValue} /> */}
-        {/*<FoodFilter foods={items} setFilteredFoods={setFilteredItems}/> */}
+        <FoodFilter foods={foods} setFilteredFoods={setFilteredfoods}/>
       </View>
-      <FoodList items={foods} setSelectedItem={showItem}/>
+      <FoodList items={filteredFoods} setSelectedItem={showItem}/>
       <View style={styles.addButtonContainer}>
         <Pressable
           style={[styles.button, styles.buttonAdd]}

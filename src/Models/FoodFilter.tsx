@@ -8,38 +8,30 @@ export interface FoodFilterParams {
 export class FoodFilterCls {
   value: string;
   category: string;
-  unit: string;
 
   constructor() {
     this.value = "";
     this.category = "";
-    this.unit = "";
   }
 
   setValue(value: string) {
-    this.value = value.toLowerCase(); // Update instance property directly
+    this.value = value.toLowerCase();
   }
 
   setCategory(category: string) {
-    this.category = category.toLowerCase();
-  }
-
-  setUnit(unit: string) {
-    this.unit = unit.toLowerCase();
+    this.category = category
   }
 
   filterFoods(foods: Food[]): Food[] {
     return foods.filter((food) => {
-      const foodCategory = food.category.toLowerCase();
-      const foodUnit = food.unit.toLowerCase();
-      const filterValue = this.value.toLowerCase();
+      const foodCategory = food.category;
+      const filterValue = food.value.toLowerCase();
 
       // Filter conditions
       const matchesCategory = !this.category || foodCategory === this.category;
-      const matchesUnit = !this.unit || foodUnit === this.unit;
-      const matchesValue = !this.value || food.value.toLowerCase().includes(filterValue);
+      const matchesValue = !this.value || filterValue.includes(this.value);
 
-      return matchesCategory && matchesUnit && matchesValue;
+      return matchesCategory && matchesValue;
     });
   }
 }
