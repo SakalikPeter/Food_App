@@ -1,26 +1,29 @@
-import { Food } from "./Food";
-
-export interface RecipeFilterParams {
-  category: string;
-  unit: string;
-}
+import { Recipe } from "./Recipe";
 
 export class RecipeFilterCls {
   value: string;
-  category: string;
-  unit: string;
+  tags: string;
+  foods: Number[];
 
   constructor() {
     this.value = "";
-    this.category = "";
-    this.unit = "";
+    this.tags = "";
+    this.foods = [];
   }
 
   setValue(value: string) {
     this.value = value.toLowerCase();
   }
 
-  setCategory(category: string) {
-    this.category = category.toLowerCase();
+  setTags(tags: string) {
+    this.tags = tags;
+  }
+
+  setFoods(foods: Number[]) {
+    this.foods = foods;
+  }
+
+  filterRecipes(recipes: Recipe[]): Recipe[] {
+    return recipes
   }
 }

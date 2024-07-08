@@ -1,10 +1,5 @@
 import { Food } from "./Food";
 
-export interface FoodFilterParams {
-  category: string;
-  unit: string;
-}
-
 export class FoodFilterCls {
   value: string;
   category: string;
