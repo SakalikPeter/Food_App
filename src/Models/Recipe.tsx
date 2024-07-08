@@ -53,6 +53,14 @@ export class Recipe {
   public calculateNutritions(foods: Food[]): void {
     this.nutritions.clearValues();
 
+    if (this.foods.length == 0) {
+      this.nutritions.kj = 0
+      this.nutritions.kcal = 0
+      this.nutritions.protein = 0
+      this.nutritions.carbs = 0
+      this.nutritions.fat = 0
+    }
+
     this.foods.forEach((recipeFood) => {
       const foodItem = foods.find(
         (food) => food.key === recipeFood.key

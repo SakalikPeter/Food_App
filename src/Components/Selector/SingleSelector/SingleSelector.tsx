@@ -15,7 +15,7 @@ type Props = {
   multi?: boolean;
 };
 
-const Selector: React.FC<Props> = ({ items = [], checkedValue, setCheckedItems, title, multi = false }) => {
+const Selector2: React.FC<Props> = ({ items = [], checkedValue, setCheckedItems, title, multi = false }) => {
   const [collapsed, setCollapsed] = useState(true);
   const chips = items.filter((item) => checkedValue.includes(item.value))
 
@@ -189,4 +189,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Selector;
+export default Selector2;

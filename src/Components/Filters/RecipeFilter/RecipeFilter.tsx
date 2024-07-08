@@ -4,7 +4,7 @@ import { RecipeFilterCls } from "../../../Models/RecipeFilter";
 import BaseSearchBar from "../../SearchBars/BaseSearchBar/BaseSearchBar";
 import { Food } from "../../../Models/Food";
 import { Recipe } from "../../../Models/Recipe";
-import Selector from "../../Selector/SingleSelector/SingleSelector";
+import Selector2 from "../../Selector/SingleSelector/SingleSelector";
 import { Tag } from "../../../Models/Tags";
 import { useAppSelector } from "../../../../store/redux/hooks";
 import { RootState } from "../../../../store/redux/store";
@@ -47,7 +47,7 @@ const RecipeFilter: React.FC<RecipeFilterProps> = ({ recipes, setFilteredRecipes
     <View>
       <BaseSearchBar value={recipeFilter.value} setter={handleSearchChange} />
       {/* <Selector items={foods} checkedValue={recipeFilter.foods} setCheckedItems={handleFoodChange} title="Potraviny" multi={true} />  */}
-      <Selector items={tags} checkedValue={[recipeFilter.tags]} setCheckedItems={handleTagChange} title="Tagy" /> 
+      <Selector2 items={tags} checkedValue={[recipeFilter.tags]} setCheckedItems={handleTagChange} title="Tagy" /> 
     </View>
   );
 };
