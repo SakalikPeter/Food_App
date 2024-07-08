@@ -39,111 +39,89 @@ const HomeScreen: React.FC = () => {
   const [menu, setMenu] = useState<Menu>(selectedMenu || new Menu(date));
   const [nutritions, setNutritions] = useState<RecipeNutritions>(menu.nutritions);
 
-  // Update menu and nutritions whenever date changes
+  // Update menu and nutritions whenever date or selectedMenu changes
   useEffect(() => {
     setMenu(selectedMenu || new Menu(date));
     setNutritions(selectedMenu?.nutritions || new RecipeNutritions());
   }, [date, selectedMenu]);
 
+  // Function to update menu and nutritions
   const updateMenuAndNutritions = (updatedMenu: Menu) => {
     updatedMenu.calculateRecipeNutritions(recipes, foods);
     setMenu(updatedMenu);
     setNutritions(updatedMenu.nutritions);
   };
 
+  // Handle changes in recipes
   const handleRecipesChange = (key: string) => {
-    
-    let mFood = menu.recipes;
-    let menuFoods = menu.recipes.map((f) => f.key);
-    if (menuFoods.includes(Number(key))) {
-      mFood = menu.recipes.filter((f) => f.key != Number(key));
-    } else {
-      let obj = new SelectedItem(Number(key), 0);
-      mFood = [...mFood, obj];
-    }
-    const updatedMenu = new Menu(menu.date, menu.foods, mFood);
-    console.log("Handle: ", key)
+    const updatedRecipes = toggleItemInArray(menu.recipes, key);
+    const updatedMenu = new Menu(menu.date, menu.foods, updatedRecipes);
     updateMenuAndNutritions(updatedMenu);
   };
 
+  // Handle changes in foods
   const handleFoodsChange = (key: string) => {
-    let mFood = menu.foods;
-    let menuFoods = menu.foods.map((f) => f.key);
-    if (menuFoods.includes(Number(key))) {
-      mFood = menu.foods.filter((f) => f.key != Number(key));
-    } else {
-      let obj = new SelectedItem(Number(key), 0);
-      mFood = [...mFood, obj];
-    }
-    const updatedMenu = new Menu(menu.date, mFood, menu.recipes);
+    const updatedFoods = toggleItemInArray(menu.foods, key);
+    const updatedMenu = new Menu(menu.date, updatedFoods, menu.recipes);
     updateMenuAndNutritions(updatedMenu);
   };
 
+  // Handle input changes in foods
   const handleFoodInput = (item: SelectedItem) => {
-    const updatedFood = menu.foods.map((book) => {
-      if (book.key === item.key) {
-        // Ensure that the updated item is a SelectedItem object
-        return new SelectedItem(book.key, item.quantity);
-      }
-      return book;
-    });
-    const updatedMenu = new Menu(menu.date, updatedFood, menu.recipes);
+    const updatedFoods = updateItemQuantity(menu.foods, item);
+    const updatedMenu = new Menu(menu.date, updatedFoods, menu.recipes);
     updateMenuAndNutritions(updatedMenu);
   };
-  
 
+  // Handle input changes in recipes
   const handleRecipeInput = (item: SelectedItem) => {
-    const updatedRecipe = menu.recipes.map((book) => {
-      if (book.key === item.key) {
-        return new SelectedItem(book.key, item.quantity);
-      }
-      return book;
-    });
-    const updatedMenu = new Menu(menu.date, menu.foods, updatedRecipe);
+    const updatedRecipes = updateItemQuantity(menu.recipes, item);
+    const updatedMenu = new Menu(menu.date, menu.foods, updatedRecipes);
     updateMenuAndNutritions(updatedMenu);
   };
 
   return (
-      <View style={styles.container}>
-        <Calendar date={date} setDate={setDate} />
-        <View >
-          {foods.length > 0 && (
-            <Selector
-              items={foods.map((f) => itemSelectorFood(f))}
-              checkedItems={menu.foods}
-              setCheckedItems={handleFoodsChange}
-              setInput={handleFoodInput}
-              title="Potraviny"
-            />
-          )}
-        </View>
-        <View >
-          {recipes.length > 0 && (
-            <Selector
-              items={recipes.map((f) => itemSelectorRecipe(f))}
-              checkedItems={menu.recipes}
-              setCheckedItems={handleRecipesChange}
-              setInput={handleRecipeInput}
-              title="Recepty"
-            />
-          )}
-        </View>
+    <View style={styles.container}>
+      <Calendar date={date} setDate={setDate} />
+      <View>
+        {foods.length > 0 && (
+          <Selector
+            items={foods.map((f) => itemSelectorFood(f))}
+            checkedItems={menu.foods}
+            setCheckedItems={handleFoodsChange}
+            setInput={handleFoodInput}
+            title="Potraviny"
+          />
+        )}
       </View>
-      // {/* <View>
-      //   <Text>KJ: {nutritions.kj}</Text>
-      //   <Text>KCal: {nutritions.kcal}</Text>
-      //   <Text>Bielkoviny: {nutritions.protein}</Text>
-      //   <Text>Sacharidy: {nutritions.carbs}</Text>
-      //   <Text>Tuky: {nutritions.fat}</Text>
-      // </View>
-      // <ScrollView>
-      //   <Button title={"Ulozit"} />
-      // </ScrollView> */}
+      <View>
+        {recipes.length > 0 && (
+          <Selector
+            items={recipes.map((f) => itemSelectorRecipe(f))}
+            checkedItems={menu.recipes}
+            setCheckedItems={handleRecipesChange}
+            setInput={handleRecipeInput}
+            title="Recepty"
+          />
+        )}
+      </View>
+      <View>
+        <Text>KJ: {nutritions.kj}</Text>
+        <Text>KCal: {nutritions.kcal}</Text>
+        <Text>Bielkoviny: {nutritions.protein}</Text>
+        <Text>Sacharidy: {nutritions.carbs}</Text>
+        <Text>Tuky: {nutritions.fat}</Text>
+      </View>
+      <ScrollView>
+        <Button title={"Ulozit"} />
+      </ScrollView>
+    </View>
   );
 };
 
 export default HomeScreen;
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -151,3 +129,25 @@ const styles = StyleSheet.create({
     padding: 16,
   },
 });
+
+// Helper function to toggle an item in an array
+const toggleItemInArray = (array, key) => {
+  let updatedArray = array;
+  const itemIndex = array.findIndex((item) => item.key === Number(key));
+  if (itemIndex !== -1) {
+    updatedArray = array.filter((item) => item.key !== Number(key));
+  } else {
+    updatedArray = [...array, new SelectedItem(Number(key), 0)];
+  }
+  return updatedArray;
+};
+
+// Helper function to update item quantity in an array
+const updateItemQuantity = (array, item) => {
+  return array.map((existingItem) => {
+    if (existingItem.key === item.key) {
+      return new SelectedItem(existingItem.key, item.quantity);
+    }
+    return existingItem;
+  });
+};
