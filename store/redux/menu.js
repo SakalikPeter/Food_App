@@ -6,7 +6,14 @@ const menuSlice = createSlice({
   initialState: {
     items: menuItems,
   },
-  reducers: {},
+  reducers: {
+    addMenu: (state, action) => {
+      state.items.push(action.payload);
+    },
+    removeMenu: (state, action) => {
+      state.items = state.items.filter((item) => item.date !== action.payload);
+    },
+  },
 });
 
 const selectMenuItems = (state) => state.menu.items;
@@ -24,4 +31,5 @@ const selectMenuItemByDates = (dates) =>
   );
 
 export { selectMenuItemByDate, selectMenuItemByDates };
+export const { addMenu, removeMenu } = menuSlice.actions;
 export default menuSlice.reducer;

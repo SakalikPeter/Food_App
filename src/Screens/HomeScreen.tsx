@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, ScrollView, StyleSheet, Text } from "react-native";
+import { View, ScrollView, StyleSheet, Text, Alert } from "react-native";
 import Calendar from "../Components/Calendar/Calendar";
 import { Food } from "../Models/Food";
 import { Menu } from "../Models/Menu";
@@ -8,10 +8,11 @@ import { useAppSelector } from "../../store/redux/hooks";
 import { RootState } from "../../store/redux/store";
 import Selector from "../Components/Selector/Selector";
 import { selectMenuItemByDate } from "../../store/redux/menu";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-native-elements";
 import { SelectedItem } from "../Models/SelectedItem";
 import { RecipeNutritions } from "../Models/RecipeNutritions";
+import { addMenu, removeMenu } from "../../store/redux/menu";
 
 // Define the selector function
 const itemSelectorFood = (item) => ({
@@ -27,6 +28,7 @@ const itemSelectorRecipe = (item) => ({
 });
 
 const HomeScreen: React.FC = () => {
+  const dispatch = useDispatch();
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const recipes: Recipe[] = useAppSelector(
     (state: RootState) => state.recipe.items
@@ -80,6 +82,17 @@ const HomeScreen: React.FC = () => {
     updateMenuAndNutritions(updatedMenu);
   };
 
+  const handleSave = () => {
+    console.log("Submit", menu);
+
+        dispatch(removeMenu(menu.date));
+        const title = "Recept bol pridany";
+        dispatch(addMenu(menu));
+      Alert.alert(title, "", [{ text: "OK" }]);
+      // navigation.goBack();
+
+  };
+
   return (
     <View style={styles.container}>
       <Calendar date={date} setDate={setDate} />
@@ -113,7 +126,7 @@ const HomeScreen: React.FC = () => {
         <Text>Tuky: {nutritions.fat}</Text>
       </View>
       <ScrollView>
-        <Button title={"Ulozit"} />
+        <Button title={"Ulozit"} onPress={handleSave} />
       </ScrollView>
     </View>
   );
