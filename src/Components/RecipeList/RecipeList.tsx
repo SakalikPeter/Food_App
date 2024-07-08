@@ -8,6 +8,10 @@ import {
   VirtualizedList,
 } from "react-native";
 import { Recipe } from "../../Models/Recipe";
+import { Chip, Divider } from "react-native-elements";
+import { Food } from "../../Models/Food";
+import { RootState } from "../../../store/redux/store";
+import { useAppSelector } from "../../../store/redux/hooks";
 
 type Props = {
   items?: Recipe[];
@@ -16,6 +20,7 @@ type Props = {
 
 const RecipeList: React.FC<Props> = ({ items = [], setSelectedItem }) => {
   const numColumns = 1;
+  const foods: Food[] = useAppSelector((state: RootState) => state.food.items);
 
   const getItem = (data: Recipe[], index: number) => {
     let itemsArray = [];
@@ -36,6 +41,18 @@ const RecipeList: React.FC<Props> = ({ items = [], setSelectedItem }) => {
             <TouchableOpacity onPress={() => setSelectedItem(Number(recipe.key))}>
               <Text style={styles.foodName}>{recipe.value}</Text>
             </TouchableOpacity>
+            <Divider subHeader="Tagy" style={styles.divider}/>
+            <View style={styles.chipsContainer}>
+            {recipe.tags.map((tag) =>
+              <Chip key={tag} title={tag} containerStyle={styles.chip} />)
+            }
+          </View>
+          <Divider subHeader="Potraviny" style={styles.divider}/>
+          <View style={styles.chipsContainer}>
+            {recipe.foods.map((food) =>
+              <Chip key={food.key} title={foods.find((foodItem) => foodItem.key === food.key).value} containerStyle={styles.chip} />)
+            }
+          </View>
           </View>
         ))}
       </View>
@@ -76,7 +93,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderRadius: 10,
     elevation: 3,
-    margin: 8, // Add margin for spacing between columns
   },
   foodDetails: {
     flex: 1,
@@ -97,5 +113,22 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#888",
     textAlign: "center",
+  },
+  // global -> divider
+  divider: {
+    marginVertical: 8, // Increase margin for better spacing
+    width: "80%", // Make it span across the width of the container
+    height: 1, // Increase the height to make it more visible
+    backgroundColor: "#ccc", // Set a color to ensure visibility
+  },
+  // chips
+  chipsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: 16,
+  },
+  chip: {
+    marginVertical: 5,
+    marginRight: 5,
   },
 });

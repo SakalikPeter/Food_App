@@ -1,20 +1,29 @@
 import React from "react";
-import { Text, View, Modal, StyleSheet, Pressable } from "react-native";
+import { Text, View, Modal, StyleSheet, Pressable, Alert } from "react-native";
 import { Icon } from "react-native-elements";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeRecipe } from "../../../../store/redux/recipe";
+import { useAppSelector } from "../../../../store/redux/hooks";
+import { RootState } from "../../../../store/redux/store";
 
 const RecipeItemModal = ({ recipe, hideRecipe, navigation }) => {
   const dispatch = useDispatch();
+  const foods = useAppSelector((state) => state.food.items);
+
+  // Find the matching food items from the state
+  const matchedFoods = recipe.foods.map((recipeFood) => {
+    return foods.find((food) => food.key === recipeFood.key);
+  });
 
   const handleUpdateRecipe = () => {
-    hideItem();
+    hideRecipe();
     navigation.navigate("Recept", { item: recipe });
   };
+
   const handleRemoveRecipe = () => {
     Alert.alert(
       "Recept bude vymazany",
-      `Nazov: ${food.value}`,
+      `Nazov: ${recipe.value}`,
       [
         {
           text: "Zrusit",
@@ -23,7 +32,7 @@ const RecipeItemModal = ({ recipe, hideRecipe, navigation }) => {
         {
           text: "OK",
           onPress: () => {
-            dispatch(removeRecipe(recipe));
+            dispatch(removeRecipe(recipe.key));
             hideRecipe();
           },
         },
@@ -51,7 +60,7 @@ const RecipeItemModal = ({ recipe, hideRecipe, navigation }) => {
               <Text style={styles.modalText}>Pocet porcii: {recipe.portions}</Text>
             </View>
             <View>
-              <Text style={styles.modalText}>Tags:</Text>
+              <Text style={styles.modalText}>Tagy:</Text>
               <View style={styles.tagsContainer}>
                 {recipe.tags.map((tag, index) => (
                   <Text key={index} style={styles.tag}>
@@ -61,11 +70,11 @@ const RecipeItemModal = ({ recipe, hideRecipe, navigation }) => {
               </View>
             </View>
             <View>
-              <Text style={styles.modalText}>Foods:</Text>
+              <Text style={styles.modalText}>Potraviny:</Text>
               <View style={styles.foodsContainer}>
-                {recipe.foods.map((food, index) => (
+                {matchedFoods.map((food, index) => (
                   <Text key={index} style={styles.food}>
-                    {food.value} - {food.quantity} {food.unit}
+                    {food ? `${food.value} - ${recipe.foods[index].quantity} ${food.unit}` : "Unknown Food"}
                   </Text>
                 ))}
               </View>

@@ -1,15 +1,12 @@
 import React from "react";
 import { Pressable, View, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
-import FoodItemModal from "../Components/Modals/FoodItemModal/FoodItemModal";
-import FoodFilter from "../Components/Filters/FoodFilter/FoodFilter";
-import FoodList from "../Components/FoodList/FoodList";
-import { Food } from "../Models/Food";
 import { useAppSelector } from "../../store/redux/hooks";
 import { RootState } from "../../store/redux/store";
 import { Recipe } from "../Models/Recipe";
 import RecipeList from "../Components/RecipeList/RecipeList";
 import RecipeFilter from "../Components/Filters/RecipeFilter/RecipeFilter";
+import RecipeItemModal from "../Components/Modals/RecipeItemModal/RecipeItemModal";
 
 function RecipeListScreen({ navigation }) {
   const recipes: Recipe[] = useAppSelector((state: RootState) => state.recipe.items);
@@ -39,9 +36,9 @@ function RecipeListScreen({ navigation }) {
     <View style={styles.container}>
       <View>
         {itemVisible && (
-          <FoodItemModal
-            food={item}
-            hideFood={hideItem}
+          <RecipeItemModal
+            recipe={item}
+            hideRecipe={hideItem}
             navigation={navigation}
           />
         )}
