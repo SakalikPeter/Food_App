@@ -6,7 +6,7 @@ import { RootState } from "../../store/redux/store";
 import { Recipe } from "../Models/Recipe";
 import ListRecipe from "../Components/List/List.Recipe/List.Recipe";
 import FilterRecipe from "../Components/Filter/Filter.Recipe/Filter.Recipe";
-import RecipeItemModal from "../Components/Modals/RecipeItemModal/RecipeItemModal";
+import ModalRecipe from "../Components/Modal/Modal.Recipe/Modal.Recipe";
 
 function RecipeListScreen({ navigation }) {
   const recipes: Recipe[] = useAppSelector((state: RootState) => state.recipe.items);
@@ -36,7 +36,7 @@ function RecipeListScreen({ navigation }) {
     <View style={styles.container}>
       <View>
         {itemVisible && (
-          <RecipeItemModal
+          <ModalRecipe
             recipe={item}
             hideRecipe={hideItem}
             navigation={navigation}

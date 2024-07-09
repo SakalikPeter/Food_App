@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { RecipeFilterCls } from "../../../Models/RecipeFilter";
-import BaseSearchBar from "../../SearchBars/BaseSearchBar/BaseSearchBar";
+import SearchBarBase from "../../SearchBars/SearchBar.Base/SearchBar.Base";
 import { Food } from "../../../Models/Food";
 import { Recipe } from "../../../Models/Recipe";
-import Selector2 from "../../Selector/SingleSelector/SingleSelector";
+import Selector2 from "../../Selector/Selector.Base/Selector.Base";
 import { Tag } from "../../../Models/Tags";
 import { useAppSelector } from "../../../../store/redux/hooks";
 import { RootState } from "../../../../store/redux/store";
-import Selector from "../../Selector/Selector";
+import SelectorInput from "../../Selector/Selector.Input/Selector.Input";
 import { SelectedItem } from "../../../Models/SelectedItem";
 
 interface RecipeFilterProps {
@@ -71,8 +71,8 @@ const FilterRecipe: React.FC<RecipeFilterProps> = ({ recipes, setFilteredRecipes
 
   return (
     <View>
-      <BaseSearchBar value={recipeFilter.value} setter={handleSearchChange} />
-      <Selector 
+      <SearchBarBase value={recipeFilter.value} setter={handleSearchChange} />
+      <SelectorInput 
         items={foods.map((f) => itemSelectorFood(f))} 
         checkedItems={recipeFilter.foods.map((f) => new SelectedItem(f, 0))} 
         setCheckedItems={handleFoodChange} 

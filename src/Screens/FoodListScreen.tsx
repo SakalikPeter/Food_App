@@ -1,7 +1,7 @@
 import React from "react";
 import { Pressable, View, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
-import FoodItemModal from "../Components/Modals/FoodItemModal/FoodItemModal";
+import FoodItemModal from "../Components/Modal/Modal.Food/Modal.Food";
 import FilterFood from "../Components/Filter/Filter.Food/Filter.Food";
 import ListFood from "../Components/List/List.Food/List.Food";
 import { Food } from "../Models/Food";

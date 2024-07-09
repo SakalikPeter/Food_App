@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, SafeAreaView, VirtualizedList } from 'react-native';
 import { CheckBox, Chip, Divider, Icon } from 'react-native-elements';
-import styles from '../Selector.style';
+import styles from './Selector.Base.styles';
 
 type Item = {
   key: number;

@@ -3,9 +3,9 @@ import { Text, View, Modal, Pressable, Alert } from "react-native";
 import { Icon } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import { removeFood } from "../../../../store/redux/food";
-import styles from "./FoodItemModal.style";
+import styles from "./Modal.Food.styles";
 
-const FoodItemModal = ({ food, hideFood, navigation }) => {
+const ModalFood = ({ food, hideFood, navigation }) => {
   const dispatch = useDispatch();
 
   const handleUpdateFood = () => {
@@ -76,6 +76,6 @@ const FoodItemModal = ({ food, hideFood, navigation }) => {
   );
 };
 
-export default FoodItemModal;
+export default ModalFood;
 
 

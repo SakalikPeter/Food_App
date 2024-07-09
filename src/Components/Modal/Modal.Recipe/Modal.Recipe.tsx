@@ -4,9 +4,9 @@ import { Icon } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import { removeRecipe } from "../../../../store/redux/recipe";
 import { useAppSelector } from "../../../../store/redux/hooks";
-import styles from "./RecipeItemModal.style";
+import styles from "./Modal.Recipe.styles";
 
-const RecipeItemModal = ({ recipe, hideRecipe, navigation }) => {
+const ModalRecipe = ({ recipe, hideRecipe, navigation }) => {
   const dispatch = useDispatch();
   const foods = useAppSelector((state) => state.food.items);
 
@@ -98,4 +98,4 @@ const RecipeItemModal = ({ recipe, hideRecipe, navigation }) => {
   );
 };
 
-export default RecipeItemModal;
+export default ModalRecipe;

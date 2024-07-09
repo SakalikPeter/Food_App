@@ -8,7 +8,7 @@ type ChipProps = {
   unit: string;
 };
 
-const Chips: React.FC<ChipProps> = ({ value, quantity, unit }) => {
+const ChipBase: React.FC<ChipProps> = ({ value, quantity, unit }) => {
   const title: string = value + " " + quantity + " " + unit;
 
   return (
@@ -18,4 +18,4 @@ const Chips: React.FC<ChipProps> = ({ value, quantity, unit }) => {
   );
 };
 
-export default Chips;
+export default ChipBase;

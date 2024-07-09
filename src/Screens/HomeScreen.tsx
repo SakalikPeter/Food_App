@@ -6,7 +6,7 @@ import { Menu } from "../Models/Menu";
 import { Recipe } from "../Models/Recipe";
 import { useAppSelector } from "../../store/redux/hooks";
 import { RootState } from "../../store/redux/store";
-import Selector from "../Components/Selector/Selector";
+import SelectorInput from "../Components/Selector/Selector.Input/Selector.Input";
 import { selectMenuItemByDate } from "../../store/redux/menu";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-native-elements";
@@ -98,7 +98,7 @@ const HomeScreen: React.FC = () => {
       <CalendarSingleDay date={date} setDate={setDate} />
       <View>
         {foods.length > 0 && (
-          <Selector
+          <SelectorInput
             items={foods.map((f) => itemSelectorFood(f))}
             checkedItems={menu.foods}
             setCheckedItems={handleFoodsChange}
@@ -109,7 +109,7 @@ const HomeScreen: React.FC = () => {
       </View>
       <View>
         {recipes.length > 0 && (
-          <Selector
+          <SelectorInput
             items={recipes.map((f) => itemSelectorRecipe(f))}
             checkedItems={menu.recipes}
             setCheckedItems={handleRecipesChange}

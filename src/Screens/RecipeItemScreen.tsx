@@ -8,8 +8,8 @@ import { useAppSelector } from "../../store/redux/hooks";
 import { RootState } from "../../store/redux/store";
 import { Food } from "../Models/Food";
 import { SelectedItem } from "../Models/SelectedItem";
-import Selector from "../Components/Selector/Selector";
-import Selector2 from "../Components/Selector/SingleSelector/SingleSelector";
+import SelectorInput from "../Components/Selector/Selector.Input/Selector.Input";
+import Selector2 from "../Components/Selector/Selector.Base/Selector.Base";
 import { checkNumberInput, checkStringInput } from "../Services/Checker";
 
 const itemSelectorFood = (item) => ({
@@ -114,7 +114,7 @@ function RecipeItemScreen({ route, navigation }) {
           title="Tagy"
           multi={true}
         />
-        <Selector
+        <SelectorInput
           items={foods.map((f) => itemSelectorFood(f))}
           checkedItems={recipe.foods}
           setCheckedItems={handleFoodsChange}

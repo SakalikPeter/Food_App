@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, SafeAreaView, VirtualizedList } from 'react-native';
 import { CheckBox, Chip, Divider, Icon, Input } from 'react-native-elements';
-import BaseSearchBar from '../SearchBars/BaseSearchBar/BaseSearchBar';
-import { SelectedItem } from '../../Models/SelectedItem';
-import styles from './Selector.style';
+import SearchBarBase from '../../SearchBars/SearchBar.Base/SearchBar.Base';
+import { SelectedItem } from '../../../Models/SelectedItem';
+import styles from './Selector.Input.styles';
 
 type Item = {
   key: string;
@@ -19,7 +19,7 @@ type Props = {
   title: string;
 };
 
-const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedItems, setInput, title }) => {
+const SelectorInput: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedItems, setInput, title }) => {
   const [collapsed, setCollapsed] = useState(true);
   const [value, setValue] = useState<string>('');
   const checkedKeys = checkedItems.map((ch) => ch.key);
@@ -98,7 +98,7 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
       {!collapsed && (
         <View style={styles.selectorWrapper}>
           <View>
-            <BaseSearchBar value={value} setter={setValue} />
+            <SearchBarBase value={value} setter={setValue} />
           </View>
           <View style={styles.list}>
             <VirtualizedList
@@ -123,4 +123,4 @@ const Selector: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedIt
 };
 
 
-export default Selector;
+export default SelectorInput;

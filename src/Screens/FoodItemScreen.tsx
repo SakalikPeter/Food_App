@@ -8,7 +8,7 @@ import { Food, FoodParams } from "../Models/Food";
 import { RootState } from "../../store/redux/store";
 import { useAppSelector } from "../../store/redux/hooks";
 import { Category } from "../Models/Category";
-import Selector2 from "../Components/Selector/SingleSelector/SingleSelector";
+import Selector2 from "../Components/Selector/Selector.Base/Selector.Base";
 
 function FoodItemScreen({ route, navigation }) {
   const initialFoodParams: FoodParams = route.params.item || {};

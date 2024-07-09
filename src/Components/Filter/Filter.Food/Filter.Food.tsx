@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { FoodFilterCls } from "../../../Models/FoodFilter";
-import BaseSearchBar from "../../SearchBars/BaseSearchBar/BaseSearchBar";
+import SearchBarBase from "../../SearchBars/SearchBar.Base/SearchBar.Base";
 import { Food } from "../../../Models/Food";
-import Selector2 from "../../Selector/SingleSelector/SingleSelector";
+import Selector2 from "../../Selector/Selector.Base/Selector.Base";
 import { useAppSelector } from "../../../../store/redux/hooks";
 import { RootState } from "../../../../store/redux/store";
 
@@ -35,7 +35,7 @@ const FilterFood: React.FC<FoodFilterProps> = ({ foods, setFilteredFoods }) => {
 
   return (
     <View>
-      <BaseSearchBar value={foodFilter.value} setter={handleSearchChange} />
+      <SearchBarBase value={foodFilter.value} setter={handleSearchChange} />
       <Selector2
         items={categories}
         checkedValue={[foodFilter.category]}
