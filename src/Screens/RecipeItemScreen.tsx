@@ -67,9 +67,7 @@ function RecipeItemScreen({ route, navigation }) {
   };
 
   const handleSave = () => {
-    console.log("Submit", recipe);
     recipe.calculateNutritions(foods);
-    console.log("Nutrition", recipe.nutritions);
 
     if (recipe.isValid()) {
       let title = "";

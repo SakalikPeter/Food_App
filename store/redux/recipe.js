@@ -15,13 +15,11 @@ const recipeSlice = createSlice({
       state.items.push(action.payload);
     },
     removeRecipe: (state, action) => {
-      console.log("reducer:", action.payload);
       state.items = state.items.filter((item) => item.key !== action.payload);
     },
     updateRecipe: (state, action) => {
       const index = state.items.findIndex(item => item.key === action.payload.key);
       if (index !== -1) {
-        console.log("index: ", index)
         state.items[index] = action.payload;
       }
     }

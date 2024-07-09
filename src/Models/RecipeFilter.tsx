@@ -25,7 +25,6 @@ export class RecipeFilterCls {
 
   filterRecipes(recipes: Recipe[]): Recipe[] {
     return recipes.filter(recipe => {
-      console.log(this.value, recipe.value)
       // Filter by value (search text)
       const matchesValue = this.value === "" || recipe.value.toLowerCase().includes(this.value);
 

@@ -83,7 +83,6 @@ const HomeScreen: React.FC = () => {
   };
 
   const handleSave = () => {
-    console.log("Submit", menu);
 
         dispatch(removeMenu(menu.date));
         const title = "Recept bol pridany";

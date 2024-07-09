@@ -65,7 +65,6 @@ const FilterRecipe: React.FC<RecipeFilterProps> = ({ recipes, setFilteredRecipes
 
   const applyFilters = () => {
     const filtered = recipeFilter.filterRecipes(recipes);
-    console.log(filtered);
     setFilteredRecipes(filtered);
   };
 
