@@ -2,12 +2,12 @@ import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import HomeScreen from "./src/Screens/HomeScreen";
-import FoodListScreen from "./src/Screens/FoodListScreen";
-import FoodItemScreen from "./src/Screens/FoodItemScreen";
-import RecipeListScreen from "./src/Screens/RecipeListScreen";
-import RecipeItemScreen from "./src/Screens/RecipeItemScreen";
-import ShoppingListScreen from "./src/Screens/ShoppingListScreen";
+import HomeScreen from "./src/Screens/HomeScreen/HomeScreen";
+import FoodListScreen from "./src/Screens/FoodListScreen/FoodListScreen";
+import FoodItemScreen from "./src/Screens/FoodItemScreen/FoodItemScreen";
+import RecipeListScreen from "./src/Screens/RecipeListScreen/RecipeListScreen";
+import RecipeItemScreen from "./src/Screens/RecipeitemScreen/RecipeItemScreen";
+import ShoppingListScreen from "./src/Screens/ShoppingListScreen/ShoppingListScreen";
 import { Provider } from "react-redux";
 import { store } from "./store/redux/store";
 
