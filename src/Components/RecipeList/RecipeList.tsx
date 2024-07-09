@@ -18,6 +18,11 @@ type Props = {
   setSelectedItem: (key: number) => void;
 };
 
+const foodMark = (foods: Food[], food) => {
+  const f = foods.find((foodItem) => foodItem.key === food.key)
+  return f.value + " (" + f.category + ")"
+}
+
 const RecipeList: React.FC<Props> = ({ items = [], setSelectedItem }) => {
   const numColumns = 1;
   const foods: Food[] = useAppSelector((state: RootState) => state.food.items);
@@ -50,7 +55,7 @@ const RecipeList: React.FC<Props> = ({ items = [], setSelectedItem }) => {
           <Divider subHeader="Potraviny" style={styles.divider}/>
           <View style={styles.chipsContainer}>
             {recipe.foods.map((food) =>
-              <Chip key={food.key} title={foods.find((foodItem) => foodItem.key === food.key).value} containerStyle={styles.chip} />)
+              <Chip key={food.key.toString()} title={foodMark(foods, food)} containerStyle={styles.chip} />)
             }
           </View>
           </View>

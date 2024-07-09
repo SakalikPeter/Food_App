@@ -2,10 +2,10 @@ import { Food } from "./Food";
 import { Recipe } from "./Recipe";
 
 export class SelectedItem {
-    key: number;
-    quantity: number
+    key: Number;
+    quantity: Number
   
-    constructor(key: number, quantity: number) {
+    constructor(key: Number, quantity: Number) {
       this.key = key;
       this.quantity = quantity;
     }
