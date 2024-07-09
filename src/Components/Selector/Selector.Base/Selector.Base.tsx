@@ -16,7 +16,7 @@ type Props = {
   multi?: boolean;
 };
 
-const Selector2: React.FC<Props> = ({ items = [], checkedValue, setCheckedItems, title, multi = false }) => {
+const SelectorBase: React.FC<Props> = ({ items = [], checkedValue, setCheckedItems, title, multi = false }) => {
   const [collapsed, setCollapsed] = useState(true);
   const chips = items.filter((item) => checkedValue.includes(item.value))
 
@@ -102,4 +102,4 @@ const toggleCheckbox = (value: string) => {
   );
 };
 
-export default Selector2;
+export default SelectorBase;

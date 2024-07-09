@@ -15,11 +15,12 @@ type Props = {
   items?: Item[];
   checkedItems?: SelectedItem[];
   setCheckedItems: (key: string) => void;
-  setInput: (item: SelectedItem) => void;
+  setInput?: (item: SelectedItem) => void;
   title: string;
+  input?: boolean;
 };
 
-const SelectorInput: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedItems, setInput, title }) => {
+const SelectorInput: React.FC<Props> = ({ items = [], checkedItems = [], setCheckedItems, setInput, title, input = true }) => {
   const [collapsed, setCollapsed] = useState(true);
   const [value, setValue] = useState<string>('');
   const checkedKeys = checkedItems.map((ch) => ch.key);
@@ -67,6 +68,8 @@ const SelectorInput: React.FC<Props> = ({ items = [], checkedItems = [], setChec
           />
         </View>
         <Text style={styles.itemValue}>{item.value}</Text>
+        {input && 
+        <View>
         <View style={styles.inputContainer}>
           <Input
             disabled={!isChecked}
@@ -77,6 +80,9 @@ const SelectorInput: React.FC<Props> = ({ items = [], checkedItems = [], setChec
           />
         </View>
         <Text style={styles.unitText}>{item.unit}</Text>
+        </View>
+        }
+        
       </View>
     );
   };
