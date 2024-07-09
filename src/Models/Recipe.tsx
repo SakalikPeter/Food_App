@@ -46,7 +46,7 @@ export class Recipe {
   public isValid(): boolean {
     if (this.value == "") return false;
     if (this.portions < 0) return false;
-    if (this.foods.some((food) => food.quantity < 0)) return false;
+    // if (this.foods.some((food) => food.quantity < 0)) return false;
     return true;
   }
 
@@ -66,7 +66,7 @@ export class Recipe {
         (food) => food.key === recipeFood.key
       );
       if (foodItem) {
-        this.nutritions.kj += (foodItem.kj / foodItem.base) * recipeFood.quantity;
+        this.nutritions.kj += (foodItem.kj / foodItem.base) * (recipeFood.quantity);
         this.nutritions.kcal +=
           (foodItem.kcal / foodItem.base) * recipeFood.quantity;
         this.nutritions.protein +=
