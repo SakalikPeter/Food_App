@@ -10,7 +10,7 @@ import { Food } from "../Models/Food";
 import { SelectedItem } from "../Models/SelectedItem";
 import Selector from "../Components/Selector/Selector";
 import Selector2 from "../Components/Selector/SingleSelector/SingleSelector";
-import { checkNumberInput, checkStringInput } from "../Components/Checker";
+import { checkNumberInput, checkStringInput } from "../Services/Checker";
 
 const itemSelectorFood = (item) => ({
   key: item.key,

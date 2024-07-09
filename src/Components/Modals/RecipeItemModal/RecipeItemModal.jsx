@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, View, Modal, StyleSheet, Pressable, Alert } from "react-native";
+import { Text, View, Modal, Pressable, Alert } from "react-native";
 import { Icon } from "react-native-elements";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeRecipe } from "../../../../store/redux/recipe";
 import { useAppSelector } from "../../../../store/redux/hooks";
-import { RootState } from "../../../../store/redux/store";
+import styles from "./RecipeItemModal.style";
 
 const RecipeItemModal = ({ recipe, hideRecipe, navigation }) => {
   const dispatch = useDispatch();
@@ -99,70 +99,3 @@ const RecipeItemModal = ({ recipe, hideRecipe, navigation }) => {
 };
 
 export default RecipeItemModal;
-
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  closeButtonView: {},
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
-  tagsContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
-  tag: {
-    backgroundColor: "#e0e0e0",
-    borderRadius: 10,
-    padding: 5,
-    margin: 5,
-    textAlign: "center",
-  },
-  foodsContainer: {
-    marginTop: 15,
-  },
-  food: {
-    backgroundColor: "#f0f0f0",
-    borderRadius: 5,
-    padding: 5,
-    marginVertical: 2,
-    textAlign: "center",
-  },
-});

@@ -1,8 +1,9 @@
 import React from "react";
-import { Text, View, Modal, StyleSheet, Pressable, Alert } from "react-native";
+import { Text, View, Modal, Pressable, Alert } from "react-native";
 import { Icon } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import { removeFood } from "../../../../store/redux/food";
+import styles from "./FoodItemModal.style";
 
 const FoodItemModal = ({ food, hideFood, navigation }) => {
   const dispatch = useDispatch();
@@ -77,47 +78,4 @@ const FoodItemModal = ({ food, hideFood, navigation }) => {
 
 export default FoodItemModal;
 
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  closeButtonView: {},
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
-});
+

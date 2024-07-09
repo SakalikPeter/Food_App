@@ -14,8 +14,7 @@ const checkStringInput = (value: string): string => {
 };
 
 const checkNumberInput = (value: number): string => {
-  if (value < 0)
-    return negativeNumber
+  if (value < 0) return negativeNumber;
   // if (!/^\d+([\.\,])?(\d+)?$/.test(String(value))) {
   //   return notNumber;
   // } else if (String(value).includes(",")) {

@@ -3,7 +3,6 @@ import {
   View,
   Text,
   SafeAreaView,
-  StyleSheet,
   TouchableOpacity,
   VirtualizedList,
 } from "react-native";
@@ -12,6 +11,7 @@ import { Chip, Divider } from "react-native-elements";
 import { Food } from "../../Models/Food";
 import { RootState } from "../../../store/redux/store";
 import { useAppSelector } from "../../../store/redux/hooks";
+import styles from "./RecipeList.style";
 
 type Props = {
   items?: Recipe[];
@@ -80,60 +80,3 @@ const RecipeList: React.FC<Props> = ({ items = [], setSelectedItem }) => {
 
 export default RecipeList;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#D9D9D9",
-    padding: 16,
-  },
-  row: {
-    flexDirection: "row",
-  },
-  foodContainer: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    marginBottom: 16,
-    padding: 16,
-    backgroundColor: "#ffffff",
-    borderRadius: 10,
-    elevation: 3,
-  },
-  foodDetails: {
-    flex: 1,
-  },
-  foodName: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#333",
-    textAlign: "center",
-  },
-  foodCategory: {
-    fontSize: 14,
-    color: "#666",
-    marginVertical: 4,
-    textAlign: "center",
-  },
-  foodQuantity: {
-    fontSize: 14,
-    color: "#888",
-    textAlign: "center",
-  },
-  // global -> divider
-  divider: {
-    marginVertical: 8, // Increase margin for better spacing
-    width: "80%", // Make it span across the width of the container
-    height: 1, // Increase the height to make it more visible
-    backgroundColor: "#ccc", // Set a color to ensure visibility
-  },
-  // chips
-  chipsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginBottom: 16,
-  },
-  chip: {
-    marginVertical: 5,
-    marginRight: 5,
-  },
-});

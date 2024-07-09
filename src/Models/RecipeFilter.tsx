@@ -3,7 +3,7 @@ import { Recipe } from "./Recipe";
 export class RecipeFilterCls {
   value: string;
   tags: string[];
-  foods: Number[];
+  foods: number[];
 
   constructor() {
     this.value = "";
@@ -19,7 +19,7 @@ export class RecipeFilterCls {
     this.tags = tags;
   }
 
-  setFoods(foods: Number[]) {
+  setFoods(foods: number[]) {
     this.foods = foods;
   }
 
