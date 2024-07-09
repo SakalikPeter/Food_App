@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, ScrollView, Text, StyleSheet } from "react-native";
 import { CheckBox } from "react-native-elements";
-import CalendarMultipleDays from "../Components/CalendarMultipleDays/CalendarMultipleDays";
+import CalendarMultipleDays from "../Components/Calendar/Calendar.MultipleDays/Calendar.MultipleDays";
 import { useAppSelector } from "../../store/redux/hooks";
 import { RootState } from "../../store/redux/store";
 import { selectMenuItemByDates } from "../../store/redux/menu";

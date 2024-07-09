@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, ScrollView, StyleSheet, Text, Alert } from "react-native";
-import Calendar from "../Components/Calendar/Calendar";
+import CalendarSingleDay from "../Components/Calendar/Calendar.SingleDay/Calendar.SingleDay";
 import { Food } from "../Models/Food";
 import { Menu } from "../Models/Menu";
 import { Recipe } from "../Models/Recipe";
@@ -95,7 +95,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Calendar date={date} setDate={setDate} />
+      <CalendarSingleDay date={date} setDate={setDate} />
       <View>
         {foods.length > 0 && (
           <Selector

@@ -2,8 +2,8 @@ import React from "react";
 import { Pressable, View, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import FoodItemModal from "../Components/Modals/FoodItemModal/FoodItemModal";
-import FoodFilter from "../Components/Filters/FoodFilter/FoodFilter";
-import FoodList from "../Components/FoodList/FoodList";
+import FilterFood from "../Components/Filter/Filter.Food/Filter.Food";
+import ListFood from "../Components/List/List.Food/List.Food";
 import { Food } from "../Models/Food";
 import { useAppSelector } from "../../store/redux/hooks";
 import { RootState } from "../../store/redux/store";
@@ -44,9 +44,9 @@ function FoodListScreen({ navigation }) {
         )}
       </View>
       <View>
-        <FoodFilter foods={foods} setFilteredFoods={setFilteredfoods}/>
+        <FilterFood foods={foods} setFilteredFoods={setFilteredfoods}/>
       </View>
-      <FoodList items={filteredFoods} setSelectedItem={showItem}/>
+      <ListFood items={filteredFoods} setSelectedItem={showItem}/>
       <View style={styles.addButtonContainer}>
         <Pressable
           style={[styles.button, styles.buttonAdd]}

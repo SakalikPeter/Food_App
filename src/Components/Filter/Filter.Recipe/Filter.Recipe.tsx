@@ -22,7 +22,7 @@ const itemSelectorFood = (item) => ({
   unit: item.unit,
 });
 
-const RecipeFilter: React.FC<RecipeFilterProps> = ({ recipes, setFilteredRecipes }) => {
+const FilterRecipe: React.FC<RecipeFilterProps> = ({ recipes, setFilteredRecipes }) => {
   const [recipeFilter, setRecipeFilter] = useState<RecipeFilterCls>(new RecipeFilterCls());
   const tags: Tag[] = useAppSelector((state: RootState) => state.tag.items);
   const foods: Food[] = useAppSelector((state: RootState) => state.food.items);
@@ -85,7 +85,7 @@ const RecipeFilter: React.FC<RecipeFilterProps> = ({ recipes, setFilteredRecipes
   );
 };
 
-export default RecipeFilter;
+export default FilterRecipe;
 
 // Helper function to toggle an item in an array
 const toggleItemInArray = (array, key) => {

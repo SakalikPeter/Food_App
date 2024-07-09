@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderRadius: 10,
     elevation: 3,
-    margin: 8, // Add margin for spacing between columns
+    margin: 8,
   },
   foodDetails: {
     flex: 1,

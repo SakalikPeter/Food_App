@@ -4,8 +4,8 @@ import { Icon } from "react-native-elements";
 import { useAppSelector } from "../../store/redux/hooks";
 import { RootState } from "../../store/redux/store";
 import { Recipe } from "../Models/Recipe";
-import RecipeList from "../Components/RecipeList/RecipeList";
-import RecipeFilter from "../Components/Filters/RecipeFilter/RecipeFilter";
+import ListRecipe from "../Components/List/List.Recipe/List.Recipe";
+import FilterRecipe from "../Components/Filter/Filter.Recipe/Filter.Recipe";
 import RecipeItemModal from "../Components/Modals/RecipeItemModal/RecipeItemModal";
 
 function RecipeListScreen({ navigation }) {
@@ -44,9 +44,9 @@ function RecipeListScreen({ navigation }) {
         )}
       </View>
       <View>
-        <RecipeFilter recipes={recipes} setFilteredRecipes={setFilteredRecipes}/>
+        <FilterRecipe recipes={recipes} setFilteredRecipes={setFilteredRecipes}/>
       </View>
-      <RecipeList items={filteredRecipes} setSelectedItem={showItem}/>
+      <ListRecipe items={filteredRecipes} setSelectedItem={showItem}/>
       <View style={styles.addButtonContainer}>
         <Pressable
           style={[styles.button, styles.buttonAdd]}

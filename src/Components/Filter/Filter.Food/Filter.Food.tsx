@@ -4,18 +4,19 @@ import { FoodFilterCls } from "../../../Models/FoodFilter";
 import BaseSearchBar from "../../SearchBars/BaseSearchBar/BaseSearchBar";
 import { Food } from "../../../Models/Food";
 import Selector2 from "../../Selector/SingleSelector/SingleSelector";
-import { Category } from "../../../Models/Category";
 import { useAppSelector } from "../../../../store/redux/hooks";
 import { RootState } from "../../../../store/redux/store";
 
 interface FoodFilterProps {
-  foods: Food[]; // Adjust type as per your actual data structure
+  foods: Food[];
   setFilteredFoods: React.Dispatch<React.SetStateAction<Food[]>>;
 }
 
-const FoodFilter: React.FC<FoodFilterProps> = ({ foods, setFilteredFoods }) => {
-  const [foodFilter, setFoodFilter] = useState<FoodFilterCls>(new FoodFilterCls());
-  const categories: Category[] = useAppSelector((state: RootState) => state.category.items);
+const FilterFood: React.FC<FoodFilterProps> = ({ foods, setFilteredFoods }) => {
+  const [foodFilter, setFoodFilter] = useState<FoodFilterCls>(
+    new FoodFilterCls()
+  );
+  const categories = useAppSelector((state: RootState) => state.category.items);
 
   const handleCategoryChange = (value: string[]) => {
     foodFilter.setCategory(value[0]);
@@ -35,9 +36,14 @@ const FoodFilter: React.FC<FoodFilterProps> = ({ foods, setFilteredFoods }) => {
   return (
     <View>
       <BaseSearchBar value={foodFilter.value} setter={handleSearchChange} />
-      <Selector2 items={categories} checkedValue={[foodFilter.category]} setCheckedItems={handleCategoryChange} title="Kategoria" /> 
+      <Selector2
+        items={categories}
+        checkedValue={[foodFilter.category]}
+        setCheckedItems={handleCategoryChange}
+        title="Kategoria"
+      />
     </View>
   );
 };
 
-export default FoodFilter;
+export default FilterFood;
