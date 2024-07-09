@@ -2,7 +2,6 @@ import React from "react";
 import { View, Button, ScrollView, Alert } from "react-native";
 import { checkStringInput, checkNumberInput } from "../Components/Checker";
 import { Input } from "react-native-elements";
-import SingleSelector from "../Components/SingleSelector";
 import { useDispatch } from "react-redux";
 import { addFood, updateFood } from "../../store/redux/food";
 import { Food, FoodParams } from "../Models/Food";
