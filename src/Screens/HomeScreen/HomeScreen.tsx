@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { View, ScrollView, StyleSheet, Text, Alert } from "react-native";
-import CalendarSingleDay from "../Components/Calendar/Calendar.SingleDay/Calendar.SingleDay";
-import { Food } from "../Models/Food";
-import { Menu } from "../Models/Menu";
-import { Recipe } from "../Models/Recipe";
-import { useAppSelector } from "../../store/redux/hooks";
-import { RootState } from "../../store/redux/store";
-import SelectorInput from "../Components/Selector/Selector.Input/Selector.Input";
-import { selectMenuItemByDate } from "../../store/redux/menu";
+import { View, ScrollView, Text, Alert } from "react-native";
+import CalendarSingleDay from "../../Components/Calendar/Calendar.SingleDay/Calendar.SingleDay";
+import { Food } from "../../Models/Food";
+import { Menu } from "../../Models/Menu";
+import { Recipe } from "../../Models/Recipe";
+import { useAppSelector } from "../../../store/redux/hooks";
+import { RootState } from "../../../store/redux/store";
+import SelectorInput from "../../Components/Selector/Selector.Input/Selector.Input";
+import { selectMenuItemByDate } from "../../../store/redux/menu";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-native-elements";
-import { SelectedItem } from "../Models/SelectedItem";
-import { RecipeNutritions } from "../Models/RecipeNutritions";
-import { addMenu, removeMenu } from "../../store/redux/menu";
+import { SelectedItem } from "../../Models/SelectedItem";
+import { RecipeNutritions } from "../../Models/RecipeNutritions";
+import { addMenu, removeMenu } from "../../../store/redux/menu";
+import styles from "./HomeScreen.styles";
 
 // Define the selector function
 const itemSelectorFood = (item) => ({
@@ -132,15 +133,6 @@ const HomeScreen: React.FC = () => {
 };
 
 export default HomeScreen;
-
-// Styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#D9D9D9",
-    padding: 16,
-  },
-});
 
 // Helper function to toggle an item in an array
 const toggleItemInArray = (array, key) => {

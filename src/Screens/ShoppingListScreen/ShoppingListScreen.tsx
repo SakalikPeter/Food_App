@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { View, ScrollView, Text, StyleSheet } from "react-native";
+import { View, ScrollView, Text } from "react-native";
 import { CheckBox } from "react-native-elements";
-import CalendarMultipleDays from "../Components/Calendar/Calendar.MultipleDays/Calendar.MultipleDays";
-import { useAppSelector } from "../../store/redux/hooks";
-import { RootState } from "../../store/redux/store";
-import { selectMenuItemByDates } from "../../store/redux/menu";
-import { Food } from "../Models/Food";
-import { Menu } from "../Models/Menu";
-import { Recipe } from "../Models/Recipe";
+import CalendarMultipleDays from "../../Components/Calendar/Calendar.MultipleDays/Calendar.MultipleDays";
+import { useAppSelector } from "../../../store/redux/hooks";
+import { RootState } from "../../../store/redux/store";
+import { selectMenuItemByDates } from "../../../store/redux/menu";
+import { Food } from "../../Models/Food";
+import { Menu } from "../../Models/Menu";
+import { Recipe } from "../../Models/Recipe";
+import styles from "./ShoppingListScreen.styles";
 
 const ShoppingListScreen: React.FC = () => {
   const [dates, setDates] = useState<string[]>([]);
@@ -85,66 +86,5 @@ const ShoppingListScreen: React.FC = () => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#D9D9D9",
-    padding: 16,
-  },
-  menuContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-    padding: 16,
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
-    elevation: 3,
-  },
-  menuContainerChecked: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-    padding: 16,
-    backgroundColor: '#F0F0F0',
-    borderRadius: 10,
-    elevation: 3,
-  },
-  checkBox: {
-    marginRight: 16,
-  },
-  foodDetails: {
-    flex: 1,
-  },
-  foodName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  foodCategory: {
-    fontSize: 14,
-    color: '#666',
-    marginVertical: 4,
-  },
-  foodQuantity: {
-    fontSize: 14,
-    color: '#888',
-  },
-  checkedCount: {
-    textAlign: "center",
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 16,
-    marginBottom: 8,
-    color: "#009688", 
-    backgroundColor: "#e0f2f1",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#009688",
-    elevation: 2,
-  },
-});
 
 export default ShoppingListScreen;

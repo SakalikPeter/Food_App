@@ -1,12 +1,14 @@
 import React from "react";
-import { Pressable, View, StyleSheet } from "react-native";
+import { Pressable, View } from "react-native";
 import { Icon } from "react-native-elements";
-import { useAppSelector } from "../../store/redux/hooks";
-import { RootState } from "../../store/redux/store";
-import { Recipe } from "../Models/Recipe";
-import ListRecipe from "../Components/List/List.Recipe/List.Recipe";
-import FilterRecipe from "../Components/Filter/Filter.Recipe/Filter.Recipe";
-import ModalRecipe from "../Components/Modal/Modal.Recipe/Modal.Recipe";
+import { useAppSelector } from "../../../store/redux/hooks";
+import { RootState } from "../../../store/redux/store";
+import { Recipe } from "../../Models/Recipe";
+import ListRecipe from "../../Components/List/List.Recipe/List.Recipe";
+import FilterRecipe from "../../Components/Filter/Filter.Recipe/Filter.Recipe";
+import ModalRecipe from "../../Components/Modal/Modal.Recipe/Modal.Recipe";
+import styles from "./RecipeListScreen.styles";
+
 
 function RecipeListScreen({ navigation }) {
   const recipes: Recipe[] = useAppSelector((state: RootState) => state.recipe.items);
@@ -58,29 +60,5 @@ function RecipeListScreen({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "space-between",
-  },
-  listContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  addButtonContainer: {
-    alignItems: "center",
-  },
-
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonAdd: {
-    backgroundColor: "#2196F3",
-  },
-});
 
 export default RecipeListScreen;

@@ -1,12 +1,13 @@
 import React from "react";
-import { Pressable, View, StyleSheet } from "react-native";
+import { Pressable, View } from "react-native";
 import { Icon } from "react-native-elements";
-import FoodItemModal from "../Components/Modal/Modal.Food/Modal.Food";
-import FilterFood from "../Components/Filter/Filter.Food/Filter.Food";
-import ListFood from "../Components/List/List.Food/List.Food";
-import { Food } from "../Models/Food";
-import { useAppSelector } from "../../store/redux/hooks";
-import { RootState } from "../../store/redux/store";
+import FoodItemModal from "../../Components/Modal/Modal.Food/Modal.Food";
+import FilterFood from "../../Components/Filter/Filter.Food/Filter.Food";
+import ListFood from "../../Components/List/List.Food/List.Food";
+import { Food } from "../../Models/Food";
+import { useAppSelector } from "../../../store/redux/hooks";
+import { RootState } from "../../../store/redux/store";
+import styles from "./FoodListScreen.styles";
 
 function FoodListScreen({ navigation }) {
   const foods: Food[] = useAppSelector((state: RootState) => state.food.items);
@@ -59,28 +60,6 @@ function FoodListScreen({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "space-between",
-  },
-  listContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  addButtonContainer: {
-    alignItems: "center",
-  },
 
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonAdd: {
-    backgroundColor: "#2196F3",
-  },
-});
 
 export default FoodListScreen;

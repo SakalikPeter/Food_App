@@ -2,15 +2,15 @@ import React from "react";
 import { View, ScrollView, Alert } from "react-native";
 import { Button, Input, Text } from "react-native-elements";
 import { useDispatch } from "react-redux";
-import { addRecipe, updateRecipe } from "../../store/redux/recipe";
-import { Recipe, RecipeParams } from "../Models/Recipe";
-import { useAppSelector } from "../../store/redux/hooks";
-import { RootState } from "../../store/redux/store";
-import { Food } from "../Models/Food";
-import { SelectedItem } from "../Models/SelectedItem";
-import SelectorInput from "../Components/Selector/Selector.Input/Selector.Input";
-import Selector2 from "../Components/Selector/Selector.Base/Selector.Base";
-import { checkNumberInput, checkStringInput } from "../Services/Checker";
+import { addRecipe, updateRecipe } from "../../../store/redux/recipe";
+import { Recipe, RecipeParams } from "../../Models/Recipe";
+import { useAppSelector } from "../../../store/redux/hooks";
+import { RootState } from "../../../store/redux/store";
+import { Food } from "../../Models/Food";
+import { SelectedItem } from "../../Models/SelectedItem";
+import SelectorInput from "../../Components/Selector/Selector.Input/Selector.Input";
+import Selector2 from "../../Components/Selector/Selector.Base/Selector.Base";
+import { checkNumberInput, checkStringInput } from "../../Services/Checker";
 
 const itemSelectorFood = (item) => ({
   key: item.key,

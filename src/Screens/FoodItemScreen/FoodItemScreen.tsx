@@ -1,14 +1,14 @@
 import React from "react";
 import { View, Button, ScrollView, Alert } from "react-native";
-import { checkStringInput, checkNumberInput } from "../Services/Checker";
+import { checkStringInput, checkNumberInput } from "../../Services/Checker";
 import { Input } from "react-native-elements";
 import { useDispatch } from "react-redux";
-import { addFood, updateFood } from "../../store/redux/food";
-import { Food, FoodParams } from "../Models/Food";
-import { RootState } from "../../store/redux/store";
-import { useAppSelector } from "../../store/redux/hooks";
-import { Category } from "../Models/Category";
-import Selector2 from "../Components/Selector/Selector.Base/Selector.Base";
+import { addFood, updateFood } from "../../../store/redux/food";
+import { Food, FoodParams } from "../../Models/Food";
+import { RootState } from "../../../store/redux/store";
+import { useAppSelector } from "../../../store/redux/hooks";
+import { Category } from "../../Models/Category";
+import Selector2 from "../../Components/Selector/Selector.Base/Selector.Base";
 
 function FoodItemScreen({ route, navigation }) {
   const initialFoodParams: FoodParams = route.params.item || {};
