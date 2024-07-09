@@ -6,9 +6,16 @@ import SingleSelector from "../Components/SingleSelector";
 import { useDispatch } from "react-redux";
 import { addFood, updateFood } from "../../store/redux/food";
 import { Food, FoodParams } from "../Models/Food";
+import { RootState } from "../../store/redux/store";
+import { useAppSelector } from "../../store/redux/hooks";
+import { Category } from "../Models/Category";
+import Selector2 from "../Components/Selector/SingleSelector/SingleSelector";
 
 function FoodItemScreen({ route, navigation }) {
   const initialFoodParams: FoodParams = route.params.item || {};
+  const categories: Category[] = useAppSelector((state: RootState) => state.category.items);
+  const units: any[] = useAppSelector((state: RootState) => state.unit.items);
+
   const [food, setFood] = React.useState(new Food(initialFoodParams));
   const dispatch = useDispatch();
 
@@ -20,6 +27,14 @@ function FoodItemScreen({ route, navigation }) {
   };
   const handleNumberChange = (field: keyof FoodParams, value: string) => {
     if (Number(value)) handleInputChange(field, Number(value));
+  };
+
+  const handleCategoryChange = (value: string[]) => {
+    handleInputChange("category", value[0])
+  };
+
+  const handleUnitChange = (value: string[]) => {
+    handleInputChange("unit", value[0])
   };
 
   const handleSubmit = () => {
@@ -50,20 +65,8 @@ function FoodItemScreen({ route, navigation }) {
           />
         </View>
         <View>
-          <SingleSelector
-            itemKey="category"
-            defValue={food.category}
-            setItem={handleInputChange}
-            label="Kategoria"
-            notFoundText="Ziadna kategoria sa nenasla"
-          />
-          <SingleSelector
-            itemKey="unit"
-            defValue={food.unit}
-            setItem={handleInputChange}
-            label="Jednotka"
-            notFoundText="Ziadna jednotka sa nenasla"
-          />
+        <Selector2 items={categories} checkedValue={[food.category]} setCheckedItems={handleCategoryChange} title="Kategoria" /> 
+        <Selector2 items={units} checkedValue={[food.unit]} setCheckedItems={handleUnitChange} title="Jednotka" /> 
           <Input
             label="Mnozstvo"
             defaultValue={String(food.base)}
