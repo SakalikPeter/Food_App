@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Searchbar } from 'react-native-paper';
+import styles from './SearchBar.Base.styles';
 
 const SearchBarBase = ({value, setter}) => {
 
@@ -9,6 +10,7 @@ const SearchBarBase = ({value, setter}) => {
   return (
    <View>
     <Searchbar
+      style={styles.searchBar}
       placeholder="Hladaj..."
       onChangeText={onChangeSearch}
       value={value}

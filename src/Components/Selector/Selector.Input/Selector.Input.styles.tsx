@@ -43,15 +43,15 @@ const styles = StyleSheet.create({
   // global -> icon
   iconContainer: {
     marginLeft: "auto",
-    paddingRight: 10,
+    // paddingRight: 10,
   },
   icon: {
     fontSize: 24,
-    paddingRight: 10,
+    // paddingRight: 10,
   },
   // global -> content wrapper
   selectorWrapper: {
-    marginTop: 16,
+    marginTop: 4,
   },
   // global -> divider
   divider: {
@@ -60,34 +60,35 @@ const styles = StyleSheet.create({
   },
   // list
   list: {
-    maxHeight: 250,
-    marginTop: 16,
+    maxHeight: 225,
+    marginTop: 0,
   },
   // list - item wrapper
   itemContainer: {
     flexDirection: "row",
     alignItems: "center",
-    // padding: 1,
-    // borderBottomWidth: 1,
-    // borderBottomColor: '#ccc',
+    flex: 1,
   },
   checkboxContainer: {
-    marginRight: 10,
-    flex: 0.2,
+    flex: 0.1
   },
   itemValue: {
-    color: "#555",
-    flex: 0.8,
+    fontWeight: "bold",
+    fontFamily: "serif",
+    color: "#333333",
+    flex: 0.7,
   },
   inputContainer: {
     flex: 0.25,
   },
   input: {
-    // flex: 1,
+    paddingTop: 12,
+    color: "#242423"
   },
   unitText: {
-    color: "#555",
-    flex: 0.2,
+    fontWeight: "bold",
+    fontFamily: "serif",
+    color: "#333333",
   },
 });
 

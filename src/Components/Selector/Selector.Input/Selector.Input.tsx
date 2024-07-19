@@ -57,33 +57,31 @@ const SelectorInput: React.FC<Props> = ({ items = [], checkedItems = [], setChec
     const inputValue = selectedItem ? String(selectedItem.quantity) : '';
 
     return (
-      <View style={styles.itemContainer}>
-        <View style={styles.checkboxContainer}>
-          <CheckBox
-            checked={isChecked}
-            onPress={() => toggleCheckbox(item.key)}
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checkedColor="#009688"
-          />
+      <View>
+        <View style={styles.itemContainer}>
+            <CheckBox
+              checked={isChecked}
+              onPress={() => toggleCheckbox(item.key)}
+              iconType="material-community"
+              checkedIcon="checkbox-marked"
+              uncheckedIcon="checkbox-blank-outline"
+              checkedColor="#ffffff"
+              uncheckedColor='#ffffff'
+            />
+          <Text style={styles.itemValue}>{item.value}</Text>
+          {input && 
+          <View style={styles.inputContainer}>
+            <Input
+              disabled={!isChecked}
+              style={styles.input}
+              value={inputValue}
+              onChangeText={(text) => handleInputChange(Number(item.key), Number(text))}
+              keyboardType="numeric"
+            />
+          </View>
+          }
+          <Text style={styles.unitText}>{item.unit}</Text>
         </View>
-        <Text style={styles.itemValue}>{item.value}</Text>
-        {input && 
-        <View>
-        <View style={styles.inputContainer}>
-          <Input
-            disabled={!isChecked}
-            style={styles.input}
-            value={inputValue}
-            onChangeText={(text) => handleInputChange(Number(item.key), Number(text))}
-            keyboardType="numeric"
-          />
-        </View>
-        <Text style={styles.unitText}>{item.unit}</Text>
-        </View>
-        }
-        
       </View>
     );
   };

@@ -127,7 +127,7 @@ const HomeScreen: React.FC = () => {
           </View>
         </View>
         <Pressable style={styles.button} onPress={handleSave}>
-          <Icon name="add" />
+          <Icon name="done" />
         </Pressable>
       </View>
     </View>

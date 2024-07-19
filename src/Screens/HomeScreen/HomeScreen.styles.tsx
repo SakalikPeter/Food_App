@@ -8,17 +8,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   textContainer: {
-    marginTop: 16,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 16,
-    padding: 16,
+    marginBottom: 2,
+    paddingVertical: 10,
     borderRadius: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
-    // elevation: 5,
+    elevation: 5,
   },
   textColumn: {
     flex: 1,
@@ -28,8 +27,7 @@ const styles = StyleSheet.create({
     color: "#77E4C8",
     fontSize: 20,
     fontFamily: "serif",
-    marginBottom: 10,
-
+    marginVertical: 10,
     textAlign: 'center',
   },
 
@@ -38,7 +36,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    borderRadius: 20,
+    borderRadius: 25,
     padding: 10,
     elevation: 2,
     flexDirection: 'row',
