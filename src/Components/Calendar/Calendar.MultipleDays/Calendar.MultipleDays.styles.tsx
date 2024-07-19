@@ -2,16 +2,16 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#FFBF00",
     borderRadius: 8,
     elevation: 3,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.3,
     shadowRadius: 2,
-    marginBottom: 16,
+    marginBottom: 4,
     paddingHorizontal: 16,
-    paddingTop: 16,
+    paddingTop: 0,
   },
   header: {
     flexDirection: "row",
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     color: "#333333",
+    fontFamily: "serif",
   },
   iconContainer: {
     marginLeft: "auto",
@@ -33,21 +34,21 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   calendarWrapper: {
-    marginTop: 16,
+    borderRadius: 10,
+    overflow: 'hidden',
   },
   divider: {
-    marginVertical: 16,
-    backgroundColor: "#e0e0e0",
+    marginVertical: 0,
+    backgroundColor: "#242423",
   },
   dateInfo: {
-    justifyContent: "space-between",
-    marginBottom: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-around', // Distribute space evenly
+    alignItems: 'center',
   },
-  dateText: {
-    marginTop: 4,
-    fontSize: 16,
-    color: "#333333",
-    fontWeight: "500",
+  dateInfoItem: {
+    flex: 1,
+    alignItems: 'center', // Center items horizontally
   },
 });
 

@@ -4,6 +4,27 @@ import { Divider, Icon } from 'react-native-elements';
 import { Calendar as RNCalendar } from 'react-native-calendars';
 import dayjs from 'dayjs';
 import styles from './Calendar.MultipleDays.styles';
+import ChipBase from '../../Chip/Chip.Base/Chip.Base';
+
+const parseDate = (date: string) => {
+  if (date === "") return "";
+  const parts = date.split("-");
+
+  // Ensure we have exactly three parts (year, month, day)
+  if (parts.length !== 3) {
+    console.error('Invalid date format');
+    return null;
+  }
+
+  const year = parts[0];
+  const month = parts[1];
+  const day = parts[2];
+  
+  // Create formatted date string in the format "dd-mm-yyyy"
+  const formattedDate = `${day}-${month}-${year}`;
+  
+  return formattedDate;
+}
 
 type CalendarMultipleDaysProps = {
   setDates: (date: string[]) => void;
@@ -103,8 +124,12 @@ const CalendarMultipleDays: React.FC<CalendarMultipleDaysProps> = ({ setDates })
       )}
       <Divider style={styles.divider} />
       <View style={styles.dateInfo}>
-        <Text style={styles.dateText}>Od: {startDate}</Text>
-        <Text style={styles.dateText}>Do: {endDate}</Text>
+          <View style={styles.dateInfoItem}>
+          <ChipBase items={[{key: "0", value: `Od: ${parseDate(startDate)}`}]} />
+          </View>
+          <View style={styles.dateInfoItem}>
+          <ChipBase items={[{key: "0", value: `Do: ${parseDate(endDate)}`}]} />
+          </View>
       </View>
     </View>
   );

@@ -3,14 +3,14 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "#242423",
     padding: 16,
   },
   menuContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
-    padding: 16,
+    marginBottom: 4,
+    padding: 8,
     backgroundColor: "#ffffff",
     borderRadius: 10,
     elevation: 3,
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
   menuContainerChecked: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
-    padding: 16,
+    marginBottom: 4,
+    padding: 8,
     backgroundColor: "#F0F0F0",
     borderRadius: 10,
     elevation: 3,
