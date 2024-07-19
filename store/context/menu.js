@@ -30,7 +30,6 @@ menuItems = [
         quantity: 125,
       },
     ],
-    
     recipes: [
       {
         key: 0,

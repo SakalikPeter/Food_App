@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, ScrollView, Text, Alert, Pressable } from "react-native";
+import { View, Text, Alert, Pressable } from "react-native";
 import { Icon } from "react-native-elements";
 import CalendarSingleDay from "../../Components/Calendar/Calendar.SingleDay/Calendar.SingleDay";
 import { Food } from "../../Models/Food";
@@ -15,22 +15,15 @@ import { Nutritions } from "../../Models/Nutritions";
 import { addMenu, removeMenu } from "../../../store/redux/menu";
 import styles from "./HomeScreen.styles";
 import calculateRecipesNutritions from "../../Services/calculator";
-
-const itemSelectorFood = (item) => ({
-  key: item.key,
-  value: item.value + " (" + item.category + ")",
-  unit: item.unit,
-});
-
-const itemSelectorRecipe = (item) => ({
-  key: item.key,
-  value: item.value,
-  unit: "porcie",
-});
+import {
+  toggleItemInArray,
+  updateItemQuantity,
+  itemSelectorFood,
+  itemSelectorRecipe,
+} from "./HomeScreen.helpers";
 
 const HomeScreen: React.FC = () => {
   const dispatch = useDispatch();
-
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const recipes: Recipe[] = useAppSelector(
     (state: RootState) => state.recipe.items
@@ -41,7 +34,6 @@ const HomeScreen: React.FC = () => {
   const [menu, setMenu] = useState<Menu>(selectedMenu);
   const [nutritions, setNutritions] = useState<Nutritions>(new Nutritions());
 
-  // Update menu and nutritions whenever date or selectedMenu changes
   useEffect(() => {
     setNutritions(
       calculateRecipesNutritions(
@@ -63,7 +55,8 @@ const HomeScreen: React.FC = () => {
         recipes,
         updatedMenu.recipes
       )
-    );  };
+    );
+  };
 
   const handleRecipesChange = (key: string) => {
     const updatedRecipes = toggleItemInArray(menu.recipes, key);
@@ -91,7 +84,7 @@ const HomeScreen: React.FC = () => {
 
   const handleSave = () => {
     dispatch(removeMenu(menu.date));
-    dispatch(addMenu(menu));
+    dispatch(addMenu(menu.toPlainObject()));
     Alert.alert("Recept bol pridany", "", [{ text: "OK" }]);
   };
 
@@ -142,23 +135,3 @@ const HomeScreen: React.FC = () => {
 };
 
 export default HomeScreen;
-
-const toggleItemInArray = (array, key) => {
-  let updatedArray = array;
-  const itemIndex = array.findIndex((item) => item.key === Number(key));
-  if (itemIndex !== -1) {
-    updatedArray = array.filter((item) => item.key !== Number(key));
-  } else {
-    updatedArray = [...array, new SelectedItem(Number(key), 0)];
-  }
-  return updatedArray;
-};
-
-const updateItemQuantity = (array, item) => {
-  return array.map((existingItem) => {
-    if (existingItem.key === item.key) {
-      return new SelectedItem(existingItem.key, item.quantity);
-    }
-    return existingItem;
-  });
-};

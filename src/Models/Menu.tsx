@@ -14,4 +14,12 @@ export class Menu {
     this.foods = foods ?? [];
     this.recipes = recipes ?? [];
   }
+
+  toPlainObject() {
+    return {
+      date: this.date,
+      foods: this.foods?.map(food => food.toPlainObject()) ?? [],
+      recipes: this.recipes?.map(recipe => recipe.toPlainObject()) ?? [],
+    };
+  }
 }

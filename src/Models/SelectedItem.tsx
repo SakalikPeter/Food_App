@@ -17,4 +17,11 @@ export class SelectedItem {
     getRecipe(recipes: Recipe[]): Recipe | undefined {
       return recipes.find((recipe) => recipe.key === this.key);
     }
+
+    toPlainObject() {
+      return {
+        key: this.key,
+        quantity: this.quantity,
+      };
+    }
 }
