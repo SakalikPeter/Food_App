@@ -85,7 +85,7 @@ const HomeScreen: React.FC = () => {
   const handleSave = () => {
     dispatch(removeMenu(menu.date));
     dispatch(addMenu(menu.toPlainObject()));
-    Alert.alert("Recept bol pridany", "", [{ text: "OK" }]);
+    Alert.alert("Menu bolo upravene", "", [{ text: "OK" }]);
   };
 
   return (
