@@ -55,11 +55,16 @@ const HomeScreen: React.FC = () => {
   }, [date]);
 
   const updateMenuAndNutritions = (updatedMenu: Menu) => {
-    updatedMenu.calculateRecipeNutritions(recipes, foods);
     console.log(updatedMenu.nutritions);
     setMenu(updatedMenu);
-    setNutritions(updatedMenu.nutritions);
-  };
+    setNutritions(
+      calculateRecipesNutritions(
+        foods,
+        updatedMenu.foods,
+        recipes,
+        updatedMenu.recipes
+      )
+    );  };
 
   const handleRecipesChange = (key: string) => {
     const updatedRecipes = toggleItemInArray(menu.recipes, key);

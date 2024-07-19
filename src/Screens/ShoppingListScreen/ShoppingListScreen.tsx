@@ -24,7 +24,6 @@ const ShoppingListScreen: React.FC = () => {
 
       const newMenus = selectedMenuItems.map((i) => {
         const menu = new Menu(i.date, i.foods, i.recipes);
-        menu.calculateRecipeNutritions(recipes, foods);
         return menu;
       });
 
