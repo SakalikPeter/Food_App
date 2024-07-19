@@ -22,7 +22,9 @@ const calculateFoodsNutritions = (
       rn.carbs += (foodItem.carbs / foodItem.base) * selFood.quantity;
       rn.fat += (foodItem.fat / foodItem.base) * selFood.quantity;
     }
+    console.log("recipe: ", rn)
   });
+  
 
   return rn;
 };
@@ -53,6 +55,8 @@ const calculateRecipesNutritions = (
             rns.push(rn)
         })
     }
+
+    console.log(rns)
 
     if (rns) {
         rns.forEach((rn) => {
