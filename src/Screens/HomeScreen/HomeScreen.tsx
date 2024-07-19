@@ -55,7 +55,6 @@ const HomeScreen: React.FC = () => {
   }, [date]);
 
   const updateMenuAndNutritions = (updatedMenu: Menu) => {
-    console.log(updatedMenu.nutritions);
     setMenu(updatedMenu);
     setNutritions(
       calculateRecipesNutritions(

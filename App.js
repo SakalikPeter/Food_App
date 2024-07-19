@@ -19,14 +19,14 @@ function Root() {
     <Drawer.Navigator initialRouteName="Jedalnicek"
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#f4511e',
+          backgroundColor: '#808836',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
         },
         drawerContentStyle: {
-          backgroundColor: '#f4511e',
+          backgroundColor: '#808836',
         },
         drawerLabelStyle: {
           color: '#fff',
