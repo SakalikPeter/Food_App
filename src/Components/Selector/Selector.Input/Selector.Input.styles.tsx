@@ -2,17 +2,29 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   // global
-  container: {
-    backgroundColor: "#ffffff",
+  containerFood: {
+    backgroundColor: "#FF9A00",
     borderRadius: 8,
     elevation: 3,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.3,
     shadowRadius: 2,
-    marginBottom: 16,
+    marginBottom: 4,
     paddingHorizontal: 16,
-    paddingTop: 16,
+    paddingTop: 0,
+  },
+  containerRecipe: {
+    backgroundColor: "#D10363",
+    borderRadius: 8,
+    elevation: 3,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    marginBottom: 4,
+    paddingHorizontal: 16,
+    paddingTop: 0,
   },
   // global -> header
   header: {
@@ -25,6 +37,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
+    fontFamily: "serif",
     color: "#333333",
   },
   // global -> icon
@@ -42,8 +55,8 @@ const styles = StyleSheet.create({
   },
   // global -> divider
   divider: {
-    marginVertical: 16,
-    backgroundColor: "#e0e0e0",
+    marginVertical: 0,
+    backgroundColor: "#242423",
   },
   // list
   list: {
@@ -75,16 +88,6 @@ const styles = StyleSheet.create({
   unitText: {
     color: "#555",
     flex: 0.2,
-  },
-  // chips
-  chipsContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginBottom: 16,
-  },
-  chip: {
-    marginVertical: 5,
-    marginRight: 5,
   },
 });
 

@@ -16,8 +16,24 @@ const Stack = createStackNavigator();
 
 function Root() {
   return (
-    <Drawer.Navigator initialRouteName="Nakupny Zoznam">
-      <Drawer.Screen name="Domov" component={HomeScreen} />
+    <Drawer.Navigator initialRouteName="Jedalnicek"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        drawerContentStyle: {
+          backgroundColor: '#f4511e',
+        },
+        drawerLabelStyle: {
+          color: '#fff',
+        }
+      }}
+    >
+      <Drawer.Screen name="Jedalnicek" component={HomeScreen} />
       <Drawer.Screen name="Nakupny Zoznam" component={ShoppingListScreen} />
       <Drawer.Screen name="Recepty" component={RecipeListScreen} />
       <Drawer.Screen name="Potraviny" component={FoodListScreen} />

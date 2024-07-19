@@ -1,19 +1,27 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Chip } from 'react-native-elements';
+import styles from './Chip.Base.styles';
 
-type ChipProps = {
+type Item = {
+  key: string;
   value: string;
-  quantity: number;
-  unit: string;
 };
 
-const ChipBase: React.FC<ChipProps> = ({ value, quantity, unit }) => {
-  const title: string = value + " " + quantity + " " + unit;
+type ChipProps = {
+  items?: Item[];
+};
+
+
+const ChipBase: React.FC<ChipProps> = ({ items }) => {
+  // Sort items by value in ascending order
+  const sortedItems = items.sort((a, b) => a.value.localeCompare(b.value));
 
   return (
-    <View>
-      <Chip title={title} containerStyle={{ marginVertical: 15 }} />
+    <View style={styles.chipsContainer}>
+      {sortedItems.map((item) => (
+        <Chip key={item.key} title={item.value} containerStyle={styles.chip} buttonStyle={styles.chipButton} titleStyle={styles.chipTitle}/>
+      ))}
     </View>
   );
 };

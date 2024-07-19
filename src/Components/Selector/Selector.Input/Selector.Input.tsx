@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, SafeAreaView, VirtualizedList } from 'react-native';
-import { CheckBox, Chip, Divider, Icon, Input } from 'react-native-elements';
+import { CheckBox, Divider, Icon, Input } from 'react-native-elements';
 import SearchBarBase from '../../SearchBars/SearchBar.Base/SearchBar.Base';
 import { SelectedItem } from '../../../Models/SelectedItem';
 import styles from './Selector.Input.styles';
+import ChipBase from '../../Chip/Chip.Base/Chip.Base';
 
 type Item = {
   key: string;
@@ -88,7 +89,7 @@ const SelectorInput: React.FC<Props> = ({ items = [], checkedItems = [], setChec
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={title === "Potraviny"? styles.containerFood : styles.containerRecipe}>
       <View style={styles.header}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.iconContainer}>
@@ -119,10 +120,8 @@ const SelectorInput: React.FC<Props> = ({ items = [], checkedItems = [], setChec
         </View>
       )}
       <Divider style={styles.divider} />
-      <View style={styles.chipsContainer}>
-        {chips.map((c) => (
-          <Chip key={c.key} title={c.value} containerStyle={styles.chip} />
-        ))}
+      <View>
+        <ChipBase items={chips} />
       </View>
     </SafeAreaView>
   );

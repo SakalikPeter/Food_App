@@ -9,11 +9,11 @@ export class Menu {
   recipes?: SelectedItem[];
   nutritions: RecipeNutritions;
 
-  constructor(date: string, foods?: SelectedItem[], recipes?: SelectedItem[]) {
+  constructor(date: string, foods?: SelectedItem[], recipes?: SelectedItem[], nutritions?: RecipeNutritions) {
     this.date = date;
     this.foods = foods ?? [];
     this.recipes = recipes ?? [];
-    this.nutritions = new RecipeNutritions();
+    this.nutritions = nutritions ?? new RecipeNutritions();
   }
 
   public getFoodKeys(): number[] {
@@ -21,7 +21,7 @@ export class Menu {
     return this.foods.map((f) => f.key);
   }
 
-  calculateRecipeNutritions(recipes: Recipe[], foods: Food[]): void {
+  public calculateRecipeNutritions(recipes: Recipe[], foods: Food[]): void {
     this.nutritions.clearValues();
 
     // Calculate nutritions from recipes
