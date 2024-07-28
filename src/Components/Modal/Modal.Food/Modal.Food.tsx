@@ -4,6 +4,8 @@ import { Icon } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import { removeFood } from "../../../../store/redux/food";
 import styles from "./Modal.Food.styles";
+import { removeFoodFromMenu } from "../../../../store/redux/menu";
+import { removeFoodFromRecipe } from "../../../../store/redux/recipe";
 
 const ModalFood = ({ food, hideFood, navigation }) => {
   const dispatch = useDispatch();
@@ -24,6 +26,8 @@ const ModalFood = ({ food, hideFood, navigation }) => {
         {
           text: "OK",
           onPress: () => {
+            dispatch(removeFoodFromMenu(food.key));
+            dispatch(removeFoodFromRecipe(food.key));
             dispatch(removeFood(food));
             hideFood();
           },

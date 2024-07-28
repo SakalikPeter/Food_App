@@ -22,6 +22,12 @@ const recipeSlice = createSlice({
       if (index !== -1) {
         state.items[index] = action.payload;
       }
+    },
+    removeFoodFromRecipe: (state, action) => {
+      state.items = state.items.map(recipe => ({
+        ...recipe,
+        foods: recipe.foods.filter(food => food.key !== action.payload.key)
+      }));
     }
   },
 });
@@ -32,5 +38,5 @@ export const selectRecipeByKey = (key) =>
     (items) => items.some((item) => item.key === key)
   );
 
-export const { addRecipe, removeRecipe, updateRecipe } = recipeSlice.actions;
+export const { addRecipe, removeRecipe, updateRecipe, removeFoodFromRecipe } = recipeSlice.actions;
 export default recipeSlice.reducer;

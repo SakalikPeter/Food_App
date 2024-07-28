@@ -13,6 +13,18 @@ const menuSlice = createSlice({
     removeMenu: (state, action) => {
       state.items = state.items.filter((item) => item.date !== action.payload);
     },
+    removeRecipeFromMenu: (state, action) => {
+      state.items = state.items.map(menu => ({
+        ...menu,
+        recipes: menu.recipes.filter(recipe => recipe.key !== action.payload.key)
+      }));
+    },
+    removeFoodFromMenu: (state, action) => {
+      state.items = state.items.map(menu => ({
+        ...menu,
+        foods: menu.foods.filter(food => food.key !== action.payload.key)
+      }));
+    }
   },
 });
 
@@ -31,5 +43,5 @@ const selectMenuItemByDates = (dates) =>
   );
 
 export { selectMenuItemByDate, selectMenuItemByDates };
-export const { addMenu, removeMenu } = menuSlice.actions;
+export const { addMenu, removeMenu, removeRecipeFromMenu, removeFoodFromMenu } = menuSlice.actions;
 export default menuSlice.reducer;

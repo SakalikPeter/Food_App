@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { removeRecipe } from "../../../../store/redux/recipe";
 import { useAppSelector } from "../../../../store/redux/hooks";
 import styles from "./Modal.Recipe.styles";
+import { removeRecipeFromMenu } from "../../../../store/redux/menu";
 
 const ModalRecipe = ({ recipe, hideRecipe, navigation }) => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const ModalRecipe = ({ recipe, hideRecipe, navigation }) => {
         {
           text: "OK",
           onPress: () => {
+            dispatch(removeRecipeFromMenu(recipe.key));
             dispatch(removeRecipe(recipe.key));
             hideRecipe();
           },
