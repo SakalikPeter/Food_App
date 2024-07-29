@@ -37,49 +37,53 @@ const ModalFood = ({ food, hideFood, navigation }) => {
   };
 
   return (
-    <View style={styles.centeredView}>
-      <Modal animationType="slide" transparent={true}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <View style={styles.closeButtonView}>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => hideFood()}
-              >
-                <Icon name="close" />
-              </Pressable>
-            </View>
-            <View>
-              <Text style={styles.modalText}>Nazov: {food.value}</Text>
-              <Text style={styles.modalText}>Kategoria: {food.category}</Text>
-              <Text style={styles.modalText}>Jednotka: {food.unit}</Text>
-              <Text style={styles.modalText}>Zaklad: {food.base}</Text>
-              <Text style={styles.modalText}>KJ: {food.kj}</Text>
-              <Text style={styles.modalText}>Kcal: {food.kcal}</Text>
-              <Text style={styles.modalText}>Proteiny: {food.protein} g</Text>
-              <Text style={styles.modalText}>Sacharidy: {food.carbs} g</Text>
-              <Text style={styles.modalText}>Tuky: {food.fat} g</Text>
-            </View>
-
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => handleUpdateFood()}
-            >
-              <Icon name="edit" />
-            </Pressable>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => handleRemoveFood()}
-            >
-              <Icon name="delete" />
+    <Modal animationType="slide" transparent={true}>
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          
+          <View style={styles.closeButtonView}>
+            <Pressable style={styles.buttonTopClose} onPress={() => hideFood()}>
+              <Icon name="close" />
             </Pressable>
           </View>
+
+          <View style={styles.titleContainer}>
+            <Text style={styles.foodName}>{food.value}</Text>
+            <Text style={styles.foodCategory}>Kategoria: {food.category}</Text>
+            <Text style={styles.foodQuantity}>{`(${food.base} ${food.unit} )`}</Text>
+          </View>
+
+          <View>
+            <Text style={styles.modalText}>KJ: {food.kj}</Text>
+            <Text style={styles.modalText}>Kcal: {food.kcal}</Text>
+            <Text style={styles.modalText}>Proteiny: {food.protein} g</Text>
+            <Text style={styles.modalText}>Sacharidy: {food.carbs} g</Text>
+            <Text style={styles.modalText}>Tuky: {food.fat} g</Text>
+          </View>
+
+          <View style={styles.buttonBottomContainer}>
+            <View style={styles.buttonBottomItem}>
+              <Pressable
+                style={styles.buttonBottomDelete}
+                onPress={() => handleRemoveFood()}
+              >
+                <Icon name="delete" />
+              </Pressable>
+            </View>
+
+            <View>
+              <Pressable
+                style={styles.buttonBottomUpdate}
+                onPress={() => handleUpdateFood()}
+              >
+                <Icon name="edit" />
+              </Pressable>
+            </View>
+          </View>
         </View>
-      </Modal>
-    </View>
+      </View>
+    </Modal>
   );
 };
 
 export default ModalFood;
-
-

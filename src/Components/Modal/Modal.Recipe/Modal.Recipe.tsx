@@ -22,45 +22,42 @@ const ModalRecipe = ({ recipe, hideRecipe, navigation }) => {
   };
 
   const handleRemoveRecipe = () => {
-    Alert.alert(
-      "Recept bude vymazany",
-      `Nazov: ${recipe.value}`,
-      [
-        {
-          text: "Zrusit",
-          style: "cancel",
+    Alert.alert("Recept bude vymazany", `Nazov: ${recipe.value}`, [
+      {
+        text: "Zrusit",
+        style: "cancel",
+      },
+      {
+        text: "OK",
+        onPress: () => {
+          dispatch(removeRecipeFromMenu(recipe.key));
+          dispatch(removeRecipe(recipe.key));
+          hideRecipe();
         },
-        {
-          text: "OK",
-          onPress: () => {
-            dispatch(removeRecipeFromMenu(recipe.key));
-            dispatch(removeRecipe(recipe.key));
-            hideRecipe();
-          },
-        },
-      ]
-    );
+      },
+    ]);
   };
 
   return (
-    <View style={styles.centeredView}>
       <Modal animationType="slide" transparent={true}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={styles.closeButtonView}>
               <Pressable
-                style={[styles.button, styles.buttonClose]}
+                style={styles.buttonTopClose}
                 onPress={() => hideRecipe()}
               >
                 <Icon name="close" />
               </Pressable>
             </View>
-            <View>
-              <Text style={styles.modalText}>Nazov: {recipe.value}</Text>
+
+            <View style={styles.titleContainer}>
+              <Text style={styles.recipeName}>{recipe.value}</Text>
+              <Text style={styles.recipeInfo}>
+                Pocet porcii: {recipe.portions}
+              </Text>
             </View>
-            <View>
-              <Text style={styles.modalText}>Pocet porcii: {recipe.portions}</Text>
-            </View>
+
             <View>
               <Text style={styles.modalText}>Tagy:</Text>
               <View style={styles.tagsContainer}>
@@ -76,27 +73,36 @@ const ModalRecipe = ({ recipe, hideRecipe, navigation }) => {
               <View style={styles.foodsContainer}>
                 {matchedFoods.map((food, index) => (
                   <Text key={index} style={styles.food}>
-                    {food ? `${food.value} - ${recipe.foods[index].quantity} ${food.unit}` : "Unknown Food"}
+                    {food
+                      ? `${food.value} - ${recipe.foods[index].quantity} ${food.unit}`
+                      : "Unknown Food"}
                   </Text>
                 ))}
               </View>
             </View>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => handleUpdateRecipe()}
-            >
-              <Icon name="edit" />
-            </Pressable>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => handleRemoveRecipe()}
-            >
-              <Icon name="delete" />
-            </Pressable>
+
+            <View style={styles.buttonBottomContainer}>
+              <View style={styles.buttonBottomItem}>
+                <Pressable
+                  style={styles.buttonBottomDelete}
+                  onPress={() => handleRemoveRecipe()}
+                >
+                  <Icon name="delete" />
+                </Pressable>
+              </View>
+
+              <View>
+                <Pressable
+                  style={styles.buttonBottomUpdate}
+                  onPress={() => handleUpdateRecipe()}
+                >
+                  <Icon name="edit" />
+                </Pressable>
+              </View>
+            </View>
           </View>
         </View>
       </Modal>
-    </View>
   );
 };
 

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 2,
     marginBottom: 4,
-    paddingHorizontal: 0,
+    paddingHorizontal: 8,
     paddingTop: 0,
   },
   recipeName: {
