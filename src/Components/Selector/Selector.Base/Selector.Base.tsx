@@ -94,7 +94,7 @@ const toggleCheckbox = (value: string) => {
       )}
       <Divider style={styles.divider} />
       <View>
-        <ChipBase items={checkedValue.map((tag) => ({ key: tag, value: tag })
+        <ChipBase items={checkedValue.map((item) => ({ key: item, value: item })
       )} />
       </View>
     </SafeAreaView>

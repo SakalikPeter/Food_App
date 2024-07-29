@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#242423",
+    padding: 16,
     justifyContent: "space-between",
   },
   listContainer: {
@@ -10,17 +12,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  addButtonContainer: {
-    alignItems: "center",
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 10,
+    right: 0,
+    left: 0,
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    marginTop: 0,
   },
-
   button: {
-    borderRadius: 20,
+    borderRadius: 25,
     padding: 10,
     elevation: 2,
-  },
-  buttonAdd: {
-    backgroundColor: "#2196F3",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9ef01a',
   },
 });
 

@@ -3,41 +3,40 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#D9D9D9",
-    padding: 16,
+    backgroundColor: "#242423",
+    padding: 0,
   },
   row: {
     flexDirection: "row",
   },
   foodContainer: {
     flex: 1,
+    backgroundColor: "#ffffff",
+    borderRadius: 8,
+    marginBottom: 4,
     flexDirection: "column",
     alignItems: "center",
-    marginBottom: 16,
-    padding: 16,
-    backgroundColor: "#ffffff",
-    borderRadius: 10,
-    elevation: 3,
-    margin: 8,
-  },
-  foodDetails: {
-    flex: 1,
+    padding: 8, 
+    margin: 2,
   },
   foodName: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#333",
+    fontFamily: "serif",
+    color: "#333333",
     textAlign: "center",
   },
   foodCategory: {
     fontSize: 14,
     color: "#666",
     marginVertical: 4,
+    fontFamily: "serif",
     textAlign: "center",
   },
   foodQuantity: {
     fontSize: 14,
     color: "#888",
+    fontFamily: "serif",
     textAlign: "center",
   },
 });
