@@ -2616,7 +2616,7 @@ foodItems = [
     key: 217,
   },
   {
-    value: "ovsen\u00e9 vlo\u010diek",
+    value: "ovsen\u00e9 vlo\u010dky",
     category: "Obilniny",
     unit: "g",
     base: 100,
