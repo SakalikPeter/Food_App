@@ -13,8 +13,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonContainer: {
+    position: 'absolute',
+    bottom: 10,
+    right: 0,
+    left: 0,
+    backgroundColor: 'transparent',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 0,
   },
   button: {
     borderRadius: 25,
