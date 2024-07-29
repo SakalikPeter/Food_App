@@ -49,9 +49,9 @@ function RecipeListScreen({ navigation }) {
         <FilterRecipe recipes={recipes} setFilteredRecipes={setFilteredRecipes}/>
       </View>
       <ListRecipe items={filteredRecipes} setSelectedItem={showItem}/>
-      <View style={styles.addButtonContainer}>
+      <View style={styles.buttonContainer}>
         <Pressable
-          style={[styles.button, styles.buttonAdd]}
+          style={styles.button}
           onPress={() => handleAddRecipe()}
         >
           <Icon name="add" />

@@ -37,23 +37,23 @@ const ListRecipe: React.FC<Props> = ({ items = [], setSelectedItem }) => {
   const getItemCount = (data: Recipe[]) => Math.ceil(data.length / numColumns);
 
   const renderItem = ({ item }: { item: Recipe[] }) => (
-    <View style={styles.row}>
+    <View>
       {item.map((recipe, i) => (
-        <View key={i} style={styles.foodContainer}>
+        <View key={i} style={styles.recipeContainer}>
           <TouchableOpacity onPress={() => setSelectedItem(Number(recipe.key))}>
-            <Text style={styles.foodName}>{recipe.value}</Text>
+            <Text style={styles.recipeName}>{recipe.value}</Text>
           </TouchableOpacity>
+          
           <Divider subHeader="Tagy" style={styles.divider} />
-          <View style={styles.chipsContainer}>
-            {recipe.tags.map((tag) => (
-              <Chip key={tag} title={tag} containerStyle={styles.chip} />
-            ))}
+
+          <View>
+            <ChipBase items={recipe.tags.map((tag) => ({ key: tag, value: tag }))} />
           </View>
+
           <Divider subHeader="Potraviny" style={styles.divider} />
-          <View style={styles.chipsContainer}>
-            <View>
-              <ChipBase items={recipe.foods.map((food) => ({ key: food.key.toString(), value: foodMark(foods, food) }))} />
-            </View>
+
+          <View>
+            <ChipBase items={recipe.foods.map((food) => ({ key: food.key.toString(), value: foodMark(foods, food) }))} />
           </View>
         </View>
       ))}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, SafeAreaView, VirtualizedList } from 'react-native';
 import { CheckBox, Chip, Divider, Icon } from 'react-native-elements';
 import styles from './Selector.Base.styles';
+import ChipBase from '../../Chip/Chip.Base/Chip.Base';
 
 type Item = {
   key: number;
@@ -18,7 +19,6 @@ type Props = {
 
 const SelectorBase: React.FC<Props> = ({ items = [], checkedValue, setCheckedItems, title, multi = false }) => {
   const [collapsed, setCollapsed] = useState(true);
-  const chips = items.filter((item) => checkedValue.includes(item.value))
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);
@@ -93,10 +93,9 @@ const toggleCheckbox = (value: string) => {
         </View>
       )}
       <Divider style={styles.divider} />
-      <View style={styles.chipsContainer}>
-        {chips && chips.map((chip) =>
-          <Chip key={chip.key} title={chip.value} containerStyle={styles.chip} />)
-        }
+      <View>
+        <ChipBase items={checkedValue.map((tag) => ({ key: tag, value: tag })
+      )} />
       </View>
     </SafeAreaView>
   );

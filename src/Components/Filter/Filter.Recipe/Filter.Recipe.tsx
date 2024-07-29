@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { RecipeFilterCls } from "../../../Models/RecipeFilter";
 import SearchBarBase from "../../SearchBars/SearchBar.Base/SearchBar.Base";
 import { Food } from "../../../Models/Food";
@@ -10,6 +10,7 @@ import { useAppSelector } from "../../../../store/redux/hooks";
 import { RootState } from "../../../../store/redux/store";
 import SelectorInput from "../../Selector/Selector.Input/Selector.Input";
 import { SelectedItem } from "../../../Models/SelectedItem";
+import styles from "./Filter.Recipe.styles";
 
 interface RecipeFilterProps {
   recipes: Recipe[];
@@ -22,15 +23,23 @@ const itemSelectorFood = (item) => ({
   unit: item.unit,
 });
 
-const FilterRecipe: React.FC<RecipeFilterProps> = ({ recipes, setFilteredRecipes }) => {
-  const [recipeFilter, setRecipeFilter] = useState<RecipeFilterCls>(new RecipeFilterCls());
+const FilterRecipe: React.FC<RecipeFilterProps> = ({
+  recipes,
+  setFilteredRecipes,
+}) => {
+  const [recipeFilter, setRecipeFilter] = useState<RecipeFilterCls>(
+    new RecipeFilterCls()
+  );
   const tags: Tag[] = useAppSelector((state: RootState) => state.tag.items);
   const foods: Food[] = useAppSelector((state: RootState) => state.food.items);
+  const [showFilters, setShowFilters] = useState(false);
 
-  React.useEffect(() => {applyFilters()}, [recipeFilter])
+  React.useEffect(() => {
+    applyFilters();
+  }, [recipeFilter]);
 
   const handleTagChange = (value: string[]) => {
-    setRecipeFilter(prevState => {
+    setRecipeFilter((prevState) => {
       const newFilter = new RecipeFilterCls();
       newFilter.setTags(value);
       newFilter.setFoods(prevState.foods);
@@ -41,7 +50,7 @@ const FilterRecipe: React.FC<RecipeFilterProps> = ({ recipes, setFilteredRecipes
 
   const handleFoodChange = (key: string) => {
     const updatedFoods = toggleItemInArray(recipeFilter.foods, key);
-    setRecipeFilter(prevState => {
+    setRecipeFilter((prevState) => {
       const newFilter = new RecipeFilterCls();
       newFilter.setTags(prevState.tags);
       newFilter.setFoods(updatedFoods);
@@ -52,7 +61,7 @@ const FilterRecipe: React.FC<RecipeFilterProps> = ({ recipes, setFilteredRecipes
   };
 
   const handleSearchChange = (value: string) => {
-    setRecipeFilter(prevState => {
+    setRecipeFilter((prevState) => {
       const newFilter = new RecipeFilterCls();
       newFilter.setTags(prevState.tags);
       newFilter.setFoods(prevState.foods);
@@ -68,16 +77,33 @@ const FilterRecipe: React.FC<RecipeFilterProps> = ({ recipes, setFilteredRecipes
 
   return (
     <View>
-      <SearchBarBase value={recipeFilter.value} setter={handleSearchChange} />
-      <SelectorInput 
-        items={foods.map((f) => itemSelectorFood(f))} 
-        checkedItems={recipeFilter.foods.map((f) => new SelectedItem(f, 0))} 
-        setCheckedItems={handleFoodChange} 
-        title="Potraviny"
-        input={false}
-      />
-      <SelectorBase items={tags} checkedValue={recipeFilter.tags} setCheckedItems={handleTagChange} title="Tagy" multi={true} />
-
+      <View style={styles.buttonContainer}>
+      <Pressable style={styles.button} onPress={() => setShowFilters(!showFilters)}>
+        <Text style={styles.buttonText}>{showFilters ? "Skryt filtre" : "Zobrazit filtre"}</Text>
+      </Pressable>
+      </View>
+      {showFilters && (
+        <View>
+          <SearchBarBase
+            value={recipeFilter.value}
+            setter={handleSearchChange}
+          />
+          <SelectorInput
+            items={foods.map((f) => itemSelectorFood(f))}
+            checkedItems={recipeFilter.foods.map((f) => new SelectedItem(f, 0))}
+            setCheckedItems={handleFoodChange}
+            title="Potraviny"
+            input={false}
+          />
+          <SelectorBase
+            items={tags}
+            checkedValue={recipeFilter.tags}
+            setCheckedItems={handleTagChange}
+            title="Tagy"
+            multi={true}
+          />
+        </View>
+      )}
     </View>
   );
 };

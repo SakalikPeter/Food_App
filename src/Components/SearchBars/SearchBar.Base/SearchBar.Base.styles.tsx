@@ -2,7 +2,8 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     searchBar: {
-        backgroundColor: "#ffffff"
+        backgroundColor: "#ffffff",
+        marginBottom: 4,
     }
 });
 
