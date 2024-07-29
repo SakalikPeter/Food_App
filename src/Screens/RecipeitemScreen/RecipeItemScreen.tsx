@@ -1,6 +1,6 @@
 import React from "react";
-import { View, ScrollView, Alert } from "react-native";
-import { Button, Input, Text } from "react-native-elements";
+import { View, ScrollView, Alert, Pressable } from "react-native";
+import { Button, Icon, Input, Text } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import { addRecipe, updateRecipe } from "../../../store/redux/recipe";
 import { Recipe, RecipeParams } from "../../Models/Recipe";
@@ -11,6 +11,9 @@ import { SelectedItem } from "../../Models/SelectedItem";
 import SelectorInput from "../../Components/Selector/Selector.Input/Selector.Input";
 import Selector2 from "../../Components/Selector/Selector.Base/Selector.Base";
 import { checkNumberInput, checkStringInput } from "../../Services/Checker";
+import styles from "./RecipeItemScreen.styles";
+import { Nutritions } from "../../Models/Nutritions";
+import { calculateFoodsNutritions } from "../../Services/calculator";
 
 const itemSelectorFood = (item) => ({
   key: item.key,
@@ -24,13 +27,18 @@ function RecipeItemScreen({ route, navigation }) {
   const foods: Food[] = useAppSelector((state: RootState) => state.food.items);
   const tags = useAppSelector((state: RootState) => state.tag.items);
   const dispatch = useDispatch();
+  const [nutritions, setNutritions] = React.useState<Nutritions>(calculateFoodsNutritions(
+    foods,
+    recipe.foods,
+  ));
 
   // Update nutritions whenever recipe or its foods change
   React.useEffect(() => {
-    const updatedRecipe = new Recipe(recipe);
-    updatedRecipe.calculateNutritions(foods);
-    setRecipe(updatedRecipe);
-  }, [recipe.foods]);
+    setNutritions(calculateFoodsNutritions(
+      foods,
+      recipe.foods,
+    ));
+  }, [recipe]);
 
   const handleInputChange = (field: keyof RecipeParams, value: string | number) => {
     setRecipe((prevRecipe) => new Recipe({ ...prevRecipe, [field]: value }));
@@ -67,16 +75,18 @@ function RecipeItemScreen({ route, navigation }) {
   };
 
   const handleSave = () => {
-    recipe.calculateNutritions(foods);
 
     if (recipe.isValid()) {
       let title = "";
 
       if (recipe.key < 0) {
-        dispatch(addRecipe(recipe.toParams()));
+        const obj = recipe.toPlainObject()
+        dispatch(addRecipe(obj));
         title = "Recept bol pridany";
       } else {
-        dispatch(updateRecipe(recipe.toParams()));
+        const obj = recipe.toPlainObject()
+        console.log("obje: ", obj)
+        dispatch(updateRecipe(obj));
         title = "Recept bol upraveny";
       }
       Alert.alert(title, "", [{ text: "OK" }]);
@@ -85,24 +95,24 @@ function RecipeItemScreen({ route, navigation }) {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <View>
         <Input
           label="Nazov"
-          defaultValue={recipe.value}
+          defaultValue={recipe.value || ''}
           onChangeText={(value) => handleInputChange("value", value)}
           errorMessage={checkStringInput(recipe.value)}
         />
         <Input
           label="Pocet Porcii"
-          defaultValue={String(recipe.portions)}
+          defaultValue={String(recipe.portions || 0)}
           onChangeText={(value) => handleNumberChange("portions", value)}
           errorMessage={checkNumberInput(recipe.portions)}
           keyboardType="numeric"
         />
         <Input
           label="Instrukcie"
-          defaultValue={recipe.instruction}
+          defaultValue={recipe.instruction || ''}
           onChangeText={(value) => handleInputChange("instruction", value)}
         />
         <Selector2
@@ -121,14 +131,23 @@ function RecipeItemScreen({ route, navigation }) {
         />
       </View>
       <View>
-        <Text>KJ: {recipe.nutritions.kj}</Text>
-        <Text>KCAL: {recipe.nutritions.kcal}</Text>
-        <Text>Bielkoviny: {recipe.nutritions.protein}</Text>
-        <Text>Sacharidy: {recipe.nutritions.carbs}</Text>
-        <Text>Tuky: {recipe.nutritions.fat}</Text>
-      </View>
-      <View>
-        <Button title="Pridat" onPress={handleSave} />
+        <View>
+        <View style={styles.textContainer}>
+          <View style={styles.textColumn}>
+            <Text style={styles.text}>KCal: {Math.round(nutritions.kcal * 100) / 100}</Text>
+            <Text style={styles.text}>Bielkoviny: {Math.round(nutritions.protein * 100) / 100}</Text>
+          </View>
+          <View style={styles.textColumn}>
+            <Text style={styles.text}>Tuky: {Math.round(nutritions.fat * 100) / 100}</Text>
+            <Text style={styles.text}>Sacharidy: {Math.round(nutritions.carbs * 100) / 100}</Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Pressable style={styles.button} onPress={handleSave}>
+            <Icon name="done" />
+          </Pressable>
+        </View>
       </View>
     </View>
   );

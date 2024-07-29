@@ -11,13 +11,6 @@ recipeItems = [
       },
     ],
     tags: [],
-    nutritions: {
-      kj: 1584,
-      kcal: 556,
-      protein: 28,
-      carbs: 1,
-      fat: 40,
-    },
   },
   {
     key: 1,
@@ -31,13 +24,6 @@ recipeItems = [
       },
     ],
     tags: ["Ranajky"],
-    nutritions: {
-      kj: 1584,
-      kcal: 556,
-      protein: 28,
-      carbs: 1,
-      fat: 40,
-    },
   },
   {
     key: 2,

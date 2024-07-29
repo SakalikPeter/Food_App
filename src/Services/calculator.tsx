@@ -46,12 +46,15 @@ const calculateRecipesNutritions = (
         selRecipes.forEach((selRecipe) => {
             const recipeItem = recipes.find((recipe) => recipe.key === selRecipe.key);
             const rn = calculateFoodsNutritions(foods, recipeItem.foods)
-            rn.kj = rn.kj / recipeItem.portions * selRecipe.quantity
-            rn.kcal = rn.kcal / recipeItem.portions * selRecipe.quantity
-            rn.protein = rn.protein / recipeItem.portions * selRecipe.quantity
-            rn.carbs = rn.carbs / recipeItem.portions * selRecipe.quantity
-            rn.fat = rn.fat / recipeItem.portions * selRecipe.quantity
-            rns.push(rn)
+            if (recipeItem.portions > 0) {
+              rn.kj = rn.kj / recipeItem.portions * selRecipe.quantity
+              rn.kcal = rn.kcal / recipeItem.portions * selRecipe.quantity
+              rn.protein = rn.protein / recipeItem.portions * selRecipe.quantity
+              rn.carbs = rn.carbs / recipeItem.portions * selRecipe.quantity
+              rn.fat = rn.fat / recipeItem.portions * selRecipe.quantity
+              rns.push(rn)       
+            }
+
         })
     }
 
@@ -74,4 +77,4 @@ const calculateRecipesNutritions = (
     return finalRn
 }
 
-export default calculateRecipesNutritions
+export {calculateRecipesNutritions, calculateFoodsNutritions};

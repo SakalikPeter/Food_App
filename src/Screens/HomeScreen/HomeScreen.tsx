@@ -14,7 +14,7 @@ import { SelectedItem } from "../../Models/SelectedItem";
 import { Nutritions } from "../../Models/Nutritions";
 import { addMenu, removeMenu } from "../../../store/redux/menu";
 import styles from "./HomeScreen.styles";
-import calculateRecipesNutritions from "../../Services/calculator";
+import {calculateRecipesNutritions} from "../../Services/calculator";
 import {
   toggleItemInArray,
   updateItemQuantity,
@@ -46,9 +46,7 @@ const HomeScreen: React.FC = () => {
   }, [foods, recipes, menu]);
 
   const updateMenuAndNutritions = (updatedMenu: Menu) => {
-    console.log(updatedMenu)
     setMenu(updatedMenu);
-    console.log(calculateRecipesNutritions(foods, updatedMenu.foods, recipes, updatedMenu.recipes))
     setNutritions(
       calculateRecipesNutritions(
         foods,
