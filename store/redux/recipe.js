@@ -26,7 +26,7 @@ const recipeSlice = createSlice({
     removeFoodFromRecipe: (state, action) => {
       state.items = state.items.map(recipe => ({
         ...recipe,
-        foods: recipe.foods.filter(food => food.key !== action.payload.key)
+        foods: recipe.foods.filter(food => food.key !== action.payload)
       }));
     }
   },

@@ -25,29 +25,30 @@ import {
 const HomeScreen: React.FC = () => {
   const dispatch = useDispatch();
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
-  const recipes: Recipe[] = useAppSelector(
-    (state: RootState) => state.recipe.items
-  );
+  const recipes: Recipe[] = useAppSelector((state: RootState) => state.recipe.items);
+
   const foods: Food[] = useAppSelector((state: RootState) => state.food.items);
-  const selectedMenu: Menu =
-    useSelector(selectMenuItemByDate(date)) || new Menu(date);
-  const [menu, setMenu] = useState<Menu>(selectedMenu);
-  const [nutritions, setNutritions] = useState<Nutritions>(new Nutritions());
+  const [menu, setMenu] = useState<Menu>(useSelector(selectMenuItemByDate(date)) || new Menu(date));
+  const [nutritions, setNutritions] = useState<Nutritions>(calculateRecipesNutritions(
+    foods,
+    menu.foods,
+    recipes,
+    menu.recipes
+  ));
 
   useEffect(() => {
-    setNutritions(
-      calculateRecipesNutritions(
-        foods,
-        selectedMenu.foods,
-        recipes,
-        selectedMenu.recipes
-      )
-    );
-    setMenu(selectedMenu);
-  }, [date]);
+    setNutritions(calculateRecipesNutritions(
+      foods,
+      menu.foods,
+      recipes,
+      menu.recipes
+    ));
+  }, [foods, recipes, menu]);
 
   const updateMenuAndNutritions = (updatedMenu: Menu) => {
+    console.log(updatedMenu)
     setMenu(updatedMenu);
+    console.log(calculateRecipesNutritions(foods, updatedMenu.foods, recipes, updatedMenu.recipes))
     setNutritions(
       calculateRecipesNutritions(
         foods,

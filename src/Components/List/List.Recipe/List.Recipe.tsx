@@ -13,6 +13,7 @@ import { Recipe } from "../../../Models/Recipe";
 import { Food } from "../../../Models/Food";
 import styles from "./List.Recipe.styles";
 import { SelectedItem } from "../../../Models/SelectedItem";
+import ChipBase from "../../Chip/Chip.Base/Chip.Base";
 
 type Props = {
   items?: Recipe[];
@@ -50,13 +51,9 @@ const ListRecipe: React.FC<Props> = ({ items = [], setSelectedItem }) => {
           </View>
           <Divider subHeader="Potraviny" style={styles.divider} />
           <View style={styles.chipsContainer}>
-            {recipe.foods.map((food) => (
-              <Chip
-                key={food.key.toString()}
-                title={foodMark(foods, food)}
-                containerStyle={styles.chip}
-              />
-            ))}
+            <View>
+              <ChipBase items={recipe.foods.map((food) => ({ key: food.key.toString(), value: foodMark(foods, food) }))} />
+            </View>
           </View>
         </View>
       ))}
