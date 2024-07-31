@@ -16,7 +16,7 @@ categoryItems = [
       "key": 3
   },
   {
-      "value": "Maslo, n\u00e1tierky",
+      "value": "Maslo, n\u00e1tierky, pa\u0161t\u00e9ty",
       "key": 4
   },
   {
@@ -44,7 +44,7 @@ categoryItems = [
       "key": 10
   },
   {
-      "value": "Sal\u00e1my, \u0160unky, \u00dadeniny",
+      "value": "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
       "key": 11
   },
   {
@@ -52,7 +52,7 @@ categoryItems = [
       "key": 12
   },
   {
-      "value": "Rybacie m\u00e4so",
+      "value": "Ryby a morsk\u00e9 plody",
       "key": 13
   },
   {
@@ -86,6 +86,62 @@ categoryItems = [
   {
       "value": "Pe\u010divo",
       "key": 21
+  },
+  {
+      "value": "S\u00f3ja a tofu",
+      "key": 22
+  },
+  {
+      "value": "Huby",
+      "key": 23
+  },
+  {
+      "value": "Polotovary",
+      "key": 24
+  },
+  {
+      "value": "Ry\u017ea",
+      "key": 25
+  },
+  {
+      "value": "Cestoviny",
+      "key": 26
+  },
+  {
+      "value": "Orechy a semenn\u00e1",
+      "key": 27
+  },
+  {
+      "value": "Strukoviny",
+      "key": 28
+  },
+  {
+      "value": "Slan\u00e9 pochutiny",
+      "key": 29
+  },
+  {
+      "value": "Zmrzlina a nanuky",
+      "key": 30
+  },
+  {
+      "value": "Om\u00e1\u010dky",
+      "key": 31
+  },
+  {
+      "value": "Korenie a ochucovadl\u00e1",
+      "key": 32
+  },
+  {
+      "value": "Sladidl\u00e1",
+      "key": 33
+  },
+  {
+      "value": "Maste a oleje",
+      "key": 34
+  },
+  {
+      "value": "M\u00faka",
+      "key": 35
   }
 ];
 

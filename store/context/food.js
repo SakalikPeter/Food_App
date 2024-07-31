@@ -97,7 +97,7 @@ foodItems = [
   },
   {
     value: "P\u00e1rky hydinov\u00e9",
-    category: "Hydina",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 1017,
@@ -169,7 +169,7 @@ foodItems = [
   },
   {
     value: "Brav\u010dov\u00e9 p\u00e1rky",
-    category: "Brav\u010dov\u00e9 m\u00e4so",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 1467,
@@ -253,7 +253,7 @@ foodItems = [
   },
   {
     value: "Kapor",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 520,
@@ -265,7 +265,7 @@ foodItems = [
   },
   {
     value: "Krab",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 220,
@@ -277,7 +277,7 @@ foodItems = [
   },
   {
     value: "Krevety",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 1120,
@@ -289,7 +289,7 @@ foodItems = [
   },
   {
     value: "Losos",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 680,
@@ -301,7 +301,7 @@ foodItems = [
   },
   {
     value: "Makrela",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 855,
@@ -313,7 +313,7 @@ foodItems = [
   },
   {
     value: "Pstruh",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 710,
@@ -325,7 +325,7 @@ foodItems = [
   },
   {
     value: "Sardinky v oleji",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 1130,
@@ -337,7 +337,7 @@ foodItems = [
   },
   {
     value: "Sardinky v om\u00e1\u010dke",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 740,
@@ -349,7 +349,7 @@ foodItems = [
   },
   {
     value: "Sle\u010f",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 924,
@@ -361,7 +361,7 @@ foodItems = [
   },
   {
     value: "Treska alja\u0161sk\u00e1",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 490,
@@ -373,7 +373,7 @@ foodItems = [
   },
   {
     value: "Treska \u0161al\u00e1t",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 920,
@@ -385,7 +385,7 @@ foodItems = [
   },
   {
     value: "Tuniak",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 620,
@@ -397,7 +397,7 @@ foodItems = [
   },
   {
     value: "Tuniak v oleji",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 940,
@@ -409,7 +409,7 @@ foodItems = [
   },
   {
     value: "Tuniak vo vlastnej \u0161\u0165ave",
-    category: "Rybacie m\u00e4so",
+    category: "Ryby a morsk\u00e9 plody",
     unit: "g",
     base: 100,
     kj: 630,
@@ -421,7 +421,7 @@ foodItems = [
   },
   {
     value: "Sal\u00e1ma Vyso\u010dina",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 1923,
@@ -433,7 +433,7 @@ foodItems = [
   },
   {
     value: "Sal\u00e1ma Debrec\u00ednska",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 878,
@@ -445,7 +445,7 @@ foodItems = [
   },
   {
     value: "Sal\u00e1ma Mor\u010dacia",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 693,
@@ -457,7 +457,7 @@ foodItems = [
   },
   {
     value: "Sal\u00e1ma kabanos",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 858,
@@ -469,7 +469,7 @@ foodItems = [
   },
   {
     value: "Sal\u00e1ma Hydinov\u00e1",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 1528,
@@ -481,7 +481,7 @@ foodItems = [
   },
   {
     value: "\u0160unka kuracia",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 652,
@@ -493,7 +493,7 @@ foodItems = [
   },
   {
     value: "\u0160unka mor\u010dacia",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 541,
@@ -505,7 +505,7 @@ foodItems = [
   },
   {
     value: "\u0160unka Hydinov\u00e1",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 928,
@@ -517,7 +517,7 @@ foodItems = [
   },
   {
     value: "\u0160unka dusen\u00e1",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 655,
@@ -529,7 +529,7 @@ foodItems = [
   },
   {
     value: "Klob\u00e1sa Ostravsk\u00e1",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 1299,
@@ -541,7 +541,7 @@ foodItems = [
   },
   {
     value: "Klob\u00e1sa Moravsk\u00e1",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 875,
@@ -553,7 +553,7 @@ foodItems = [
   },
   {
     value: "Kabanos",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 1247,
@@ -565,7 +565,7 @@ foodItems = [
   },
   {
     value: "Slanina",
-    category: "Sal\u00e1my, \u0160unky, \u00dadeniny",
+    category: "Sal\u00e1my, \u0160unky, \u00dadeniny, p\u00e1rky",
     unit: "g",
     base: 100,
     kj: 3406,
@@ -1789,7 +1789,7 @@ foodItems = [
   },
   {
     value: "Smotanov\u00e1 n\u00e1tierka",
-    category: "Maslo, n\u00e1tierky",
+    category: "Maslo, n\u00e1tierky a pa\u0161t\u00e9ty",
     unit: "g",
     base: 100,
     kj: 1310,
@@ -1801,7 +1801,7 @@ foodItems = [
   },
   {
     value: "Maslo",
-    category: "Maslo, n\u00e1tierky",
+    category: "Maslo, n\u00e1tierky a pa\u0161t\u00e9ty",
     unit: "g",
     base: 100,
     kj: 3072,

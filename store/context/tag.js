@@ -1,6 +1,6 @@
 tagItems = [
   {
-      "value": "Ob\u013een\u00e9",
+      "value": "Ob\u013e\u00FAben\u00e9",
       "key": 0
   },
   {
@@ -66,7 +66,39 @@ tagItems = [
   {
     "value": "Vegetari\u00e1nske",
     "key": 16
-},
+  },
+  {
+    "value": "Om\u00e1\u010dky",
+    "key": 17
+  },
+  {
+    "value": "\u0160al\u00e1ty",
+    "key": 18
+  },
+  {
+    "value": "Pr\u00EDlohy",
+    "key": 19
+  },
+  {
+    "value": "Predjedl\u00e1",
+    "key": 20
+  },
+  {
+    "value": "Ra\u0148ajky",
+    "key": 21
+  },
+  {
+    "value": "Obed",
+    "key": 22
+  },
+  {
+    "value": "Ve\u010dera",
+    "key": 23
+  },
+  {
+    "value": "Desiata",
+    "key": 24
+  }
 ];
   
   export default tagItems;
