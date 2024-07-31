@@ -1,5 +1,12 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 import menuItems from "../context/menu";
+import { persistReducer } from "redux-persist";
+import storage from "@react-native-async-storage/async-storage";
+
+const persistConfig = {
+  key: "menu",
+  storage,
+};
 
 const menuSlice = createSlice({
   name: "menu",
@@ -42,6 +49,8 @@ const selectMenuItemByDates = (dates) =>
     (items) => items.filter(item => dates.includes(item.date))
   );
 
+
+const persistedReducer = persistReducer(persistConfig, menuSlice.reducer);  
 export { selectMenuItemByDate, selectMenuItemByDates };
 export const { addMenu, removeMenu, removeRecipeFromMenu, removeFoodFromMenu } = menuSlice.actions;
-export default menuSlice.reducer;
+export default persistedReducer;

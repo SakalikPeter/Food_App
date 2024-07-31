@@ -1,5 +1,12 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 import recipeItems from "../context/recipe";
+import { persistReducer } from "redux-persist";
+import storage from "@react-native-async-storage/async-storage";
+
+const persistConfig = {
+  key: "recipe",
+  storage,
+};
 
 const recipeSlice = createSlice({
   name: "recipe",
@@ -38,5 +45,6 @@ export const selectRecipeByKey = (key) =>
     (items) => items.some((item) => item.key === key)
   );
 
+const persistedReducer = persistReducer(persistConfig, recipeSlice.reducer);    
 export const { addRecipe, removeRecipe, updateRecipe, removeFoodFromRecipe } = recipeSlice.actions;
-export default recipeSlice.reducer;
+export default persistedReducer;

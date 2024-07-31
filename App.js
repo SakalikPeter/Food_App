@@ -9,14 +9,16 @@ import RecipeListScreen from "./src/Screens/RecipeListScreen/RecipeListScreen";
 import RecipeItemScreen from "./src/Screens/RecipeitemScreen/RecipeItemScreen";
 import ShoppingListScreen from "./src/Screens/ShoppingListScreen/ShoppingListScreen";
 import { Provider } from "react-redux";
-import { store } from "./store/redux/store";
+import { PersistGate } from "redux-persist/integration/react"; // Import PersistGate
+import { store, persistor } from "./store/redux/store"; // Import persistor
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 function Root() {
   return (
-    <Drawer.Navigator initialRouteName="Jedalnicek"
+    <Drawer.Navigator
+      initialRouteName="Jedalnicek"
       screenOptions={{
         headerStyle: {
           backgroundColor: '#CAF4FF',
@@ -54,33 +56,35 @@ function Root() {
 function App() {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ cardStyle: { flex: 1 } }}>
-          <Stack.Screen
-            options={{ headerShown: false, presentation: "card" }}
-            name="Root"
-            component={Root}
-          />
-          <Stack.Screen
-            name="Potravina"
-            component={FoodItemScreen}
-            options={{
-              headerStyle: {
-                backgroundColor: "#CAF4FF",
-              },
-            }}
-          />
-          <Stack.Screen 
-            name="Recept"
-            component={RecipeItemScreen}
-            options={{
-              headerStyle: {
-                backgroundColor: "#CAF4FF",
-              },
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ cardStyle: { flex: 1 } }}>
+            <Stack.Screen
+              options={{ headerShown: false, presentation: "card" }}
+              name="Root"
+              component={Root}
+            />
+            <Stack.Screen
+              name="Potravina"
+              component={FoodItemScreen}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#CAF4FF",
+                },
+              }}
+            />
+            <Stack.Screen 
+              name="Recept"
+              component={RecipeItemScreen}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#CAF4FF",
+                },
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 }

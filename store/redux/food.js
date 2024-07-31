@@ -1,6 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import foodItems from "../context/food";
+import { persistReducer } from "redux-persist";
+import storage from "@react-native-async-storage/async-storage"; // Use AsyncStorage for React Native
 
+// Sample food items for initial state
+import foodItems from "../context/food"; // Make sure this import is correct
+
+// Configuration for redux-persist
+const persistConfig = {
+  key: "food",
+  storage,
+};
+
+// Create a slice using Redux Toolkit
 const foodSlice = createSlice({
   name: "food",
   initialState: {
@@ -26,5 +37,9 @@ const foodSlice = createSlice({
   },
 });
 
+// Wrap the slice reducer with persistReducer
+const persistedReducer = persistReducer(persistConfig, foodSlice.reducer);
+
+// Export actions and the persisted reducer
 export const { addFood, removeFood, updateFood } = foodSlice.actions;
-export default foodSlice.reducer;
+export default persistedReducer;
