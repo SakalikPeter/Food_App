@@ -14,6 +14,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 0,
   },
+  containerTag: {
+    backgroundColor: "#D10363",
+    borderRadius: 8,
+    elevation: 3,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    marginBottom: 4,
+    paddingHorizontal: 16,
+    paddingTop: 0,
+  },
   // global -> header
   header: {
     flexDirection: "row",

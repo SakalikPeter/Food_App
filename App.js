@@ -19,22 +19,32 @@ function Root() {
     <Drawer.Navigator initialRouteName="Jedalnicek"
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#808836',
+          backgroundColor: '#CAF4FF',
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#000000',
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontFamily: "serif",
+        },
+        drawerItemStyle: {
+          borderWidth: 1,
+          borderColor: '#000',
+          borderRadius: 10,
+          margin: 5,
+          backgroundColor: '#FDDE55',
         },
         drawerContentStyle: {
-          backgroundColor: '#808836',
+          backgroundColor: '#CAF4FF',
         },
         drawerLabelStyle: {
-          color: '#fff',
+          color: '#000000',
+          fontFamily: "serif",
+          padding: 10,
         }
       }}
     >
       <Drawer.Screen name="Jedalnicek" component={HomeScreen} />
-      <Drawer.Screen name="Nakupny Zoznam" component={ShoppingListScreen} />
+      <Drawer.Screen name="Nakupny zoznam" component={ShoppingListScreen} />
       <Drawer.Screen name="Recepty" component={RecipeListScreen} />
       <Drawer.Screen name="Potraviny" component={FoodListScreen} />
     </Drawer.Navigator>
@@ -51,8 +61,24 @@ function App() {
             name="Root"
             component={Root}
           />
-          <Stack.Screen name="Potravina" component={FoodItemScreen} />
-          <Stack.Screen name="Recept" component={RecipeItemScreen} />
+          <Stack.Screen
+            name="Potravina"
+            component={FoodItemScreen}
+            options={{
+              headerStyle: {
+                backgroundColor: "#CAF4FF",
+              },
+            }}
+          />
+          <Stack.Screen 
+            name="Recept"
+            component={RecipeItemScreen}
+            options={{
+              headerStyle: {
+                backgroundColor: "#CAF4FF",
+              },
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

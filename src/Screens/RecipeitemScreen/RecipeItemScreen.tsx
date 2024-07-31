@@ -98,23 +98,15 @@ function RecipeItemScreen({ route, navigation }) {
     <View style={styles.container}>
       <View>
         <Input
+          labelStyle={{color: "#77E4C8", fontFamily: "serif",}}
           label="Nazov"
           defaultValue={recipe.value || ''}
           onChangeText={(value) => handleInputChange("value", value)}
           errorMessage={checkStringInput(recipe.value)}
         />
-        <Input
-          label="Pocet Porcii"
-          defaultValue={String(recipe.portions || 0)}
-          onChangeText={(value) => handleNumberChange("portions", value)}
-          errorMessage={checkNumberInput(recipe.portions)}
-          keyboardType="numeric"
-        />
-        <Input
-          label="Instrukcie"
-          defaultValue={recipe.instruction || ''}
-          onChangeText={(value) => handleInputChange("instruction", value)}
-        />
+      </View>
+
+      <View>
         <Selector2
           items={tags}
           checkedValue={recipe.tags}
@@ -130,7 +122,23 @@ function RecipeItemScreen({ route, navigation }) {
           title="Potraviny"
         />
       </View>
-      <View>
+
+      <ScrollView>
+        <Input
+          labelStyle={{color: "#77E4C8", fontFamily: "serif",}}
+          label="Pocet Porcii"
+          defaultValue={String(recipe.portions || 0)}
+          onChangeText={(value) => handleNumberChange("portions", value)}
+          errorMessage={checkNumberInput(recipe.portions)}
+          keyboardType="numeric"
+        />
+        <Input
+          labelStyle={{color: "#77E4C8", fontFamily: "serif",}}
+          label="Instrukcie"
+          defaultValue={recipe.instruction || ''}
+          onChangeText={(value) => handleInputChange("instruction", value)}
+        />
+
         <View>
         <View style={styles.textContainer}>
           <View style={styles.textColumn}>
@@ -143,12 +151,13 @@ function RecipeItemScreen({ route, navigation }) {
             </View>
           </View>
         </View>
+        </ScrollView>
         <View style={styles.buttonContainer}>
           <Pressable style={styles.button} onPress={handleSave}>
             <Icon name="done" />
           </Pressable>
         </View>
-      </View>
+      
     </View>
   );
 }

@@ -63,7 +63,7 @@ const ShoppingListScreen: React.FC = () => {
   return (
     <ScrollView style={styles.container}>
       <CalendarMultipleDays setDates={setDates} />
-      <Text style={styles.checkedCount}>Checked Items: {checkedCount} / {totalCount}</Text>
+      <Text style={styles.checkedCount}>Zoznam: {checkedCount} / {totalCount}</Text>
       {foodQuantities.length > 0 && foodQuantities.map((food, index) => (
         <View key={index} style={food.checked? styles.menuContainerChecked : styles.menuContainer}>
           <CheckBox

@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   recipeContainer: {
     alignItems: "center",
-    backgroundColor: "#999655",
+    backgroundColor: "#FF9A00",
     borderRadius: 8,
     elevation: 3,
     shadowColor: "#000",

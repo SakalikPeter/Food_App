@@ -65,7 +65,7 @@ const toggleCheckbox = (value: string) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={title === "Potraviny"? styles.container : styles.containerTag}>
       <View style={styles.header}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.iconContainer}>
